@@ -25,11 +25,10 @@ texture = ExtResource("1_oor70")
 shape = SubResource("RectangleShape2D_imawl")
 
 [node name="DownArea" type="Area2D" parent="."]
-position = Vector2(0, 5)
 script = ExtResource("3_t21jt")
 
 [node name="Down" type="CollisionShape2D" parent="DownArea"]
-position = Vector2(0, 3)
+position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_xgbkr")
 
 [connection signal="body_entered" from="DownArea" to="DownArea" method="_on_body_entered"]
