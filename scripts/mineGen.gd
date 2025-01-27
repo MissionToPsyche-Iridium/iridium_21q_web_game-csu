@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var chunkspawner = $spawner # Def for spawner control.
 @onready var tilemap = $TileMapLayer # Def for tilemap.
 var grid = [] #Mine grid.
 @export var height = 15 #Height of the mine
@@ -79,9 +78,11 @@ func array_to_tile_map():
 	#Updates the tilemap with the array data.
 	for row in range(height):
 		for item in range(width):
+			pass
 			tilemap.set_cell(Vector2(item,row), 0, idpos[grid[row][item]])
 func _ready() -> void:
 	#SETUP GRID.
+	pass
 	init_grid_array(height,width)
 	seed(randi_range(0,25565)) #DO NOT CALL THIS AGAIN, SETS SEED FOR EVERY RANDOM OBJECT.
 	rand_grid_array_with_seed()

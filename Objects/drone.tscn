@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5c4d80q5qjwo"]
+
+[ext_resource type="Script" path="res://scripts/DroneMove.gd" id="1_4y1nq"]
+[ext_resource type="Texture2D" uid="uid://dkccrjow40fex" path="res://Assets/shiptemp.png" id="1_oor70"]
+[ext_resource type="Script" path="res://scripts/drill.gd" id="3_t21jt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imawl"]
+size = Vector2(38, 30)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xgbkr"]
+radius = 7.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_4y1nq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(2.35938, 1.85105)
+texture = ExtResource("1_oor70")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PlayerHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_imawl")
+
+[node name="DownArea" type="Area2D" parent="."]
+position = Vector2(0, 5)
+script = ExtResource("3_t21jt")
+
+[node name="Down" type="CollisionShape2D" parent="DownArea"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_xgbkr")
+
+[connection signal="body_entered" from="DownArea" to="DownArea" method="_on_body_entered"]
+[connection signal="body_exited" from="DownArea" to="DownArea" method="_on_body_exited"]

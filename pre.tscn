@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://ckw2p7i6fa3mc"]
+[gd_scene load_steps=3 format=3 uid="uid://ckw2p7i6fa3mc"]
+
+[ext_resource type="PackedScene" uid="uid://c5c4d80q5qjwo" path="res://Objects/drone.tscn" id="1_frevg"]
+[ext_resource type="PackedScene" uid="uid://ok71srmvbp25" path="res://Objects/mine.tscn" id="2_e7w7u"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Drone" parent="." instance=ExtResource("1_frevg")]
+
+[node name="mine" parent="." instance=ExtResource("2_e7w7u")]
