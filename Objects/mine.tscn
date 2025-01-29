@@ -7,25 +7,23 @@
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fid5y"]
 texture = ExtResource("2_06w2d")
-texture_region_size = Vector2i(128, 128)
+texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 3:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_1m28n"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_u7otv")
+custom_data_layer_0/name = ""
+custom_data_layer_0/type = 3
 sources/0 = SubResource("TileSetAtlasSource_fid5y")
 
-[node name="mine" type="Node2D"]
-script = ExtResource("1_rjot3")
-height = 30
-width = 40
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="mineable" type="TileMapLayer"]
 tile_set = SubResource("TileSet_1m28n")
+script = ExtResource("1_rjot3")

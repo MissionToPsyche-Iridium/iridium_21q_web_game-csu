@@ -1,6 +1,5 @@
-extends Node2D
+extends TileMapLayer
 
-@onready var tilemap = $TileMapLayer # Def for tilemap.
 var grid = [] #Mine grid.
 @export var height = 15 #Height of the mine
 @export var width = 15 #Width of the mine.
@@ -26,7 +25,7 @@ var orecount = { #Dict to hold the count of ores.
 var idpos = {
 	#SUBJECT TO CHANGE
 	#Dict to get the Vector2 pos of said ore on the sprite sheet.
-	0: Vector2(3,0),
+	0: null,
 	1: Vector2(0,0),
 	2: Vector2(2,0),
 	3: Vector2(1,0)
@@ -78,7 +77,10 @@ func array_to_tile_map():
 	#Updates the tilemap with the array data.
 	for row in range(height):
 		for item in range(width):
-			tilemap.set_cell(Vector2(item,row), 0, idpos[grid[row][item]])
+			if grid[row][item] == 0:
+				pass
+			else:
+				set_cell(Vector2(item,row), 0, idpos[grid[row][item]])
 func _ready() -> void:
 	#SETUP GRID.
 	init_grid_array(height,width)
@@ -88,9 +90,9 @@ func _ready() -> void:
 	count_ores()
 	array_to_tile_map()
 	
+#Uses the array to return the ID value of the object. 
+func get_what_was_mined(x,y) -> int:
+	return grid[y][x]
+	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	

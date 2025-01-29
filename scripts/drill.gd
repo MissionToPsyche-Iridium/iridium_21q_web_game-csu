@@ -1,26 +1,27 @@
-extends Area2D
+extends RayCast2D
 #Handles Drill code.
-
-@export var speed = 10 #Drill speed
+@onready var control = $"../.."
+@export var speed = 10 #Drill speed, 10 = base level
 @export var size = 5 #Drill Size
-@export var str = 1 #Drill Str
+@export var str = 1 #Drill Str? Might be worth using, unsure.
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is TileMapLayer:
-		
-		var tilemapcords = body.local_to_map(body.to_local(to_global(position)))
-		print("LOCAL POS:", position)
-		print("LOCAL TO MAP:", body.local_to_map(position))
-		print("GLOBAL TO MAP:", body.local_to_map(global_position))
-		print("GLOBAL: ", global_position)
-		#tilemapcords.y += 1
-		#if tilemapcords.x < 0:
-		#	tilemapcords.x += 1
-		print("TILEMAPCORDS: ", tilemapcords)
-		body.set_cell(tilemapcords, 0, Vector2(1,0))
-		body.erase_cell(tilemapcords)
-		print("DOWN")
-		pass # Replace with function body.
-func _on_body_exited(body: Node2D) -> void:
-	print("LEAVE")
-	pass 
+
+signal mining_tile(cords: Vector2, tile: TileMapLayer, emiter: String)
+signal stop_mining_tile(emiter: String)
+
+func _physics_process(delta: float) -> void:
+	if is_colliding():
+		var tile = get_collider()
+		if tile is TileMapLayer:
+			#Weird to get tile we wish to remove
+			var transform2d = PhysicsServer2D.body_get_state(get_collider_rid(), PhysicsServer2D.BODY_STATE_TRANSFORM)
+			var tilepos = tile.local_to_map(transform2d[2])
+			emit_signal("mining_tile", tilepos, tile, self.name)
+		pass
+	pass
+	if !is_colliding():
+		emit_signal("stop_mining_tile", self.name)
+		#emit no longer colliding.
+		pass
+func _ready() -> void:
+	pass
