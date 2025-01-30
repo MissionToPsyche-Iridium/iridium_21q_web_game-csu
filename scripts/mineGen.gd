@@ -90,9 +90,5 @@ func _ready() -> void:
 	count_ores()
 	array_to_tile_map()
 	
-#Uses the array to return the ID value of the object. 
-func get_what_was_mined(x,y) -> int:
-	return grid[y][x]
-	
 
 	
