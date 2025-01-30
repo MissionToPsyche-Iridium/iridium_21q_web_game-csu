@@ -1,4 +1,4 @@
-extends TileMapLayer
+class_name Mineable extends TileMapLayer
 
 var grid = [] #Mine grid.
 @export var height = 15 #Height of the mine
@@ -30,6 +30,11 @@ var idpos = {
 	2: Vector2(2,0),
 	3: Vector2(1,0)
 }
+
+func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now also spawns drops for the player to pick up.
+	get_cell_tile_data(coords)
+	#Create New Particle.
+	super.erase_cell(coords)
 
 func init_grid_array(h, w):
 	#Function to setup the grid, takes in h and w to get the height and width of the 2d array.
