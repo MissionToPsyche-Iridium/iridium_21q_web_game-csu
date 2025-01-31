@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckw2p7i6fa3mc"]
+
+[ext_resource type="PackedScene" uid="uid://ok71srmvbp25" path="res://Objects/mine.tscn" id="1_kaa4o"]
+[ext_resource type="PackedScene" uid="uid://c5c4d80q5qjwo" path="res://Objects/drone.tscn" id="2_crkk4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="mine" parent="." instance=ExtResource("1_kaa4o")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_crkk4")]

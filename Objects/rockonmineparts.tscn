@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3rd8lbjul31s"]
+
+[ext_resource type="Script" path="res://scripts/rockonmineparts.gd" id="1_30qhp"]
+
+[sub_resource type="Curve" id="Curve_cmqdd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 64
+lifetime = 0.2
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(32, 32)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+angle_min = -378.2
+angle_max = 349.1
+scale_amount_min = 5.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_cmqdd")
+script = ExtResource("1_30qhp")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
