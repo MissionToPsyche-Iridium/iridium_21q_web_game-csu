@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ok71srmvbp25"]
 
-[ext_resource type="Script" path="res://scripts/mineGen.gd" id="1_rjot3"]
+[ext_resource type="Script" path="res://scripts/mine.gd" id="1_rjot3"]
 [ext_resource type="Texture2D" uid="uid://bauj7tg48vpkc" path="res://Assets/sheetore.png" id="2_06w2d"]
 [ext_resource type="Texture2D" uid="uid://cinjk5k066td7" path="res://Assets/sheetbreak.png" id="3_utk80"]
 
@@ -12,13 +12,17 @@ texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 0:0/0/custom_data_0 = true
+0:0/0/custom_data_1 = 1
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:0/0/custom_data_0 = true
+1:0/0/custom_data_1 = 2
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:0/0/custom_data_0 = true
+2:0/0/custom_data_1 = 3
 3:0/0 = 0
+3:0/0/custom_data_1 = 4
 
 [sub_resource type="TileSet" id="TileSet_1m28n"]
 tile_size = Vector2i(64, 64)
@@ -26,6 +30,8 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_u7otv")
 custom_data_layer_0/name = "can_mine"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = "id"
+custom_data_layer_1/type = 2
 sources/0 = SubResource("TileSetAtlasSource_fid5y")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1w0hi"]

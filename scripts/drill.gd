@@ -1,7 +1,7 @@
 extends RayCast2D
 #Handles Drill code.
 @onready var control = $"../.."
-@onready var particles = $rockparts
+@onready var particles = $drillparts
 @onready var tilepos = null
 
 
