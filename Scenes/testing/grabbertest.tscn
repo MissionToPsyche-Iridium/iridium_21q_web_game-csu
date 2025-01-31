@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnkep7rsdtkxq"]
+
+[ext_resource type="PackedScene" uid="uid://bv7n2tlw3a6oo" path="res://Objects/pickup.tscn" id="1_1e560"]
+[ext_resource type="PackedScene" uid="uid://c5c4d80q5qjwo" path="res://Objects/drone.tscn" id="2_rk3ei"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RigidBody2D" parent="." instance=ExtResource("1_1e560")]
+position = Vector2(201, 138)
+
+[node name="RigidBody2D5" parent="." instance=ExtResource("1_1e560")]
+position = Vector2(199, 278)
+
+[node name="RigidBody2D6" parent="." instance=ExtResource("1_1e560")]
+position = Vector2(243, 287)
+
+[node name="RigidBody2D7" parent="." instance=ExtResource("1_1e560")]
+position = Vector2(368, 381)
+
+[node name="RigidBody2D8" parent="." instance=ExtResource("1_1e560")]
+position = Vector2(344, 274)
+
+[node name="RigidBody2D9" parent="." instance=ExtResource("1_1e560")]
+position = Vector2(176, 406)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_rk3ei")]
+position = Vector2(-107, 9)
+
+[node name="RigidBody2D10" parent="." instance=ExtResource("1_1e560")]
+position = Vector2(656, 206)
+
+[node name="RigidBody2D11" parent="." instance=ExtResource("1_1e560")]
+position = Vector2(494, 280)
+
+[node name="RigidBody2D12" parent="." instance=ExtResource("1_1e560")]
+position = Vector2(515, 135)
+
+[node name="RigidBody2D13" parent="." instance=ExtResource("1_1e560")]
+position = Vector2(602, 313)

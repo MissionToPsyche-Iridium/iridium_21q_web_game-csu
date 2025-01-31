@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cna53htda627n" path="res://Assets/pickups/coppersheet.png" id="2_jq3e5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jith6"]
+friction = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_70n8r"]
 radius = 9.0
@@ -1282,7 +1283,7 @@ animations = [{
 }]
 
 [node name="RigidBody2D" type="RigidBody2D"]
-mass = 0.2
+mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_jith6")
 gravity_scale = 0.0
 script = ExtResource("1_kt3oh")
@@ -1294,3 +1295,5 @@ shape = SubResource("CircleShape2D_70n8r")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_mxi6b")
 animation = &"idle_iron"
+frame = 17
+frame_progress = 0.972757

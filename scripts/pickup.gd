@@ -1,8 +1,8 @@
-extends RigidBody2D
+class_name Pickup extends RigidBody2D
 @onready var id: int #ID of ore, see mine.gd for list.
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var maxsize: Vector2 = sprite.scale
-@onready var curscale: Vector2 = Vector2(0,0)
+@onready var col: CollisionShape2D = $CollisionShape2D
+var beinggrabbed: bool = false
 
 func _ready() -> void:
 	sprite.scale = Vector2(0,0) #Setup pop-in
@@ -11,16 +11,11 @@ func _ready() -> void:
 			sprite.play("idle_iron")
 		elif id == 3:
 			sprite.play("idle_copper")
-			
+	else:
+		push_error("ERROR: Pickup has null ID! Destorying.")
+		queue_free()
 	#Random Velocity
 	linear_velocity = Vector2(randf_range(-10, 20),randf_range(-10, 20))
-	print(linear_velocity)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	#Makes pickup "pop-in"
-	if curscale < maxsize:
-		curscale.x += 0.03
-		curscale.y += 0.03
-		sprite.scale = curscale
-	pass
+	#tween for pop in
+	var tween = create_tween()
+	tween.tween_property(sprite, "scale", Vector2(0.5, 0.5), 0.2)

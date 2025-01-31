@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmgcobk7npskl"]
+
+[ext_resource type="Script" path="res://scripts/grabber.gd" id="1_7fakb"]
+[ext_resource type="Script" path="res://scripts/grabberends.gd" id="2_1bnjh"]
+[ext_resource type="Texture2D" uid="uid://cny3ad0l52wrl" path="res://Assets/drillstemp.png" id="2_gbitg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4xgcd"]
+radius = 128.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uf3i1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gq0v0"]
+
+[node name="Grabber" type="Node2D"]
+script = ExtResource("1_7fakb")
+
+[node name="MaxSize" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MaxSize"]
+shape = SubResource("CircleShape2D_4xgcd")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 5
+points = PackedVector2Array(0, 0, 0, 0)
+texture = SubResource("PlaceholderTexture2D_uf3i1")
+texture_mode = 2
+
+[node name="GrabberEnds" type="Sprite2D" parent="Line2D"]
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_gbitg")
+script = ExtResource("2_1bnjh")
+
+[node name="GrabberHitBox" type="Area2D" parent="Line2D/GrabberEnds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/GrabberEnds/GrabberHitBox"]
+shape = SubResource("CapsuleShape2D_gq0v0")
+
+[connection signal="body_entered" from="MaxSize" to="." method="_on_max_size_body_entered"]
+[connection signal="body_exited" from="MaxSize" to="." method="_on_max_size_body_exited"]
+[connection signal="body_entered" from="Line2D/GrabberEnds/GrabberHitBox" to="." method="_on_grabber_hit_box_body_entered"]
