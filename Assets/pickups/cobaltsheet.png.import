@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bka4sllx5xh5x"
-path="res://.godot/imported/iron.png-215663159247f658ca4f9d5d7d196d0a.ctex"
+uid="uid://1rw7t03m31hk"
+path="res://.godot/imported/cobaltsheet.png-4aec25ee1e645cb74739e48ab8c7aa00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/pickups/iron.png"
-dest_files=["res://.godot/imported/iron.png-215663159247f658ca4f9d5d7d196d0a.ctex"]
+source_file="res://Assets/pickups/cobaltsheet.png"
+dest_files=["res://.godot/imported/cobaltsheet.png-4aec25ee1e645cb74739e48ab8c7aa00.ctex"]
 
 [params]
 

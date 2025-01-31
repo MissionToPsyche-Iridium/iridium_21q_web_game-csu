@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed = 400
-@onready var sprite = $Sprites
+@export var speed: int = 400
+@onready var sprite: Node2D = $Sprites
 @onready var inputdirection = null
 func handle_rot(input: Vector2):
 	if input == Vector2(1,0):
@@ -18,4 +18,10 @@ func get_input():
 
 func _physics_process(delta):
 	get_input()
-	move_and_slide()
+	#Move and slide is really weird, this CHECKS to see if we are hitting any RigidBodys
+	#BUT IT also handles control...
+	if move_and_slide():
+		for i in get_slide_collision_count():
+			var col = get_slide_collision(i)
+			if col.get_collider() is RigidBody2D:
+				col.get_collider().apply_force(col.get_normal() * -speed)

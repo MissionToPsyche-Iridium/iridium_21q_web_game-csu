@@ -8,6 +8,8 @@ extends Timer
 signal update_cracked_tile(stage: Vector2, cords: Vector2)
 signal erase_crack_tile(ref: Timer, cords: Vector2)
 
+
+#This is not needed, can be fixed and removed by just reversing the sprite sheet so that 1 = most cracked.
 var idict = {
 	1: 4,
 	2: 3,

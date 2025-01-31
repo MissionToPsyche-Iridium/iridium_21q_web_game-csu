@@ -4,14 +4,14 @@ var grid = [] #Mine grid.
 @export var height = 15 #Height of the mine
 @export var width = 15 #Width of the mine.
 @export var layersbeforegen = 2 # How many layers down before ore can appear.
-@onready var rockonmineparts = preload("res://Objects/rockonmineparts.tscn") # Ref for timer.
-
+@onready var rockonmineparts = preload("res://Objects/rockonmineparts.tscn") # Ref for particles after removing block.
+@onready var pickup = preload("res://Objects/pickup.tscn")
 
 #IDS
 #0 = Nothing/Air
 #1 = Rock
 #2 = Iron
-#3 = Not Iron but something more rare all subject to change.
+#3 = Copper
 #4 = Cant mine this rock.
 var chancedict = { #Chance of ore spawning. Values MUST equal 100 or weird things happen.
 	0: 7,
@@ -35,23 +35,33 @@ var idpos = {
 var tiletoparticlecolor = {
 	#Color that each tile breaks down into
 	#Also subject to change
-	1: Color(102,57,49),
-	2: Color(102,57,49),
-	3: Color(102,57,49)
+	1: Color(0.376, 0.231, 0.196),
+	2: Color(1, 1, 1),
+	3: Color(0.82, 0.467, 0.18)
 }
 
 func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now also spawns drops for the player to pick up.
-	#Handle inv
 	var data: TileData = get_cell_tile_data(coords)
 	var id: int = data.get_custom_data("id")
+	
 	#Create New Particle at pos.
 	var pos: Vector2 = map_to_local(coords)
 	var parsinstance: CPUParticles2D = rockonmineparts.instantiate()
-	add_child(parsinstance)
 	parsinstance.position = pos
-	parsinstance.color = tiletoparticlecolor[id]
+	parsinstance.color = tiletoparticlecolor[id] #Not working not sure why... Needs testing...
 	parsinstance.emitting = true
+	add_child(parsinstance)
+	
+	#Remove the cell
 	erase_cell(coords)
+	
+	#Then spawn pickup(s) IF NEEDED. Need luck stat for player in global, not finished yet so set to 1 per block.
+	if id != 1: #If we did NOT mine rock...
+		var pickup: Node2D = pickup.instantiate()
+		pickup.position = pos
+		pickup.id = id
+		add_child(pickup)
+	
 
 func init_grid_array(h, w):
 	#Function to setup the grid, takes in h and w to get the height and width of the 2d array.
