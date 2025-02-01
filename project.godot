@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Inventory="*res://scripts/inventory.gd"
 Dronestats="*res://scripts/dronestats.gd"
+Gamemaster="*res://gamemaster.gd"
 
 [input]
 
