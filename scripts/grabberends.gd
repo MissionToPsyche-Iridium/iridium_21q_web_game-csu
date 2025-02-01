@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 @onready var line = $".."
 @onready var raycast = $"../../RayCast2D"
 
@@ -7,3 +7,5 @@ func _process(delta: float) -> void:
 	position = line.points[1]
 	rotation = raycast.rotation
 	pass
+func _ready() -> void:
+	play("idle_grabber")

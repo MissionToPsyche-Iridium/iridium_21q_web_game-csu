@@ -3,8 +3,10 @@ extends Node2D
 @onready var detectboxshape: CollisionShape2D = $MaxSize/CollisionShape2D
 @onready var line: Line2D = $Line2D
 @onready var raycast: RayCast2D = $RayCast2D
-@onready var grabberends = $Line2D/GrabberEnds
-@onready var grabberhitbox = $Line2D/GrabberEnds/GrabberHitBox
+@onready var grabberends: AnimatedSprite2D = $Line2D/GrabberEnds
+@onready var grabberhitbox: Area2D = $Line2D/GrabberEnds/GrabberHitBox
+@onready var hum: AudioStreamPlayer = $hum
+@onready var audiomix: float = hum.volume_db
 
 var pickupsinradius = []
 var closestpickup: Pickup = null
@@ -41,9 +43,11 @@ func _physics_process(delta: float) -> void:
 		closestpickup = null
 		
 	#Update our rotation and pos. but only if we are not grabbing.
-	if isgrabbing != true:
-		if closestpickup != null:
-			raycast.look_at(closestpickup.global_position)
+	#if isgrabbing != true:
+	#Removed this line, not sure if this will cause problems later.
+	#With that line grabber is less "smooth"
+	if closestpickup != null:
+		raycast.look_at(closestpickup.global_position)
 		
 	#if we are not grabbing, attempt to grab something.
 	if isgrabbing != true and pickupsinradius.size() != 0 and closestpickup != null and isretracting == false:
@@ -63,6 +67,11 @@ func _physics_process(delta: float) -> void:
 		
 	#if we are retracting, pull the line back.
 	if isretracting == true and pickuphook != null:
+		grabberends.play("retracting_grabber")
+		hum.volume_db = Settings.soundfx + audiomix
+		hum.pitch_scale = 0.5
+		if hum.playing == false:
+			hum.play()
 		pickuphook.global_position = grabberhitbox.global_position
 		isgrabbing = false
 		line.points[1] = line.points[1].lerp(Vector2(0,0), t)
@@ -91,6 +100,9 @@ func _on_grabber_hit_box_body_entered(body: Pickup) -> void:
 func _on_collect_radius_body_entered(body: Pickup) -> void:
 	if pickuphook != null and isretracting == true:
 		Inventory.update_inventory_drone(body)
+		grabberends.play("idle_grabber")
+		get_tree().create_tween().tween_property(hum, "volume_db", -80, 1)
+		get_tree().create_tween().tween_property(hum, "pitch_scale", 0.8, 1)
 		pickuphook.queue_free()
 		isretracting = false
 		isgrabbing = false
