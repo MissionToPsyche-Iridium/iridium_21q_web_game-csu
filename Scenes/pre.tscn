@@ -1,10 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckw2p7i6fa3mc"]
+[gd_scene load_steps=4 format=3 uid="uid://ckw2p7i6fa3mc"]
 
 [ext_resource type="PackedScene" uid="uid://ok71srmvbp25" path="res://Objects/mine.tscn" id="1_kaa4o"]
 [ext_resource type="PackedScene" uid="uid://c5c4d80q5qjwo" path="res://Objects/drone.tscn" id="2_crkk4"]
+[ext_resource type="Script" path="res://scripts/itemcount.gd" id="3_y4y6l"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="mine" parent="." instance=ExtResource("1_kaa4o")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_crkk4")]
+
+[node name="GUI" type="CanvasLayer" parent="CharacterBody2D"]
+
+[node name="Control" type="Control" parent="CharacterBody2D/GUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="Item Count" type="Label" parent="CharacterBody2D/GUI/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_y4y6l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CharacterBody2D/GUI"]
+offset_top = 33.0
+offset_right = 196.0
+offset_bottom = 159.0

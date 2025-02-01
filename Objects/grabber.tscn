@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmgcobk7npskl"]
+[gd_scene load_steps=8 format=3 uid="uid://bmgcobk7npskl"]
 
 [ext_resource type="Script" path="res://scripts/grabber.gd" id="1_7fakb"]
 [ext_resource type="Script" path="res://scripts/grabberends.gd" id="2_1bnjh"]
@@ -11,10 +11,15 @@ radius = 128.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gq0v0"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hybu5"]
+radius = 5.0
+
 [node name="Grabber" type="Node2D"]
 script = ExtResource("1_7fakb")
 
 [node name="MaxSize" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MaxSize"]
 shape = SubResource("CircleShape2D_4xgcd")
@@ -34,10 +39,20 @@ texture = ExtResource("2_gbitg")
 script = ExtResource("2_1bnjh")
 
 [node name="GrabberHitBox" type="Area2D" parent="Line2D/GrabberEnds"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/GrabberEnds/GrabberHitBox"]
 shape = SubResource("CapsuleShape2D_gq0v0")
 
+[node name="CollectRadius" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectRadius"]
+shape = SubResource("CircleShape2D_hybu5")
+
 [connection signal="body_entered" from="MaxSize" to="." method="_on_max_size_body_entered"]
 [connection signal="body_exited" from="MaxSize" to="." method="_on_max_size_body_exited"]
 [connection signal="body_entered" from="Line2D/GrabberEnds/GrabberHitBox" to="." method="_on_grabber_hit_box_body_entered"]
+[connection signal="body_entered" from="CollectRadius" to="." method="_on_collect_radius_body_entered"]

@@ -6,13 +6,14 @@ var beinggrabbed: bool = false
 
 func _ready() -> void:
 	sprite.scale = Vector2(0,0) #Setup pop-in
-	if id != null:
+	#Set our sprite.
+	if id != 0:
 		if id == 2:
 			sprite.play("idle_iron")
 		elif id == 3:
 			sprite.play("idle_copper")
 	else:
-		push_error("ERROR: Pickup has null ID! Destorying.")
+		push_error("ERROR: Pickup has 0 ID! Destorying.")
 		queue_free()
 	#Random Velocity
 	linear_velocity = Vector2(randf_range(-10, 20),randf_range(-10, 20))

@@ -117,7 +117,7 @@ func _on_mining_tile(cords: Vector2, tilemaplayer: TileMapLayer, emiter: String)
 	#Just made this so we can pass the ref to this script.
 	if tilemap == null:
 		tilemap = tilemaplayer
-		tilemapcracks = tilemaplayer.get_node("cracks")
+		tilemapcracks = tilemaplayer.get_node("Cracks")
 	#Check to see if that tile is in the inactive tiles.
 	for bundle in inactivetiles:
 		if cords == bundle.cords:
