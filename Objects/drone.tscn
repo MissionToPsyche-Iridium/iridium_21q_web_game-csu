@@ -15,6 +15,7 @@ size = Vector2(38, 30)
 script = ExtResource("1_4y1nq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1, 0.978106)
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_imawl")
