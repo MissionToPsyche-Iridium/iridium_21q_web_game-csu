@@ -23,8 +23,8 @@ buses/default_bus_layout="res://Assets/audio/default_bus_layout.tres"
 
 Inventory="*res://scripts/inventory.gd"
 Dronestats="*res://scripts/dronestats.gd"
-Gamemaster="*res://gamemaster.gd"
-Settings="*res://settings.gd"
+Gamemaster="*res://scripts/gamemaster.gd"
+Settings="*res://scripts/settings.gd"
 
 [input]
 
