@@ -28,8 +28,10 @@ offset_bottom = 29.0
 script = ExtResource("3_y4y6l")
 
 [node name="Timer Label" type="Label" parent="CharacterBody2D/GUI"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 1115.0
+offset_top = 3.0
+offset_right = 1155.0
+offset_bottom = 26.0
 script = ExtResource("4_1ytvb")
 
 [node name="Space" parent="." instance=ExtResource("5_0j7oc")]

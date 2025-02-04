@@ -5,8 +5,6 @@ extends Node
 
 
 
-
-
 func recalculate_vars(): #used to recalculate vars for upgrades, actives, etc...
 	#TODO
 	pass
