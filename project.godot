@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Inventory="*res://scripts/inventory.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 right={
