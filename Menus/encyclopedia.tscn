@@ -74,6 +74,10 @@ text = "Iron"
 layout_mode = 2
 text = "Nickel"
 
+[node name="Palladium" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Palladium"
+
 [node name="Platinum" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Platinum"
