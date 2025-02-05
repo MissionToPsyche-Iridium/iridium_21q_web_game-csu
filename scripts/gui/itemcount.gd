@@ -2,7 +2,7 @@ extends Label
 
 #Handles the X/X display on the GUI.
 
-@onready var stringbuilder: String = "{total}/{max}"
+@onready var stringbuilder: String = "Size: {total}/{max}"
 @onready var stringholder: String = ""
 
 func _ready() -> void:

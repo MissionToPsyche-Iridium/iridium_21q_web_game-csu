@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckw2p7i6fa3mc"]
+[gd_scene load_steps=5 format=3 uid="uid://ckw2p7i6fa3mc"]
 
 [ext_resource type="PackedScene" uid="uid://ok71srmvbp25" path="res://Objects/mine.tscn" id="1_kaa4o"]
 [ext_resource type="PackedScene" uid="uid://c5c4d80q5qjwo" path="res://Objects/drone.tscn" id="2_crkk4"]
-[ext_resource type="Script" path="res://scripts/gui/itemcount.gd" id="3_y4y6l"]
-[ext_resource type="Script" path="res://scripts/timerlabel.gd" id="4_1ytvb"]
+[ext_resource type="PackedScene" uid="uid://b3r10iky618p3" path="res://Objects/gui.tscn" id="3_6ldke"]
 [ext_resource type="PackedScene" uid="uid://k4uvy8kqqy6l" path="res://Assets/backgrounds/space.tscn" id="5_0j7oc"]
 
 [node name="Node2D" type="Node2D"]
@@ -13,26 +12,6 @@
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_crkk4")]
 position = Vector2(-40, 0)
 
-[node name="GUI" type="CanvasLayer" parent="CharacterBody2D"]
-
-[node name="Control" type="Control" parent="CharacterBody2D/GUI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-size_flags_horizontal = 3
-
-[node name="Item Count" type="Label" parent="CharacterBody2D/GUI/Control"]
-layout_mode = 0
-offset_right = 49.0
-offset_bottom = 29.0
-script = ExtResource("3_y4y6l")
-
-[node name="Timer Label" type="Label" parent="CharacterBody2D/GUI"]
-offset_left = 1115.0
-offset_top = 3.0
-offset_right = 1155.0
-offset_bottom = 26.0
-script = ExtResource("4_1ytvb")
+[node name="GUI" parent="CharacterBody2D" instance=ExtResource("3_6ldke")]
 
 [node name="Space" parent="." instance=ExtResource("5_0j7oc")]

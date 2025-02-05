@@ -128,7 +128,6 @@ func punch_enter_hole(): #Edits the tilemap to put an entrence.
 func _ready() -> void:
 	#SETUP GRID.
 	init_grid_array(height,width)
-	seed(randi_range(0,25565)) #DO NOT CALL THIS AGAIN, SETS SEED FOR EVERY RANDOM OBJECT.
 	rand_grid_array_with_seed()
 	log_grid_array()
 	count_ores()

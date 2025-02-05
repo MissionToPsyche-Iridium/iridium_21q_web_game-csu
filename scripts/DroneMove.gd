@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: int = 400
+@export var speed: int = 200
 @onready var sprite: Node2D = $Sprites
 @onready var inputdirection = null
 func handle_rot(input: Vector2):
