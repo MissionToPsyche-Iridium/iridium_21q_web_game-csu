@@ -11,6 +11,7 @@
 [node name="mine" parent="." instance=ExtResource("1_kaa4o")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_crkk4")]
+position = Vector2(-40, 0)
 
 [node name="GUI" type="CanvasLayer" parent="CharacterBody2D"]
 

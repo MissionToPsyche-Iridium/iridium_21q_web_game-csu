@@ -3,7 +3,7 @@ class_name Mineable extends TileMapLayer
 var grid = [] #Mine grid.
 @export var height = 15 #Height of the mine
 @export var width = 15 #Width of the mine.
-@export var layersbeforegen = 2 # How many layers down before ore can appear.
+@export var layersbeforegen = 3 # How many layers down before ore can appear -1.
 @onready var rockonmineparts = preload("res://Objects/rockonmineparts.tscn") # Ref for particles after removing block.
 @onready var pickup = preload("res://Objects/pickup.tscn")
 
@@ -24,13 +24,15 @@ var orecount = { #Dict to hold the count of ores.
 	1: 0,
 	2: 0,
 	3: 0,
+	4: 0
 }
 var idpos = {
 	#SUBJECT TO CHANGE
 	#Dict to get the Vector2 pos of said ore on the sprite sheet.
 	1: Vector2(0,0),
 	2: Vector2(2,0),
-	3: Vector2(1,0)
+	3: Vector2(1,0),
+	4: Vector2(3,0)
 }
 var tiletoparticlecolor = {
 	#Color that each tile breaks down into
@@ -72,6 +74,10 @@ func init_grid_array(h, w):
 			col.append(1)
 		grid.append(col)
 func gen_rock_seed(x,y):
+	if x == 0 or x == width-1:
+		return 4
+	if y == 0 or y == height-1:
+		return 4
 	if x < layersbeforegen:
 		return 1
 	else:
@@ -113,6 +119,12 @@ func array_to_tile_map():
 				pass
 			else:
 				set_cell(Vector2(item,row), 0, idpos[grid[row][item]])
+func punch_enter_hole(): #Edits the tilemap to put an entrence.
+	var middle = round(width / 2)
+	erase_cell(Vector2(middle,0))
+	#Add tube into mine.
+	set_cell(Vector2(middle+1, -1), 0, Vector2(3,0))
+	set_cell(Vector2(middle-1, -1), 0, Vector2(3,0))
 func _ready() -> void:
 	#SETUP GRID.
 	init_grid_array(height,width)
@@ -121,6 +133,7 @@ func _ready() -> void:
 	log_grid_array()
 	count_ores()
 	array_to_tile_map()
+	punch_enter_hole()
 	
 
 	

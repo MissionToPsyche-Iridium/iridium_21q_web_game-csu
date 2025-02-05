@@ -19,6 +19,7 @@ var idict = {
 
 func _ready() -> void:
 	interval = wait_time / 4
+	
 
 func _exit_tree() -> void:# Called RIGHT before object is killed.
 	emit_signal("erase_crack_tile", cords)
