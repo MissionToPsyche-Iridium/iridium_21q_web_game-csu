@@ -52,6 +52,8 @@ sources/0 = SubResource("TileSetAtlasSource_1w0hi")
 [node name="Mineable" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_1m28n")
 script = ExtResource("1_rjot3")
+height = 40
+width = 40
 
 [node name="Cracks" type="TileMapLayer" parent="Mineable"]
 tile_set = SubResource("TileSet_0cn0v")

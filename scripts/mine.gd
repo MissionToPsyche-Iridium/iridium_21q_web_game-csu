@@ -6,6 +6,7 @@ var grid = [] #Mine grid.
 @export var layersbeforegen = 3 # How many layers down before ore can appear -1.
 @onready var rockonmineparts = preload("res://Objects/rockonmineparts.tscn") # Ref for particles after removing block.
 @onready var pickup = preload("res://Objects/pickup.tscn")
+@onready var mothership = $"../mothership"
 
 #IDS
 #0 = Nothing/Air
@@ -13,6 +14,7 @@ var grid = [] #Mine grid.
 #2 = Iron
 #3 = Copper
 #4 = Cant mine this rock.
+#5 TODO = Cobalt
 var chancedict = { #Chance of ore spawning. Values MUST equal 100 or weird things happen.
 	0: 7,
 	1: 80,
@@ -50,7 +52,7 @@ func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now al
 	var pos: Vector2 = map_to_local(coords)
 	var parsinstance: CPUParticles2D = rockonmineparts.instantiate()
 	parsinstance.position = pos
-	parsinstance.color = tiletoparticlecolor[id] #Not working not sure why... Needs testing...
+	parsinstance.color = tiletoparticlecolor[id]
 	parsinstance.emitting = true
 	add_child(parsinstance)
 	
@@ -125,6 +127,7 @@ func punch_enter_hole(): #Edits the tilemap to put an entrence.
 	#Add tube into mine.
 	set_cell(Vector2(middle+1, -1), 0, Vector2(3,0))
 	set_cell(Vector2(middle-1, -1), 0, Vector2(3,0))
+	
 func _ready() -> void:
 	#SETUP GRID.
 	init_grid_array(height,width)
@@ -133,6 +136,7 @@ func _ready() -> void:
 	count_ores()
 	array_to_tile_map()
 	punch_enter_hole()
+		
 	
 
 	

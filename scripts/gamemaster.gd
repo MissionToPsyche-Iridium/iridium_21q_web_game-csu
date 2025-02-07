@@ -18,6 +18,3 @@ func get_time(): #Returns the time remaining on the global clock.
 	
 func wind_game_clock(): #Set the timer given the timetillloss var.
 	timer.start(timetillloss) # In sec.
-	
-func _process(delta: float) -> void:
-	pass

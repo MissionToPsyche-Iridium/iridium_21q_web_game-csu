@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://k4uvy8kqqy6l"]
 
-[ext_resource type="Texture2D" uid="uid://c42nfjavvfj8g" path="res://Assets/backgrounds/stars2.png" id="1_w5gsa"]
+[ext_resource type="Texture2D" uid="uid://c42nfjavvfj8g" path="res://Assets/backgrounds/stars.png" id="1_w5gsa"]
 [ext_resource type="Texture2D" uid="uid://b8mmjuwwue2pg" path="res://Assets/backgrounds/jupiter.png" id="2_v8xti"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]

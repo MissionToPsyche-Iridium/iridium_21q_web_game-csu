@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://tqoi2b0xbimp"]
+
+[ext_resource type="Script" path="res://scripts/mothership.gd" id="1_a2gvp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4e0p"]
+size = Vector2(7, 35)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5vjnu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bbr8"]
+size = Vector2(66.5, 12.5)
+
+[node name="mothership" type="Node2D"]
+scale = Vector2(10, 10)
+script = ExtResource("1_a2gvp")
+
+[node name="Right Blocker" type="StaticBody2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Blocker"]
+position = Vector2(62.5, 23.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_u4e0p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32.75, 5.75)
+scale = Vector2(66.5, 12.5)
+texture = SubResource("PlaceholderTexture2D_5vjnu")
+
+[node name="Left Blocker" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Blocker"]
+position = Vector2(3.1, 23.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_u4e0p")
+
+[node name="Mothership Blocker" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mothership Blocker"]
+position = Vector2(32.75, 5.85)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_1bbr8")
