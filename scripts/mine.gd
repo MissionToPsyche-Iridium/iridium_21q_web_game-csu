@@ -6,7 +6,8 @@ var grid = [] #Mine grid.
 @export var layersbeforegen = 3 # How many layers down before ore can appear -1.
 @onready var rockonmineparts = preload("res://Objects/rockonmineparts.tscn") # Ref for particles after removing block.
 @onready var pickup = preload("res://Objects/pickup.tscn")
-@onready var mothership = $"../mothership"
+@onready var drone = preload("res://Objects/drone.tscn")
+@onready var mothership = preload("res://Objects/mothership.tscn")
 
 #IDS
 #0 = Nothing/Air

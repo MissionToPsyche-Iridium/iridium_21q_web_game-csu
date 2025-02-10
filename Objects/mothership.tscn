@@ -15,11 +15,9 @@ scale = Vector2(10, 10)
 script = ExtResource("1_a2gvp")
 
 [node name="Right Blocker" type="StaticBody2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Blocker"]
 position = Vector2(62.5, 23.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_u4e0p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -31,12 +29,10 @@ texture = SubResource("PlaceholderTexture2D_5vjnu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Blocker"]
 position = Vector2(3.1, 23.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_u4e0p")
 
 [node name="Mothership Blocker" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mothership Blocker"]
 position = Vector2(32.75, 5.85)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1bbr8")
