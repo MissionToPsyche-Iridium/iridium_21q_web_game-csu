@@ -10,11 +10,6 @@ signal on_inventory_change_drone() #When the drones inventory changes
 signal on_inventory_drone_full() #When the drones inventory is full
 signal on_inventory_drone_not_full() #When the drones inventory is no longer full
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if inventorydronefull == true:
