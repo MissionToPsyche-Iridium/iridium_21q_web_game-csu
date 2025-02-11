@@ -6,8 +6,6 @@ var grid = [] #Mine grid.
 @export var layersbeforegen = 3 # How many layers down before ore can appear -1.
 @onready var rockonmineparts = preload("res://Objects/rockonmineparts.tscn") # Ref for particles after removing block.
 @onready var pickup = preload("res://Objects/pickup.tscn")
-@onready var drone = preload("res://Objects/drone.tscn")
-@onready var mothership = preload("res://Objects/mothership.tscn")
 
 #IDS
 #0 = Nothing/Air
@@ -129,6 +127,9 @@ func punch_enter_hole(): #Edits the tilemap to put an entrence.
 	set_cell(Vector2(middle+1, -1), 0, Vector2(3,0))
 	set_cell(Vector2(middle-1, -1), 0, Vector2(3,0))
 	
+func get_hole_pos(): #Gets the pos of the punched hole.
+	var middle = round(width / 2)
+	return self.to_global(map_to_local(Vector2i(middle,0)))
 func _ready() -> void:
 	#SETUP GRID.
 	init_grid_array(height,width)

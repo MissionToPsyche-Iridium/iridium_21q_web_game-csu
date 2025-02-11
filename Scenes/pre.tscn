@@ -1,17 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckw2p7i6fa3mc"]
+[gd_scene load_steps=3 format=3 uid="uid://ckw2p7i6fa3mc"]
 
-[ext_resource type="PackedScene" uid="uid://ok71srmvbp25" path="res://Objects/mine.tscn" id="1_kaa4o"]
-[ext_resource type="PackedScene" uid="uid://c5c4d80q5qjwo" path="res://Objects/drone.tscn" id="2_crkk4"]
-[ext_resource type="PackedScene" uid="uid://b3r10iky618p3" path="res://Objects/gui.tscn" id="3_6ldke"]
+[ext_resource type="Script" path="res://scripts/pre.gd" id="1_25uh4"]
 [ext_resource type="PackedScene" uid="uid://k4uvy8kqqy6l" path="res://Assets/backgrounds/space.tscn" id="5_0j7oc"]
 
 [node name="Node2D" type="Node2D"]
-
-[node name="mine" parent="." instance=ExtResource("1_kaa4o")]
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_crkk4")]
-position = Vector2(238, -59)
-
-[node name="GUI" parent="CharacterBody2D" instance=ExtResource("3_6ldke")]
+script = ExtResource("1_25uh4")
 
 [node name="Space" parent="." instance=ExtResource("5_0j7oc")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5c4d80q5qjwo"]
+[gd_scene load_steps=10 format=3 uid="uid://c5c4d80q5qjwo"]
 
 [ext_resource type="Script" path="res://scripts/DroneMove.gd" id="1_4y1nq"]
 [ext_resource type="Texture2D" uid="uid://dkccrjow40fex" path="res://Assets/shiptemp.png" id="1_oor70"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://btnu5cojv3awv" path="res://Objects/drillparts.tscn" id="4_civlp"]
 [ext_resource type="Texture2D" uid="uid://cny3ad0l52wrl" path="res://Assets/drillstemp.png" id="5_bcav7"]
 [ext_resource type="PackedScene" uid="uid://bmgcobk7npskl" path="res://Objects/grabber.tscn" id="7_1svyo"]
+[ext_resource type="PackedScene" uid="uid://b3r10iky618p3" path="res://Objects/gui.tscn" id="8_y40r5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imawl"]
 size = Vector2(38, 30)
@@ -83,3 +84,5 @@ rotation = 1.5708
 texture = ExtResource("5_bcav7")
 
 [node name="Grabber" parent="." instance=ExtResource("7_1svyo")]
+
+[node name="GUI" parent="." instance=ExtResource("8_y40r5")]

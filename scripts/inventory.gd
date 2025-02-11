@@ -21,9 +21,10 @@ func _process(delta: float) -> void:
 		#Keep checking till inventory is no longer full.
 		if inventorydrone.size() != dronemaxsize:
 			emit_signal("on_inventory_drone_not_full")
+			inventorydronefull = false
 	pass
 
-func update_inventory_drone(pickup: Pickup):
+func update_inventory_drone(pickup: Pickup): #
 	inventorydrone.append(pickup.id)
 	print(inventorydrone)
 	emit_signal("on_inventory_change_drone")

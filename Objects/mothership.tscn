@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://tqoi2b0xbimp"]
+[gd_scene load_steps=6 format=3 uid="uid://tqoi2b0xbimp"]
 
 [ext_resource type="Script" path="res://scripts/mothership.gd" id="1_a2gvp"]
 
@@ -9,6 +9,8 @@ size = Vector2(7, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bbr8"]
 size = Vector2(66.5, 12.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mod6i"]
 
 [node name="mothership" type="Node2D"]
 scale = Vector2(10, 10)
@@ -36,3 +38,11 @@ shape = SubResource("RectangleShape2D_u4e0p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mothership Blocker"]
 position = Vector2(32.75, 5.85)
 shape = SubResource("RectangleShape2D_1bbr8")
+
+[node name="depot" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="depot"]
+position = Vector2(44.1, 24.2)
+shape = SubResource("CapsuleShape2D_mod6i")
+
+[connection signal="body_entered" from="depot" to="." method="_on_depot_body_entered"]

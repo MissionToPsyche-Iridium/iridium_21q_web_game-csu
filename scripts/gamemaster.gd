@@ -2,6 +2,9 @@ extends Node
 
 @onready var timer = Timer.new() #Games timer.
 var timetillloss = 60 #How much time in sec the player has till they lose.
+var minesizex = 15 #Mine size, incs by X every loop.
+var minesizey = 15
+
 
 func _ready() -> void:
 	add_child(timer)
