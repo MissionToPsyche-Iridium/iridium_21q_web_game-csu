@@ -32,16 +32,17 @@ var orecount = { #Dict to hold the count of ores.
 var idpos = {
 	#SUBJECT TO CHANGE
 	#Dict to get the Vector2 pos of said ore on the sprite sheet.
-	1: [Vector2(0,0), Vector2(0,1)],
-	2: Vector2(2,0),
+	#Arrs are randomly picked, while single values are always selected.
+	1: [Vector2(0,0), Vector2(0,1), Vector2(0,2), Vector2(0,3)],
+	2: [Vector2(2,0), Vector2(2,1)],
 	3: Vector2(1,0),
 	4: Vector2(3,0)
 }
 var tiletoparticlecolor = {
 	#Color that each tile breaks down into
 	#Also subject to change
-	1: Color(0.376, 0.231, 0.196),
-	2: Color(1, 1, 1),
+	1: Color(0.184, 0.165, 0.122),
+	2: Color(0.596, 0.6, 0.616),
 	3: Color(0.82, 0.467, 0.18)
 }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://bmgcobk7npskl"]
+[gd_scene load_steps=130 format=3 uid="uid://bmgcobk7npskl"]
 
 [ext_resource type="Script" path="res://scripts/grabber.gd" id="1_7fakb"]
 [ext_resource type="Script" path="res://scripts/grabberends.gd" id="2_1bnjh"]
@@ -8,8 +8,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4xgcd"]
 radius = 128.0
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uf3i1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8bx47"]
 atlas = ExtResource("2_1xqp8")
@@ -885,7 +883,7 @@ target_position = Vector2(0, 0)
 [node name="Line2D" type="Line2D" parent="."]
 z_index = 5
 points = PackedVector2Array(0, 0, 0, 0)
-texture = SubResource("PlaceholderTexture2D_uf3i1")
+default_color = Color(0.262932, 0.262932, 0.262932, 1)
 texture_mode = 2
 
 [node name="GrabberEnds" type="AnimatedSprite2D" parent="Line2D"]
