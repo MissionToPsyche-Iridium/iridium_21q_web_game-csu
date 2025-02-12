@@ -15,6 +15,7 @@ func _ready() -> void:
 	#Figure out dif scale function. For now hard set height and width.
 	mine.height = 15
 	mine.width = 15
+	#DO NOT EDIT VARS OF OBJECTS AFTER THEY HAVE BEEN ADDED AS CHILDREN.
 	add_child(mine)
 	#Move drone and mothership to pos.
 	drone.global_position = mine.get_hole_pos()
@@ -25,7 +26,6 @@ func _ready() -> void:
 	mothership.global_position.x -= 100
 	add_child(drone)
 	add_child(mothership)
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/mothership.gd" id="1_a2gvp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4e0p"]
-size = Vector2(7, 35)
+size = Vector2(7, 28.25)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5vjnu"]
 
@@ -19,7 +19,8 @@ script = ExtResource("1_a2gvp")
 [node name="Right Blocker" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Blocker"]
-position = Vector2(62.5, 23.5)
+position = Vector2(62.5, 19.9)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_u4e0p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -30,7 +31,8 @@ texture = SubResource("PlaceholderTexture2D_5vjnu")
 [node name="Left Blocker" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Blocker"]
-position = Vector2(3.1, 23.5)
+position = Vector2(3.1, 18.85)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_u4e0p")
 
 [node name="Mothership Blocker" type="StaticBody2D" parent="."]
@@ -42,7 +44,16 @@ shape = SubResource("RectangleShape2D_1bbr8")
 [node name="depot" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="depot"]
-position = Vector2(44.1, 24.2)
+position = Vector2(49.2, 25.2)
 shape = SubResource("CapsuleShape2D_mod6i")
 
+[node name="Tube" type="Line2D" parent="."]
+z_index = -2
+points = PackedVector2Array(50, 10, 50, 16)
+width = 3.0
+default_color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="depot" to="." method="_on_depot_body_entered"]
+[connection signal="body_exited" from="depot" to="." method="_on_depot_body_exited"]

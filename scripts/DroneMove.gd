@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@export var speed: int = 200
 @onready var sprite: Node2D = $Sprites
 @onready var inputdirection = null
 func handle_rot(input: Vector2):
@@ -14,7 +13,7 @@ func handle_rot(input: Vector2):
 func get_input():
 	inputdirection = Input.get_vector("left", "right", "up", "down")
 	handle_rot(inputdirection)
-	velocity = inputdirection * speed
+	velocity = inputdirection * Dronestats.dronespeed
 
 func _physics_process(delta):
 	get_input()
@@ -24,4 +23,4 @@ func _physics_process(delta):
 		for i in get_slide_collision_count():
 			var col = get_slide_collision(i)
 			if col.get_collider() is RigidBody2D:
-				col.get_collider().apply_force(col.get_normal() * -speed)
+				col.get_collider().apply_force(col.get_normal() * -Dronestats.dronespeed)

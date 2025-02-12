@@ -1,18 +1,33 @@
 extends Node2D
 
-#Needs to
-#Accept player input for if space is pressed and the drone is inside of it to end the day early.
-#Handle adding ores to the mothership.
+var droneinsidedepot: bool = false #True if the drone is inside the depot hitbox.
+var drone: CharacterBody2D = null
+@onready var tube: Line2D = $Tube
+@onready var timer: Timer = $Timer #Timer for keeping track of time between transfers.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	timer.connect("timeout", _on_timer_timeout)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	#Move point 1 of the tube to the drones pos.
+	if droneinsidedepot:
+		tube.points[1] = tube.points[1].lerp(to_local(drone.global_position), 0.2)
+		if timer.is_stopped():
+			timer.start(Dronestats.tubespeed)
+		pass
+	elif !droneinsidedepot:
+		tube.points[1] = tube.points[1].lerp(Vector2(50,16), 0.2)
 	pass
 
-#Upon a Charbody entering the depot.
-func _on_depot_body_entered(body: CharacterBody2D) -> void:
-	print(body)
-	
-	pass # Replace with function body.
+func _on_depot_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D: #Checks like this are better to do then a type cast in the function.
+		#Need to rewrite code that type casts like that.
+		droneinsidedepot = true
+		drone = body #Grab ref of drone.
+func _on_depot_body_exited(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		droneinsidedepot = false
+		drone = null
+		timer.stop()
+func _on_timer_timeout():
+	Inventory.from_drone_to_mothership()

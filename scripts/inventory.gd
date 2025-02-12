@@ -27,3 +27,13 @@ func update_inventory_drone(pickup: Pickup): #
 		inventorydronefull = true
 		emit_signal("on_inventory_drone_full")
 	pass
+
+func from_drone_to_mothership():
+	#Called when one item is moved from the drone to the mothership.
+	if inventorydrone.size() != 0:
+		var id = inventorydrone[0]
+		inventorydrone.pop_at(0)
+		inventoryship.append(id)
+		emit_signal("on_inventory_change_drone")
+		print("INV SHIP:", inventoryship)
+	pass
