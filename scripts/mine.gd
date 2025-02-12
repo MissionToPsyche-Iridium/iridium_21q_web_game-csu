@@ -14,6 +14,8 @@ var grid = [] #Mine grid.
 #3 = Copper
 #4 = Cant mine this rock.
 #5 TODO = Cobalt
+#6 TODO = Gold
+#7 TODO = Cinnabar
 var chancedict = { #Chance of ore spawning. Values MUST equal 100 or weird things happen.
 	0: 7,
 	1: 80,
@@ -30,7 +32,7 @@ var orecount = { #Dict to hold the count of ores.
 var idpos = {
 	#SUBJECT TO CHANGE
 	#Dict to get the Vector2 pos of said ore on the sprite sheet.
-	1: Vector2(0,0),
+	1: [Vector2(0,0), Vector2(0,1)],
 	2: Vector2(2,0),
 	3: Vector2(1,0),
 	4: Vector2(3,0)
@@ -119,7 +121,13 @@ func array_to_tile_map():
 			if grid[row][item] == 0:
 				pass
 			else:
-				set_cell(Vector2(item,row), 0, idpos[grid[row][item]])
+				var tilevec = idpos[grid[row][item]]
+				if tilevec is Array:
+					#Random select of ele in array, set it to our final var.
+					set_cell(Vector2(item,row), 0, tilevec[randi_range(0, tilevec.size()-1)])
+					pass
+				else:
+					set_cell(Vector2(item,row), 0, tilevec)
 func punch_enter_hole(): #Edits the tilemap to put an entrence.
 	var middle = round(width / 2)
 	erase_cell(Vector2(middle,0))
