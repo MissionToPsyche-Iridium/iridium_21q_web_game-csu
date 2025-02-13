@@ -18,6 +18,7 @@ var t: float = 0.0
 var pickuphook: Pickup #holds the pickup we just picked up.
 
 func _ready() -> void:
+	detectboxshape.shape.radius = Dronestats.grabberrange
 	#Set the max range of the raycast to the radius of the detectbox.
 	raycast.target_position.x = detectboxshape.shape.radius
 	t = Dronestats.grabberspeed

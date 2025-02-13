@@ -6,6 +6,8 @@ var grid = [] #Mine grid.
 @export var layersbeforegen = 3 # How many layers down before ore can appear -1.
 @onready var rockonmineparts = preload("res://Objects/rockonmineparts.tscn") # Ref for particles after removing block.
 @onready var pickup = preload("res://Objects/pickup.tscn")
+@onready var background = $Back #Background tilesheet.
+
 
 #IDS
 #0 = Nothing/Air
@@ -21,8 +23,9 @@ var chancedict = { #Chance of ore spawning. Values MUST equal 100 or weird thing
 	1: 80,
 	2: 10,
 	3: 3,
+	#4 will never have a chance.
 }
-var orecount = { #Dict to hold the count of ores.
+var orecount = { #Dict to hold the count of blocks.
 	0: 0,
 	1: 0,
 	2: 0,
@@ -36,8 +39,10 @@ var idpos = {
 	1: [Vector2(0,0), Vector2(0,1), Vector2(0,2), Vector2(0,3)],
 	2: [Vector2(2,0), Vector2(2,1)],
 	3: Vector2(1,0),
-	4: Vector2(3,0)
+	4: [Vector2(3,0), Vector2(3,1), Vector2(3,2), Vector2(3,3)]
 }
+var backgroundtiles = [Vector2(0,0), Vector2(0,1), Vector2(0,2)] #Background tiles arr.
+
 var tiletoparticlecolor = {
 	#Color that each tile breaks down into
 	#Also subject to change
@@ -129,6 +134,9 @@ func array_to_tile_map():
 					pass
 				else:
 					set_cell(Vector2(item,row), 0, tilevec)
+				
+			#Set background cell to be ele in 4 array.
+			background.set_cell(Vector2(item, row), 0, backgroundtiles.pick_random())
 func punch_enter_hole(): #Edits the tilemap to put an entrence.
 	var middle = round(width / 2)
 	erase_cell(Vector2(middle,0))

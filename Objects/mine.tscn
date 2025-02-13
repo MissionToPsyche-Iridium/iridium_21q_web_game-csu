@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ok71srmvbp25"]
+[gd_scene load_steps=12 format=3 uid="uid://ok71srmvbp25"]
 
 [ext_resource type="Script" path="res://scripts/mine.gd" id="1_rjot3"]
 [ext_resource type="Texture2D" uid="uid://bauj7tg48vpkc" path="res://Assets/sheetore.png" id="2_06w2d"]
 [ext_resource type="Texture2D" uid="uid://cinjk5k066td7" path="res://Assets/sheetbreak.png" id="3_utk80"]
+[ext_resource type="Texture2D" uid="uid://c1bgmoxaks02p" path="res://Assets/backgroundtiles.png" id="4_rqkjc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u7otv"]
 
@@ -37,8 +38,18 @@ texture_region_size = Vector2i(64, 64)
 0:2/0/custom_data_0 = true
 0:2/0/custom_data_1 = 1
 0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 0:3/0/custom_data_0 = true
 0:3/0/custom_data_1 = 1
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:1/0/custom_data_1 = 4
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:2/0/custom_data_1 = 4
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:3/0/custom_data_1 = 4
 
 [sub_resource type="TileSet" id="TileSet_1m28n"]
 tile_size = Vector2i(64, 64)
@@ -62,6 +73,14 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_1w0hi")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xyufu"]
+texture = ExtResource("4_rqkjc")
+texture_region_size = Vector2i(64, 64)
+
+[sub_resource type="TileSet" id="TileSet_cmgk2"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_xyufu")
+
 [node name="Mineable" type="TileMapLayer"]
 tile_set = SubResource("TileSet_1m28n")
 script = ExtResource("1_rjot3")
@@ -72,3 +91,5 @@ width = 40
 tile_set = SubResource("TileSet_0cn0v")
 
 [node name="Back" type="TileMapLayer" parent="."]
+z_index = -10
+tile_set = SubResource("TileSet_cmgk2")
