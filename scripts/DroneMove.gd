@@ -14,7 +14,6 @@ func get_input():
 	inputdirection = Input.get_vector("left", "right", "up", "down")
 	handle_rot(inputdirection)
 	velocity = inputdirection * Dronestats.dronespeed
-
 func _physics_process(delta):
 	get_input()
 	#Move and slide is really weird, this CHECKS to see if we are hitting any RigidBodys

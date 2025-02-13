@@ -33,6 +33,7 @@ func leave_pre(): #Called when the player leaves the main scene.
 func leave_shop(): #Called when we leave the shop.
 	pass
 	
-func start_game(): #Called when the game starts from the title screen.
+func start_pre(): #Called when the game starts from the title screen.
 	seed(randi_range(0,25565))
+	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
