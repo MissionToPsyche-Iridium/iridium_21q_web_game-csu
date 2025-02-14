@@ -4,7 +4,7 @@ extends CPUParticles2D
 var inputdirection: Vector2 # Where we are moving.
 var gravityvec: Vector2 = Vector2(0,0) #Vector2 for grav.
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	inputdirection = Input.get_vector("left", "right", "up", "down")
 	if inputdirection != Vector2(0,0):
 		emitting = true
