@@ -8,10 +8,10 @@ extends Node
 @onready var grabberrange: int = 128 #How big the radius for the grbaber is (def 128px)
 
 @onready var drillspeed: float = 1 #time (sec) it takes for a drill to fully break a block.
-@onready var drillstr: int = 0 #TODO, not used anywhere right now. How effected a drill is by harder blocks.
+@onready var drillstr: int = 0 #TODO, not used anywhere right now. How effected a drill is by harder blocks. (def 0)
 
-@onready var dronespeed: int = 200 #How fast the drone moves.
-@onready var droneluck: float = 0.0 #How lucky the drone is for events.
+@onready var dronespeed: int = 200 #How fast the drone moves. (def 200)
+@onready var droneluck: float = 0.0 #How lucky the drone is for events. (def 0)
 @onready var tubespeed: float = 2 #Time (sec) between objects leaving the drone and entering the mothership.
 
 

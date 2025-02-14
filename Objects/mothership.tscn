@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://tqoi2b0xbimp"]
+[gd_scene load_steps=9 format=3 uid="uid://tqoi2b0xbimp"]
 
 [ext_resource type="Script" path="res://scripts/mothership.gd" id="1_a2gvp"]
+[ext_resource type="Script" path="res://scripts/tube.gd" id="2_6fhiy"]
+[ext_resource type="AudioStream" uid="uid://ciqn5kb1yk4rm" path="res://Assets/audio/sfx/hoseextend.ogg" id="3_wu4n8"]
+[ext_resource type="AudioStream" uid="uid://1uqnki6clkkg" path="res://Assets/audio/sfx/hoseretract.ogg" id="4_rhq14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4e0p"]
 size = Vector2(7, 28.25)
@@ -52,8 +55,19 @@ z_index = -2
 points = PackedVector2Array(50, 10, 50, 16)
 width = 3.0
 default_color = Color(0.158472, 0.158472, 0.158472, 1)
+script = ExtResource("2_6fhiy")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="Tube"]
+
+[node name="extend" type="AudioStreamPlayer" parent="Tube"]
+stream = ExtResource("3_wu4n8")
+volume_db = -15.0
+
+[node name="retract" type="AudioStreamPlayer" parent="Tube"]
+stream = ExtResource("4_rhq14")
+volume_db = -15.0
 
 [connection signal="body_entered" from="depot" to="." method="_on_depot_body_entered"]
+[connection signal="body_entered" from="depot" to="Tube" method="_on_depot_body_entered"]
 [connection signal="body_exited" from="depot" to="." method="_on_depot_body_exited"]
+[connection signal="body_exited" from="depot" to="Tube" method="_on_depot_body_exited"]

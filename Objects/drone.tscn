@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5c4d80q5qjwo"]
+[gd_scene load_steps=15 format=3 uid="uid://c5c4d80q5qjwo"]
 
 [ext_resource type="Script" path="res://scripts/DroneMove.gd" id="1_4y1nq"]
 [ext_resource type="Texture2D" uid="uid://dkccrjow40fex" path="res://Assets/shiptemp.png" id="1_oor70"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bmgcobk7npskl" path="res://Objects/grabber.tscn" id="7_1svyo"]
 [ext_resource type="PackedScene" uid="uid://b3r10iky618p3" path="res://Objects/gui.tscn" id="8_y40r5"]
 [ext_resource type="Script" path="res://scripts/thrustparts.gd" id="9_88euc"]
+[ext_resource type="AudioStream" uid="uid://h41td8wdnenb" path="res://Assets/audio/sfx/thrust.ogg" id="10_sp1aj"]
+[ext_resource type="Script" path="res://scripts/thrustsound.gd" id="11_hapxy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imawl"]
 size = Vector2(38, 30)
@@ -117,3 +119,8 @@ scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_iv6pt")
 color_ramp = SubResource("Gradient_eywwu")
 script = ExtResource("9_88euc")
+
+[node name="thrust" type="AudioStreamPlayer" parent="thrustparts"]
+stream = ExtResource("10_sp1aj")
+volume_db = -40.0
+script = ExtResource("11_hapxy")
