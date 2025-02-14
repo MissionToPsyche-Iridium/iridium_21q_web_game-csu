@@ -8,6 +8,7 @@ point_count = 2
 colors = PackedColorArray(0.211765, 0.239216, 0.0745098, 1, 1, 1, 1, 1)
 
 [node name="drillparts" type="CPUParticles2D"]
+emitting = false
 amount = 64
 randomness = 0.27
 spread = 180.0
