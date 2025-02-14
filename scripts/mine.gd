@@ -72,6 +72,9 @@ func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now al
 		var intluck: int = Dronestats.droneluck #How many we MUST spawn for over 100% luck.
 		var chance: float = Dronestats.droneluck - intluck #Ex, 4.50 - 4 = .50
 		var pickupinstance: Node2D
+		#A failsafe, really doesn't like more then 7 total objects coming out of one block.
+		if intluck > 7:
+			intluck = 7
 		for i in intluck:
 			pickupinstance = pickup.instantiate()
 			pickupinstance.position = pos

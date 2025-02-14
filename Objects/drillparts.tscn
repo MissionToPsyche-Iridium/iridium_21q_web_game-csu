@@ -8,13 +8,13 @@ point_count = 2
 colors = PackedColorArray(0.211765, 0.239216, 0.0745098, 1, 1, 1, 1, 1)
 
 [node name="drillparts" type="CPUParticles2D"]
-emitting = false
-amount = 32
+amount = 64
 randomness = 0.27
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 137.37
 initial_velocity_max = 400.0
+radial_accel_max = 78.38
 angle_min = -625.5
 angle_max = 145.4
 scale_amount_min = 7.5
