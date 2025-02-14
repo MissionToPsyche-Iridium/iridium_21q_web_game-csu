@@ -68,10 +68,21 @@ func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now al
 	
 	#Then spawn pickup(s) IF NEEDED. Need luck stat for player in global, not finished yet so set to 1 per block.
 	if id != 1: #If we did NOT mine rock...
-		var pickup: Node2D = pickup.instantiate()
-		pickup.position = pos
-		pickup.id = id
-		add_child(pickup)
+		#Take luck into account.
+		var intluck: int = Dronestats.droneluck #How many we MUST spawn for over 100% luck.
+		var chance: float = Dronestats.droneluck - intluck #Ex, 4.50 - 4 = .50
+		var pickupinstance: Node2D
+		for i in intluck:
+			pickupinstance = pickup.instantiate()
+			pickupinstance.position = pos
+			pickupinstance.id = id
+			add_child(pickupinstance)
+		var roll = randf_range(0, 1)
+		if roll >= chance:
+			pickupinstance = pickup.instantiate()
+			pickupinstance.position = pos
+			pickupinstance.id = id
+			add_child(pickupinstance)
 	
 
 func init_grid_array(h, w):

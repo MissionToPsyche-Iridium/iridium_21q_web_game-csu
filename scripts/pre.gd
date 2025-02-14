@@ -13,8 +13,8 @@ func _ready() -> void:
 	var mothership = mothershippacked.instantiate()
 	#Add as child to this node.
 	#Figure out dif scale function. For now hard set height and width.
-	mine.height = 15
-	mine.width = 15
+	mine.height = Gamemaster.minesizey
+	mine.width = Gamemaster.minesizex
 	#DO NOT EDIT VARS OF OBJECTS AFTER THEY HAVE BEEN ADDED AS CHILDREN.
 	add_child(mine)
 	#Move drone and mothership to pos.

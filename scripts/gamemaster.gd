@@ -2,17 +2,15 @@ extends Node
 
 @onready var timer = Timer.new() #Games timer.
 
-var timetillloss: int = 60 #How much time in sec the player has till they lose.
-var minesizex: int = 15 #Mine size, incs by X every loop.
-var minesizey: int = 15 #Mine size Y.
-
-@onready var pre = preload("res://Scenes/pre.tscn")
+@onready var timetillloss: int = 120 #How much time in sec the player has till they lose.
+@onready var minesizex: int = 15 #Mine size, incs by X every loop.
+@onready var minesizey: int = 15 #Mine size Y.
 
 func _ready() -> void:
+	seed(randi_range(0,25565))
 	add_child(timer)
 	timer.connect("timeout", _on_game_clock_timeout)
 	timer.one_shot = true
-	timer.start(timetillloss)
 	pass
 
 func _on_game_clock_timeout(): #when the timer ends, the player loses.
@@ -33,7 +31,7 @@ func leave_pre(): #Called when the player leaves the main scene.
 func leave_shop(): #Called when we leave the shop.
 	pass
 	
-func start_pre(): #Called when the game starts from the title screen.
-	seed(randi_range(0,25565))
+func start_pre(): #Called when the game switches to the next mine.
+	timer.start(timetillloss)
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
