@@ -7,3 +7,5 @@ process_callback = 0
 one_shot = true
 autostart = true
 script = ExtResource("1_464ec")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

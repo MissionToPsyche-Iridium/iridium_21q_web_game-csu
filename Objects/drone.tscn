@@ -97,8 +97,6 @@ position = Vector2(-29, 0)
 rotation = 1.5708
 texture = ExtResource("5_bcav7")
 
-[node name="parts" type="Node2D" parent="Sprites"]
-
 [node name="Grabber" parent="." instance=ExtResource("7_1svyo")]
 
 [node name="GUI" parent="." instance=ExtResource("8_y40r5")]

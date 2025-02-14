@@ -3,7 +3,7 @@ extends Timer
 @onready var stage = 1 #1-4 how broken should this block display as? we have 4 breakable sprites.
 @onready var interval #Time inbetween before updating cracks.
 @onready var cords: Vector2 #Knows its cords, helps keep track of timers.
-
+@onready var ping: AudioStreamPlayer = $AudioStreamPlayer
 #signals for updating tile map.
 signal update_cracked_tile(stage: Vector2, cords: Vector2)
 signal erase_crack_tile(ref: Timer, cords: Vector2)

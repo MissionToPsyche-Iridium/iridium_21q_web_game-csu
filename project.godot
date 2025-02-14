@@ -25,6 +25,7 @@ Inventory="*res://scripts/inventory.gd"
 Dronestats="*res://scripts/dronestats.gd"
 Gamemaster="*res://scripts/gamemaster.gd"
 Settings="*res://scripts/settings.gd"
+Itemdict="*res://Assets/items/base/itemdict.gd"
 
 [input]
 

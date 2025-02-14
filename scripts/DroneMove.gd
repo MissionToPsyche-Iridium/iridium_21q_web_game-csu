@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var sprite: Node2D = $Sprites
 @onready var inputdirection = null
+
 func handle_rot(input: Vector2):
 	if input == Vector2(1,0):
 		sprite.rotation = .3
