@@ -12,7 +12,7 @@ extends MarginContainer
 @onready var checkout: AudioStreamPlayer = $checkout
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	display_item(Itemdict.get_item_of_rarity_passive(0)) #TEMP REMOVE LATER.
+	display_item(Itemdict.get_random_item_passive())
 	pass # Replace with function body.
 
 #Displays the item on the display.
@@ -22,6 +22,10 @@ func display_item(item: Item) -> void:
 		itemsprite.texture = fallbacksprite
 	else:
 		itemsprite.texture = item.sprite
+	#Clean up prev rich text.
+	for label in itemeffectlist.get_children():
+		itemeffectlist.remove_child(label)
+		label.queue_free()
 	var effectentryins: RichTextLabel
 	#For each string in array, create a new rich text label.
 	for string: String in item.effecttext:
@@ -39,9 +43,5 @@ func _on_buy_button_pressed() -> void:
 	#For now there is no check b/c we still don't have a money system fully set up.
 	checkout.play()
 	iteminside.on_get()
-	#Clean up prev rich text.
-	for label in itemeffectlist.get_children():
-		itemeffectlist.remove_child(label)
-		label.queue_free()
 	display_item(Itemdict.get_random_item_passive())
 	#After we do that, reroll the item slot.

@@ -14,8 +14,5 @@ extends Node
 @onready var droneluck: float = 0 #How lucky the drone is for events. (def 0)
 @onready var tubespeed: float = 2 #Time (sec) between objects leaving the drone and entering the mothership.
 
-
-
-func recalculate_vars(): #used to recalculate vars for upgrades, actives, etc...
-	#TODO
-	pass
+@onready var rerollcost: int = 5 #Base reroll cost, inc by 2 every reroll.
+@onready var rerollinc: int = 2 #Inc reroll cost.

@@ -29,7 +29,7 @@ func leave_pre(): #Called when the player leaves the main scene.
 		Inventory.inventorydrone.erase(item)
 	timer.stop()
 	#Temp, will leave to shop screen.
-	get_tree().change_scene_to_file("res://Objects/shopoption.tscn")
+	get_tree().change_scene_to_file("res://Scenes/shop.tscn")
 	
 func leave_shop(): #Called when we leave the shop.
 	pass
