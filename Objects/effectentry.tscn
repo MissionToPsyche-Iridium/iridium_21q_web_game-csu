@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://csn3csrkr87va"]
+
+[node name="RichTextLabel" type="RichTextLabel"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.984995, 1.05155)
+bbcode_enabled = true
+fit_content = true

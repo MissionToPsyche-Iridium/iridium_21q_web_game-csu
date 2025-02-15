@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 func handle_rot(input: Vector2):
 	if input == Vector2(1,0):
+		#Dronestats.droneluck = 5
 		sprite.rotation = .3
 	elif input == Vector2(-1,0):
 		sprite.rotation = -.3

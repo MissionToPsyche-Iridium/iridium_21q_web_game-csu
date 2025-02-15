@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://byr87loofbt64"]
+[gd_scene load_steps=5 format=3 uid="uid://byr87loofbt64"]
 
 [ext_resource type="Script" path="res://scripts/rocktimer.gd" id="1_464ec"]
+[ext_resource type="AudioStream" uid="uid://l3t73h2cr83m" path="res://Assets/audio/sfx/crack_1.ogg" id="2_r85yb"]
+[ext_resource type="AudioStream" uid="uid://bp6d0cciromuj" path="res://Assets/audio/sfx/crack_2.ogg" id="3_p1snq"]
+[ext_resource type="AudioStream" uid="uid://cakotcr4jsfgg" path="res://Assets/audio/sfx/crack_3.ogg" id="4_oobja"]
 
 [node name="rocktimer" type="Timer"]
 process_callback = 0
@@ -8,4 +11,18 @@ one_shot = true
 autostart = true
 script = ExtResource("1_464ec")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="crack 1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_r85yb")
+volume_db = -4.0
+pitch_scale = 0.6
+bus = &"SFX"
+
+[node name="crack 2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_p1snq")
+volume_db = -4.0
+pitch_scale = 0.6
+
+[node name="crack 3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oobja")
+volume_db = -4.0
+pitch_scale = 0.6

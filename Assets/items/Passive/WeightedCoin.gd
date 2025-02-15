@@ -5,7 +5,7 @@ extends Item
 func _init() -> void:
 	name = "Weighted Coin"
 	tooltip = "It might even land on its side..."
-	effecttext = ["Multiply current Luck by 2."]
+	effecttext = ["[wave amp=50 freq=5 connected=1][color=#2d00e5]x2[/color][/wave] current luck"]
 	rarity = 2
 	sprite = null
 	price = 15

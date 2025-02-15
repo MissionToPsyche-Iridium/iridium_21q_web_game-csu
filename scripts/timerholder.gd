@@ -53,7 +53,7 @@ func _timer_timeout(spenttimer: Timer): # Called when a timer finishes.
 			pass
 	pass
 func _update_cracked_tile(stage: int, cords: Vector2):
-	tilemapcracks.set_cell(cords, 0, Vector2(stage-1, 0), 0)
+	tilemapcracks.set_cell(cords, 0, Vector2(stage, 0), 0)
 	pass
 func _erase_crack_tile(cords: Vector2):
 	tilemapcracks.erase_cell(cords)

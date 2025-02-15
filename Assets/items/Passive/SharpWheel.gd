@@ -1,9 +1,9 @@
-class_name PencilSharpner
+class_name SharpeningWheel
 extends Item
 
 
 func _init() -> void:
-	name = "Pencil Sharpner"
+	name = "Sharpening Wheel"
 	tooltip = "Can sharpen anything, even drills."
 	effecttext = ["[color=green]+5%[/color] Drill Speed"]
 	rarity = 0

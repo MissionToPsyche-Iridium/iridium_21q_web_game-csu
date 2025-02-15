@@ -5,7 +5,8 @@ extends Node
 
 func _ready() -> void:
 	passives.append(LuckyEgg.new())
-	passives.append(PencilSharpner.new())
+	passives.append(SharpeningWheel.new())
+	passives.append(WeightedCoin.new())
 	pass
 
 #Returns an item of said rarity.

@@ -26,6 +26,7 @@ func _ready() -> void:
 	mothership.global_position.x -= 100
 	add_child(drone)
 	add_child(mothership)
+	Gamemaster.wind_timer()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

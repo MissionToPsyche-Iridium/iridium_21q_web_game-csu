@@ -11,7 +11,7 @@ extends Node
 @onready var drillstr: int = 0 #TODO, not used anywhere right now. How effected a drill is by harder blocks. (def 0)
 
 @onready var dronespeed: int = 200 #How fast the drone moves. (def 200)
-@onready var droneluck: float = 0.0 #How lucky the drone is for events. (def 0)
+@onready var droneluck: float = 0 #How lucky the drone is for events. (def 0)
 @onready var tubespeed: float = 2 #Time (sec) between objects leaving the drone and entering the mothership.
 
 

@@ -75,13 +75,18 @@ func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now al
 		#A failsafe, really doesn't like more then 7 total objects coming out of one block.
 		if intluck > 7:
 			intluck = 7
+		if intluck == 0:
+			pickupinstance = pickup.instantiate()
+			pickupinstance.position = pos
+			pickupinstance.id = id
+			add_child(pickupinstance)
 		for i in intluck:
 			pickupinstance = pickup.instantiate()
 			pickupinstance.position = pos
 			pickupinstance.id = id
 			add_child(pickupinstance)
 		var roll = randf_range(0, 1)
-		if roll >= chance:
+		if roll <= chance:
 			pickupinstance = pickup.instantiate()
 			pickupinstance.position = pos
 			pickupinstance.id = id

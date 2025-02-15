@@ -910,6 +910,7 @@ shape = SubResource("CircleShape2D_hybu5")
 stream = ExtResource("5_ub02w")
 pitch_scale = 0.5
 max_polyphony = 32
+bus = &"SFX"
 
 [connection signal="body_entered" from="MaxSize" to="." method="_on_max_size_body_entered"]
 [connection signal="body_exited" from="MaxSize" to="." method="_on_max_size_body_exited"]

@@ -19,6 +19,9 @@ func _on_game_clock_timeout(): #when the timer ends, the player loses.
 func get_time(): #Returns the time remaining on the global clock.
 	return timer.time_left
 
+func wind_timer():
+	timer.start(timetillloss)
+
 func leave_pre(): #Called when the player leaves the main scene.
 	#Move all items inside drone to ship.
 	for item in Inventory.inventorydrone:
@@ -26,12 +29,11 @@ func leave_pre(): #Called when the player leaves the main scene.
 		Inventory.inventorydrone.erase(item)
 	timer.stop()
 	#Temp, will leave to shop screen.
-	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
+	get_tree().change_scene_to_file("res://Objects/shopoption.tscn")
 	
 func leave_shop(): #Called when we leave the shop.
 	pass
 	
 func start_pre(): #Called when the game switches to the next mine.
-	timer.start(timetillloss)
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass

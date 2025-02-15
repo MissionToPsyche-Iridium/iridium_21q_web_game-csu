@@ -121,4 +121,5 @@ script = ExtResource("9_88euc")
 [node name="thrust" type="AudioStreamPlayer" parent="thrustparts"]
 stream = ExtResource("10_sp1aj")
 volume_db = -40.0
+bus = &"SFX"
 script = ExtResource("11_hapxy")
