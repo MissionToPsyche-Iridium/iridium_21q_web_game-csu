@@ -3,9 +3,11 @@ class_name Mineable extends TileMapLayer
 var grid = [] #Mine grid.
 @export var height = 15 #Height of the mine
 @export var width = 15 #Width of the mine.
-@export var layersbeforegen = 2 # How many layers down before ore can appear.
+@export var layersbeforegen = 3 # How many layers down before ore can appear -1.
 @onready var rockonmineparts = preload("res://Objects/rockonmineparts.tscn") # Ref for particles after removing block.
 @onready var pickup = preload("res://Objects/pickup.tscn")
+@onready var background = $Back #Background tilesheet.
+
 
 #IDS
 #0 = Nothing/Air
@@ -13,30 +15,39 @@ var grid = [] #Mine grid.
 #2 = Iron
 #3 = Copper
 #4 = Cant mine this rock.
+#5 TODO = Cobalt
+#6 TODO = Gold
+#7 TODO = Cinnabar
 var chancedict = { #Chance of ore spawning. Values MUST equal 100 or weird things happen.
 	0: 7,
 	1: 80,
 	2: 10,
 	3: 3,
+	#4 will never have a chance.
 }
-var orecount = { #Dict to hold the count of ores.
+var orecount = { #Dict to hold the count of blocks.
 	0: 0,
 	1: 0,
 	2: 0,
 	3: 0,
+	4: 0
 }
 var idpos = {
 	#SUBJECT TO CHANGE
 	#Dict to get the Vector2 pos of said ore on the sprite sheet.
-	1: Vector2(0,0),
-	2: Vector2(2,0),
-	3: Vector2(1,0)
+	#Arrs are randomly picked, while single values are always selected.
+	1: [Vector2(0,0), Vector2(0,1), Vector2(0,2), Vector2(0,3)],
+	2: [Vector2(2,0), Vector2(2,1)],
+	3: Vector2(1,0),
+	4: [Vector2(3,0), Vector2(3,1), Vector2(3,2), Vector2(3,3)]
 }
+var backgroundtiles = [Vector2(0,0), Vector2(0,1), Vector2(0,2)] #Background tiles arr.
+
 var tiletoparticlecolor = {
 	#Color that each tile breaks down into
 	#Also subject to change
-	1: Color(0.376, 0.231, 0.196),
-	2: Color(1, 1, 1),
+	1: Color(0.184, 0.165, 0.122),
+	2: Color(0.596, 0.6, 0.616),
 	3: Color(0.82, 0.467, 0.18)
 }
 
@@ -48,7 +59,7 @@ func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now al
 	var pos: Vector2 = map_to_local(coords)
 	var parsinstance: CPUParticles2D = rockonmineparts.instantiate()
 	parsinstance.position = pos
-	parsinstance.color = tiletoparticlecolor[id] #Not working not sure why... Needs testing...
+	parsinstance.color = tiletoparticlecolor[id]
 	parsinstance.emitting = true
 	add_child(parsinstance)
 	
@@ -57,10 +68,29 @@ func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now al
 	
 	#Then spawn pickup(s) IF NEEDED. Need luck stat for player in global, not finished yet so set to 1 per block.
 	if id != 1: #If we did NOT mine rock...
-		var pickup: Node2D = pickup.instantiate()
-		pickup.position = pos
-		pickup.id = id
-		add_child(pickup)
+		#Take luck into account.
+		var intluck: int = Dronestats.droneluck #How many we MUST spawn for over 100% luck.
+		var chance: float = Dronestats.droneluck - intluck #Ex, 4.50 - 4 = .50
+		var pickupinstance: Node2D
+		#A failsafe, really doesn't like more then 7 total objects coming out of one block.
+		if intluck > 7:
+			intluck = 7
+		if intluck == 0:
+			pickupinstance = pickup.instantiate()
+			pickupinstance.position = pos
+			pickupinstance.id = id
+			add_child(pickupinstance)
+		for i in intluck:
+			pickupinstance = pickup.instantiate()
+			pickupinstance.position = pos
+			pickupinstance.id = id
+			add_child(pickupinstance)
+		var roll = randf_range(0, 1)
+		if roll <= chance:
+			pickupinstance = pickup.instantiate()
+			pickupinstance.position = pos
+			pickupinstance.id = id
+			add_child(pickupinstance)
 	
 
 func init_grid_array(h, w):
@@ -72,6 +102,10 @@ func init_grid_array(h, w):
 			col.append(1)
 		grid.append(col)
 func gen_rock_seed(x,y):
+	if x == 0 or x == width-1:
+		return 4
+	if y == 0 or y == height-1:
+		return 4
 	if x < layersbeforegen:
 		return 1
 	else:
@@ -112,15 +146,35 @@ func array_to_tile_map():
 			if grid[row][item] == 0:
 				pass
 			else:
-				set_cell(Vector2(item,row), 0, idpos[grid[row][item]])
+				var tilevec = idpos[grid[row][item]]
+				if tilevec is Array:
+					#Random select of ele in array, set it to our final var.
+					set_cell(Vector2(item,row), 0, tilevec[randi_range(0, tilevec.size()-1)])
+					pass
+				else:
+					set_cell(Vector2(item,row), 0, tilevec)
+				
+			#Set background cell to be ele in 4 array.
+			background.set_cell(Vector2(item, row), 0, backgroundtiles.pick_random())
+func punch_enter_hole(): #Edits the tilemap to put an entrence.
+	var middle = round(width / 2)
+	erase_cell(Vector2(middle,0))
+	#Add tube into mine.
+	set_cell(Vector2(middle+1, -1), 0, Vector2(3,0))
+	set_cell(Vector2(middle-1, -1), 0, Vector2(3,0))
+	
+func get_hole_pos(): #Gets the pos of the punched hole.
+	var middle = round(width / 2)
+	return self.to_global(map_to_local(Vector2i(middle,0)))
 func _ready() -> void:
 	#SETUP GRID.
 	init_grid_array(height,width)
-	seed(randi_range(0,25565)) #DO NOT CALL THIS AGAIN, SETS SEED FOR EVERY RANDOM OBJECT.
 	rand_grid_array_with_seed()
 	log_grid_array()
 	count_ores()
 	array_to_tile_map()
+	punch_enter_hole()
+		
 	
 
 	

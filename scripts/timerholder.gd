@@ -53,7 +53,7 @@ func _timer_timeout(spenttimer: Timer): # Called when a timer finishes.
 			pass
 	pass
 func _update_cracked_tile(stage: int, cords: Vector2):
-	tilemapcracks.set_cell(cords, 0, Vector2(stage-1, 0), 0)
+	tilemapcracks.set_cell(cords, 0, Vector2(stage, 0), 0)
 	pass
 func _erase_crack_tile(cords: Vector2):
 	tilemapcracks.erase_cell(cords)
@@ -132,7 +132,7 @@ func _on_mining_tile(cords: Vector2, tilemaplayer: TileMapLayer, emiter: String)
 		var curtimer = timer.instantiate()
 		tilemap.add_child(curtimer)
 		curtimer.cords = cords
-		curtimer.start(1) #Change this to speed var someday. Or come up with math form.
+		curtimer.start(Dronestats.drillspeed) #Change this to speed var someday. Or come up with math form.
 		curtimer.connect("timeout", _timer_timeout.bind(curtimer))
 		curtimer.connect("update_cracked_tile", _update_cracked_tile)
 		curtimer.connect("erase_crack_tile", _erase_crack_tile)

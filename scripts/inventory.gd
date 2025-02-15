@@ -10,24 +10,30 @@ signal on_inventory_change_drone() #When the drones inventory changes
 signal on_inventory_drone_full() #When the drones inventory is full
 signal on_inventory_drone_not_full() #When the drones inventory is no longer full
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if inventorydronefull == true:
 		#Keep checking till inventory is no longer full.
 		if inventorydrone.size() != dronemaxsize:
 			emit_signal("on_inventory_drone_not_full")
+			inventorydronefull = false
 	pass
 
-func update_inventory_drone(pickup: Pickup):
+func update_inventory_drone(pickup: Pickup): #
 	inventorydrone.append(pickup.id)
 	print(inventorydrone)
 	emit_signal("on_inventory_change_drone")
 	if inventorydrone.size() == dronemaxsize:
 		inventorydronefull = true
 		emit_signal("on_inventory_drone_full")
+	pass
+
+func from_drone_to_mothership():
+	#Called when one item is moved from the drone to the mothership.
+	if inventorydrone.size() != 0:
+		var id = inventorydrone[0]
+		inventorydrone.pop_at(0)
+		inventoryship.append(id)
+		emit_signal("on_inventory_change_drone")
+		print("INV SHIP:", inventoryship)
 	pass

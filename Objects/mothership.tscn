@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://tqoi2b0xbimp"]
+
+[ext_resource type="Script" path="res://scripts/mothership.gd" id="1_a2gvp"]
+[ext_resource type="Script" path="res://scripts/tube.gd" id="2_6fhiy"]
+[ext_resource type="AudioStream" uid="uid://ciqn5kb1yk4rm" path="res://Assets/audio/sfx/hoseextend.ogg" id="3_wu4n8"]
+[ext_resource type="AudioStream" uid="uid://1uqnki6clkkg" path="res://Assets/audio/sfx/hoseretract.ogg" id="4_rhq14"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4e0p"]
+size = Vector2(7, 28.25)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5vjnu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bbr8"]
+size = Vector2(66.5, 12.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mod6i"]
+radius = 9.1
+height = 18.2
+
+[node name="mothership" type="Node2D"]
+scale = Vector2(10, 10)
+script = ExtResource("1_a2gvp")
+
+[node name="Right Blocker" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Blocker"]
+position = Vector2(62.5, 19.9)
+shape = SubResource("RectangleShape2D_u4e0p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32.75, 5.75)
+scale = Vector2(66.5, 12.5)
+texture = SubResource("PlaceholderTexture2D_5vjnu")
+
+[node name="Left Blocker" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Blocker"]
+position = Vector2(3.1, 18.85)
+shape = SubResource("RectangleShape2D_u4e0p")
+
+[node name="Mothership Blocker" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mothership Blocker"]
+position = Vector2(32.75, 5.85)
+shape = SubResource("RectangleShape2D_1bbr8")
+
+[node name="depot" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="depot"]
+position = Vector2(50.1, 20.2)
+shape = SubResource("CapsuleShape2D_mod6i")
+
+[node name="Tube" type="Line2D" parent="."]
+z_index = -2
+points = PackedVector2Array(50, 10, 50, 16)
+width = 3.0
+default_color = Color(0.158472, 0.158472, 0.158472, 1)
+script = ExtResource("2_6fhiy")
+
+[node name="Timer" type="Timer" parent="Tube"]
+
+[node name="extend" type="AudioStreamPlayer" parent="Tube"]
+stream = ExtResource("3_wu4n8")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="retract" type="AudioStreamPlayer" parent="Tube"]
+stream = ExtResource("4_rhq14")
+volume_db = -15.0
+bus = &"SFX"
+
+[connection signal="body_entered" from="depot" to="." method="_on_depot_body_entered"]
+[connection signal="body_entered" from="depot" to="Tube" method="_on_depot_body_entered"]
+[connection signal="body_exited" from="depot" to="." method="_on_depot_body_exited"]
+[connection signal="body_exited" from="depot" to="Tube" method="_on_depot_body_exited"]

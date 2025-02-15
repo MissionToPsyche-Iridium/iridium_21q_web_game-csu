@@ -16,6 +16,7 @@ func _physics_process(delta: float) -> void:
 			#Not great for performance but fixes the "sticky drills" bug so this works for now.
 			#most likely fine...
 			emit_signal("stop_mining_tile", self.name)
+			particles.emitting = false
 			#Weird to get tile we wish to remove
 			var transform2d = PhysicsServer2D.body_get_state(get_collider_rid(), PhysicsServer2D.BODY_STATE_TRANSFORM)
 			tilepos = tile.local_to_map(transform2d.origin)
