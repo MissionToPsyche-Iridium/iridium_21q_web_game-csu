@@ -49,7 +49,5 @@ func _on_buy_button_pressed() -> void:
 		checkout.play()
 		iteminside.on_get()
 		display_item(Itemdict.get_random_item_passive())  # Reroll item after purchase.
-		# Imane's Addition: Update the currency display after a transaction.
-	
 	else:
 		print("Not enough currency to buy this item")
