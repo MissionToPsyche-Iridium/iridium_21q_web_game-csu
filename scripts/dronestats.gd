@@ -16,3 +16,18 @@ extends Node
 
 @onready var rerollcost: int = 5 #Base reroll cost, inc by 2 every reroll.
 @onready var rerollinc: int = 2 #Inc reroll cost.
+
+func get_list_of_stats() -> Dictionary:
+	#Returns a dict list of names and values of all drone stats.
+	var dict: Dictionary = {
+		"Grabber Cooldown" = grabbercooldown,
+		"Grabber Speed" = grabberspeed,
+		"Grabber Range" = grabberrange,
+		"Drill Speed" = drillspeed,
+		"Dill Power" = drillstr,
+		"Drone Speed" = dronespeed,
+		"Luck" = droneluck,
+		"Tube Speed" = tubespeed,
+	}
+	return dict
+	
