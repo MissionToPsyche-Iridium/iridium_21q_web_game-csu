@@ -15,22 +15,24 @@ var grid = [] #Mine grid.
 #2 = Iron
 #3 = Copper
 #4 = Cant mine this rock.
-#5 TODO = Cobalt
+#5 = Cobalt
 #6 TODO = Gold
 #7 TODO = Cinnabar
 var chancedict = { #Chance of ore spawning. Values MUST equal 100 or weird things happen.
 	0: 7,
 	1: 80,
 	2: 10,
-	3: 3,
+	3: 2,
 	#4 will never have a chance.
+	5: 1,
 }
 var orecount = { #Dict to hold the count of blocks.
 	0: 0,
 	1: 0,
 	2: 0,
 	3: 0,
-	4: 0
+	4: 0,
+	5: 0
 }
 var idpos = {
 	#SUBJECT TO CHANGE
@@ -39,7 +41,8 @@ var idpos = {
 	1: [Vector2(0,0), Vector2(0,1), Vector2(0,2), Vector2(0,3)],
 	2: [Vector2(2,0), Vector2(2,1)],
 	3: Vector2(1,0),
-	4: [Vector2(3,0), Vector2(3,1), Vector2(3,2), Vector2(3,3)]
+	4: [Vector2(3,0), Vector2(3,1), Vector2(3,2), Vector2(3,3)],
+	5: [Vector2(4, 0), Vector2(4, 1)]
 }
 var backgroundtiles = [Vector2(0,0), Vector2(0,1), Vector2(0,2)] #Background tiles arr.
 
@@ -48,7 +51,8 @@ var tiletoparticlecolor = {
 	#Also subject to change
 	1: Color(0.184, 0.165, 0.122),
 	2: Color(0.596, 0.6, 0.616),
-	3: Color(0.82, 0.467, 0.18)
+	3: Color(0.82, 0.467, 0.18),
+	5: Color(0.024, 0.302, 0.643)
 }
 
 func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now also spawns drops for the player to pick up.

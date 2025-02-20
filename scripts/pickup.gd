@@ -12,6 +12,8 @@ func _ready() -> void:
 			sprite.play("idle_iron")
 		elif id == 3:
 			sprite.play("idle_copper")
+		elif id == 5:
+			sprite.play("idle_cobalt")
 	else:
 		push_error("ERROR: Pickup has 0 ID! Destorying.")
 		queue_free()
