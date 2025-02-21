@@ -1,0 +1,181 @@
+[gd_scene load_steps=19 format=3 uid="uid://b7v1aycuir6hh"]
+
+[ext_resource type="Script" path="res://Menus/MenuScripts/title.gd" id="1_b63vi"]
+[ext_resource type="Texture2D" uid="uid://dkkc1j0kook64" path="res://Assets/Space/Space Layer 0.png" id="2_jkik8"]
+[ext_resource type="Script" path="res://Menus/MenuScripts/SpaceLayer0.gd" id="3_wa56y"]
+[ext_resource type="Texture2D" uid="uid://d1gctecwryp1" path="res://Assets/Space/Space Layer 1.png" id="4_mwd4u"]
+[ext_resource type="Script" path="res://Menus/MenuScripts/SpaceLayer1.gd" id="5_ptrlv"]
+[ext_resource type="Texture2D" uid="uid://cjcmfrq0cwhw2" path="res://Assets/Space/Space Layer 2.png" id="6_n48nf"]
+[ext_resource type="Script" path="res://Menus/MenuScripts/SpaceLayer2.gd" id="7_y4n57"]
+[ext_resource type="Texture2D" uid="uid://b33lxj13ca5s0" path="res://Assets/Space/Space Layer 3.png" id="8_q2duy"]
+[ext_resource type="Script" path="res://Menus/MenuScripts/SpaceLayer3.gd" id="9_vldkd"]
+[ext_resource type="Texture2D" uid="uid://eltaciyy0g6r" path="res://Assets/Shuttle/shuttleLayer.png" id="10_myeab"]
+[ext_resource type="Script" path="res://Menus/MenuScripts/shuttleLayer.gd" id="11_3w25b"]
+[ext_resource type="Texture2D" uid="uid://dbfo1t47nkoeu" path="res://Menus/Title/NEW.png" id="12_rgw8q"]
+[ext_resource type="Texture2D" uid="uid://cdu7onylwedtw" path="res://Menus/Title/Hover NEW.png" id="13_hf8mf"]
+[ext_resource type="Texture2D" uid="uid://uau8wposh4fa" path="res://Menus/Title/LOAD.png" id="14_5r6ch"]
+[ext_resource type="Texture2D" uid="uid://cy1j2m2fpbhxa" path="res://Menus/Title/Hover LOAD.png" id="15_6hef4"]
+[ext_resource type="Texture2D" uid="uid://2r6au0boorm1" path="res://Menus/Title/Hover SETTINGS.png" id="16_sv557"]
+[ext_resource type="Texture2D" uid="uid://bt07j4vajelww" path="res://Menus/Title/ENCYCLOPEDIA.png" id="17_mjwk4"]
+[ext_resource type="Texture2D" uid="uid://ci30d6qdymujo" path="res://Menus/Title/Hover ENCYCLOPEDIA.png" id="18_savwk"]
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_b63vi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Space0" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Space0"]
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("2_jkik8")
+script = ExtResource("3_wa56y")
+
+[node name="Space1" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Space1"]
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("4_mwd4u")
+script = ExtResource("5_ptrlv")
+
+[node name="Space2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Space2"]
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("6_n48nf")
+script = ExtResource("7_y4n57")
+
+[node name="Space3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Space3"]
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("8_q2duy")
+script = ExtResource("9_vldkd")
+
+[node name="Shuttle" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-21, 49)
+
+[node name="Ship" type="Sprite2D" parent="ParallaxBackground/Shuttle"]
+position = Vector2(0.750031, -17.5)
+scale = Vector2(0.772333, 0.609)
+texture = ExtResource("10_myeab")
+script = ExtResource("11_3w25b")
+
+[node name="NEW" type="Sprite2D" parent="ParallaxBackground/Shuttle/Ship"]
+z_index = 2
+position = Vector2(291.649, -141.215)
+scale = Vector2(0.676162, 0.670498)
+texture = ExtResource("12_rgw8q")
+
+[node name="Hover New" type="Sprite2D" parent="ParallaxBackground/Shuttle/Ship"]
+z_index = -1
+z_as_relative = false
+texture = ExtResource("13_hf8mf")
+
+[node name="LOAD" type="Sprite2D" parent="ParallaxBackground/Shuttle/Ship"]
+z_index = 2
+position = Vector2(-59.8835, -140.394)
+scale = Vector2(0.714825, 0.684182)
+texture = ExtResource("14_5r6ch")
+
+[node name="Hover Load" type="Sprite2D" parent="ParallaxBackground/Shuttle/Ship"]
+z_index = -1
+z_as_relative = false
+texture = ExtResource("15_6hef4")
+
+[node name="SETTINGS" type="Sprite2D" parent="ParallaxBackground/Shuttle/Ship"]
+z_index = 2
+
+[node name="Hover Settings" type="Sprite2D" parent="ParallaxBackground/Shuttle/Ship"]
+z_index = -1
+z_as_relative = false
+texture = ExtResource("16_sv557")
+
+[node name="ENCY" type="Sprite2D" parent="ParallaxBackground/Shuttle/Ship"]
+z_index = 2
+position = Vector2(-95.4899, -61.5764)
+scale = Vector2(0.361459, 0.30104)
+texture = ExtResource("17_mjwk4")
+
+[node name="Hover Ency" type="Sprite2D" parent="ParallaxBackground/Shuttle/Ship"]
+z_index = -1
+z_as_relative = false
+texture = ExtResource("18_savwk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = -1
+z_as_relative = false
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="MarginContainer"]
+z_index = -1
+layout_mode = 2
+
+[node name="New" type="Button" parent="MarginContainer/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_direction = 1
+layout_mode = 2
+offset_left = 91.0
+offset_top = -53.0
+offset_right = 357.0
+offset_bottom = -13.0
+text = "New"
+
+[node name="Load" type="Button" parent="MarginContainer/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = -190.0
+offset_top = -57.0
+offset_right = 86.0
+offset_bottom = -14.0
+text = "Load"
+
+[node name="Encyclopedia" type="Button" parent="MarginContainer/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = -311.0
+offset_top = -10.0
+offset_right = 112.0
+offset_bottom = 21.0
+text = "Encyclopedia"
+
+[node name="Settings" type="Button" parent="MarginContainer/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = -314.0
+offset_top = -55.0
+offset_right = -200.0
+offset_bottom = -14.0
+text = "Settings"
+
+[node name="Quit" type="Button" parent="MarginContainer/Control"]
+layout_mode = 2
+offset_left = -558.0
+offset_top = -309.0
+offset_right = -516.0
+offset_bottom = -278.0
+text = "Quit"
+
+[connection signal="mouse_entered" from="MarginContainer/Control/New" to="." method="_on_new_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Control/New" to="." method="_on_new_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/Control/New" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/Control/Load" to="." method="_on_load_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Control/Load" to="." method="_on_load_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/Control/Load" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/Control/Encyclopedia" to="." method="_on_encyclopedia_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Control/Encyclopedia" to="." method="_on_encyclopedia_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/Control/Encyclopedia" to="." method="_on_encyclopedia_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/Control/Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Control/Settings" to="." method="_on_settings_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/Control/Settings" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/Quit" to="." method="_on_quit_pressed"]

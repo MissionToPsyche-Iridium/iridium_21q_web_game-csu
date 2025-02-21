@@ -5,6 +5,4 @@ extends Control
 
 #Returns to title screen
 func _on_back_pressed() -> void:
-	get_tree().change_scene_to_file("res://Menus/title.tscn")
-	
-	
+	get_tree().change_scene_to_file("res://Menus/Title/title.tscn")
