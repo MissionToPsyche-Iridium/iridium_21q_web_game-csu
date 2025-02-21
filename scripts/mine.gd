@@ -23,7 +23,7 @@ var grid = [] #Mine grid.
 	2: 5,
 	3: 5,
 	5: 0,
-	7: 20
+	7: 0
 }
 
 var orecount = { #Dict to hold the count of tiles.
@@ -123,8 +123,10 @@ func rand_grid_array_with_seed():
 #Places ores on the mine.
 	for key in orereq:
 		while orereq[key] > 0:
-			var randx = randi_range(0, width-1)
-			var randy = randi_range(0+layersbeforegen, height-1)
+			randi_range(layersbeforegen, height-1)
+			var randx = randi_range(layersbeforegen, height-1)
+			var randy = randi_range(0, width-1)
+			print(randx, " ",randy)
 			if grid[randx][randy] == 1: # If the grid has a rock in the place we wish to gen.
 				grid[randx][randy] = key
 				orereq[key] -= 1 #Remove 1 ore from that key.
