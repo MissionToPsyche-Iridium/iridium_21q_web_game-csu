@@ -16,13 +16,14 @@ var grid = [] #Mine grid.
 #3 = Copper
 #4 = Cant mine this rock.
 #5 = Cobalt
-#6 TODO = Gold
-#7 TODO = Cinnabar
+#6 TODO Still needs block, pickup done = Gold
+#7 = Cinnabar
 @export var orereq = { #How many ores this mine we will spawn. 0 counts as an ore here.
 	0: 5,
 	2: 5,
 	3: 5,
 	5: 0,
+	7: 20
 }
 
 var orecount = { #Dict to hold the count of tiles.
@@ -31,7 +32,9 @@ var orecount = { #Dict to hold the count of tiles.
 	2: 0,
 	3: 0,
 	4: 0,
-	5: 0
+	5: 0,
+	6: 0,
+	7: 0
 }
 var idpos = {
 	#SUBJECT TO CHANGE
@@ -41,7 +44,8 @@ var idpos = {
 	2: [Vector2(2,0), Vector2(2,1), Vector2(2,2)],
 	3: Vector2(1,0),
 	4: [Vector2(3,0), Vector2(3,1), Vector2(3,2), Vector2(3,3)],
-	5: [Vector2(4, 0), Vector2(4, 1)]
+	5: [Vector2(4, 0), Vector2(4, 1)],
+	7: Vector2(5,0)
 }
 var backgroundtiles = [Vector2(0,0), Vector2(0,1), Vector2(0,2)] #Background tiles arr.
 
@@ -51,7 +55,8 @@ var tiletoparticlecolor = {
 	1: Color(0.184, 0.165, 0.122),
 	2: Color(0.596, 0.6, 0.616),
 	3: Color(0.82, 0.467, 0.18),
-	5: Color(0.024, 0.302, 0.643)
+	5: Color(0.024, 0.302, 0.643),
+	7: Color(0.706, 0.125, 0.067)
 }
 
 func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now also spawns drops for the player to pick up.
