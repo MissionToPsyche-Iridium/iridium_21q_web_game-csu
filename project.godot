@@ -28,6 +28,10 @@ Settings="*res://scripts/settings.gd"
 Itemdict="*res://Assets/items/base/itemdict.gd"
 CurrencyManager="*res://scripts/CurrencyManager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="New Game Project"
@@ -35,10 +39,6 @@ project/assembly_name="New Game Project"
 [editor_plugins]
 
 enabled=PackedStringArray()
-
-[display]
-
-window/stretch/mode="canvas_items"
 
 [input]
 

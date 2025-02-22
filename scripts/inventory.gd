@@ -28,7 +28,7 @@ func update_inventory_drone(pickup: Pickup):
 		emit_signal("on_inventory_drone_full")
 
 	# Imane's Tweaks: Define the monetary value of each valuable item by ID
-	var item_values = {2: 5, 3: 20, 4: 15, 5: 10}  # Example: Adjust these IDs and values as per your game's design
+	var item_values = {2: 1, 3: 2, 5: 5, 7: 10}  # Example: Adjust these IDs and values as per your game's design
 	# Imane's Tweaks: Check if the picked item should add currency and apply the value
 	if pickup.id in item_values:
 		CurrencyManager.add_money(item_values[pickup.id])

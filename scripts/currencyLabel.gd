@@ -9,4 +9,4 @@ func _ready() -> void:
 
 # Imane's Addition: Function to update the currency display.
 func _update_currency_display() -> void:
-	text = "Currency: " + str(CurrencyManager.get_balance())
+	text = "Scrap: " + str(CurrencyManager.get_balance())

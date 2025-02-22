@@ -1,6 +1,6 @@
 extends Node
 
-@onready var balance: int = 99  # Player's current balance
+@onready var balance: int = 0  # Player's current balance
 
 signal balance_changed()
 
