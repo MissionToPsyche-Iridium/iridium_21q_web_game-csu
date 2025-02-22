@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://dx3025r57bjvo"]
+
+[ext_resource type="Script" path="res://Menus/MenuScripts/options.gd" id="1_51yjo"]
+[ext_resource type="Texture2D" uid="uid://dkkc1j0kook64" path="res://Assets/Space/Space Layer 0.png" id="2_btpo0"]
+[ext_resource type="Script" path="res://Menus/SpaceLayer0.gd" id="3_no1sw"]
+[ext_resource type="Texture2D" uid="uid://d1gctecwryp1" path="res://Assets/Space/Space Layer 1.png" id="4_gvp5p"]
+[ext_resource type="Script" path="res://Menus/MenuScripts/SpaceLayer1.gd" id="5_v5bp8"]
+[ext_resource type="Texture2D" uid="uid://cjcmfrq0cwhw2" path="res://Assets/Space/Space Layer 2.png" id="6_k6q2a"]
+[ext_resource type="Script" path="res://Menus/MenuScripts/SpaceLayer2.gd" id="7_own0k"]
+[ext_resource type="Texture2D" uid="uid://b33lxj13ca5s0" path="res://Assets/Space/Space Layer 3.png" id="8_yfd6j"]
+[ext_resource type="Script" path="res://Menus/MenuScripts/SpaceLayer3.gd" id="9_xl1vq"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_51yjo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Layer0" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer0"]
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("2_btpo0")
+script = ExtResource("3_no1sw")
+
+[node name="Layer1" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1"]
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("4_gvp5p")
+script = ExtResource("5_v5bp8")
+
+[node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("6_k6q2a")
+script = ExtResource("7_own0k")
+
+[node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer3"]
+scale = Vector2(0.75, 0.5)
+texture = ExtResource("8_yfd6j")
+script = ExtResource("9_xl1vq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Language" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Language"
+
+[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+
+[node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

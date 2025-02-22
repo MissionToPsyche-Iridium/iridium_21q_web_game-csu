@@ -31,6 +31,10 @@ Itemdict="*res://Assets/items/base/itemdict.gd"
 
 enabled=PackedStringArray()
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 right={

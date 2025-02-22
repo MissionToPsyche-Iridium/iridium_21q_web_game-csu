@@ -1,40 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx3025r57bjvo"]
+[gd_scene load_steps=2 format=3 uid="uid://crrlekmkj6roi"]
 
-[ext_resource type="Script" path="res://scripts/options.gd" id="1_51yjo"]
+[ext_resource type="Script" path="res://scripts/options.gd" id="1_61o46"]
 
-[node name="Options" type="Control"]
+[node name="Paused Options" type="Control"]
 layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_61o46")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -36.0
-offset_right = -16.0
-offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_51yjo")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_left = 505.0
-offset_top = 262.0
-offset_right = 632.0
-offset_bottom = 433.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "CONTROLS"
+text = "Controls"
 
 [node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "VOLUME"
+text = "Volume"
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "BACK"
+text = "Back"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
