@@ -24,11 +24,11 @@ func get_item_of_rarity_passive(rarity: int) -> Item:
 func get_random_item_passive() -> Item:
 	var roll: int = randi_range(0,100)
 	var item: Item = passives[0] #If something goes very wrong with the code, lucky egg is used to stop errors.
-	if roll <= 71:
+	if roll <= 70:
 		item = get_item_of_rarity_passive(0)
-	elif roll <= 71+20:
+	elif roll <= 70+20:
 		item = get_item_of_rarity_passive(1)
-	elif roll <= 71+20+9:
+	elif roll <= 70+20+9:
 		item = get_item_of_rarity_passive(2)
 	elif roll == 100:
 		item = get_item_of_rarity_passive(3)
