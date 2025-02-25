@@ -1,14 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpi5a0um0pec2"]
+[gd_scene load_steps=3 format=3 uid="uid://bpi5a0um0pec2"]
 
 [ext_resource type="Script" path="res://Menus/MenuScripts/encyclopedia.gd" id="1_wqc73"]
-[ext_resource type="Texture2D" uid="uid://dkkc1j0kook64" path="res://Assets/Space/Space Layer 0.png" id="2_xdpm2"]
-[ext_resource type="Script" path="res://Menus/SpaceLayer0.gd" id="3_rvq73"]
-[ext_resource type="Texture2D" uid="uid://d1gctecwryp1" path="res://Assets/Space/Space Layer 1.png" id="4_fthqw"]
-[ext_resource type="Script" path="res://Menus/MenuScripts/SpaceLayer1.gd" id="5_gr87q"]
-[ext_resource type="Texture2D" uid="uid://cjcmfrq0cwhw2" path="res://Assets/Space/Space Layer 2.png" id="6_4uvqs"]
-[ext_resource type="Script" path="res://Menus/MenuScripts/SpaceLayer2.gd" id="7_h7phn"]
-[ext_resource type="Texture2D" uid="uid://b33lxj13ca5s0" path="res://Assets/Space/Space Layer 3.png" id="8_4oo6h"]
-[ext_resource type="Script" path="res://Menus/MenuScripts/SpaceLayer3.gd" id="9_w1nhv"]
+[ext_resource type="PackedScene" uid="uid://c3m1e1ln2thnf" path="res://Objects/shopoption.tscn" id="2_v0ene"]
 
 [node name="Encyclopedia" type="Control"]
 layout_mode = 3
@@ -16,36 +9,6 @@ anchors_preset = 0
 script = ExtResource("1_wqc73")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Layer0" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer0"]
-scale = Vector2(0.75, 0.5)
-texture = ExtResource("2_xdpm2")
-script = ExtResource("3_rvq73")
-
-[node name="Layer1" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1"]
-scale = Vector2(0.75, 0.5)
-texture = ExtResource("4_fthqw")
-script = ExtResource("5_gr87q")
-
-[node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
-scale = Vector2(0.75, 0.5)
-texture = ExtResource("6_4uvqs")
-script = ExtResource("7_h7phn")
-
-[node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer3"]
-scale = Vector2(0.75, 0.5)
-texture = ExtResource("8_4oo6h")
-script = ExtResource("9_w1nhv")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -58,36 +21,52 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Cobalt" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Copper" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Cobalt"
+text = "Copper"
 
 [node name="Gold" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Gold"
 
-[node name="Iron" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Cobalt" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Iron"
+text = "Cobalt"
 
-[node name="Nickel" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Cinnabar" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Nickel"
-
-[node name="Palladium" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Palladium"
-
-[node name="Platinum" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Platinum"
-
-[node name="Silicate" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Silicate"
+text = "Cinnabar"
 
 [node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back"
+
+[node name="row" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -408.0
+offset_top = -296.0
+offset_right = 368.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SubViewportContainer" parent="row" instance=ExtResource("2_v0ene")]
+layout_mode = 2
+
+[node name="SubViewportContainer2" parent="row" instance=ExtResource("2_v0ene")]
+layout_mode = 2
+
+[node name="SubViewportContainer3" parent="row" instance=ExtResource("2_v0ene")]
+layout_mode = 2
+
+[node name="BADOP" parent="row" instance=ExtResource("2_v0ene")]
+visible = false
+layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

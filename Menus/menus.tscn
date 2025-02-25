@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3p1d38e3y3gv"]
+
+[ext_resource type="PackedScene" uid="uid://0k4cgcux4vif" path="res://Menus/parallax_background.tscn" id="1_0eu2n"]
+[ext_resource type="Script" path="res://Menus/menus.gd" id="1_obkvu"]
+[ext_resource type="PackedScene" uid="uid://b7v1aycuir6hh" path="res://Menus/Title/title.tscn" id="2_7nkg0"]
+[ext_resource type="PackedScene" uid="uid://dx3025r57bjvo" path="res://Menus/Options/options.tscn" id="4_s0mnq"]
+[ext_resource type="PackedScene" uid="uid://bpi5a0um0pec2" path="res://Menus/Encyclopedia/encyclopedia.tscn" id="5_i0x71"]
+
+[node name="Menus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_obkvu")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_0eu2n")]
+
+[node name="Title" parent="." instance=ExtResource("2_7nkg0")]
+
+[node name="Options" parent="." instance=ExtResource("4_s0mnq")]
+
+[node name="Encyclopedia" parent="." instance=ExtResource("5_i0x71")]
