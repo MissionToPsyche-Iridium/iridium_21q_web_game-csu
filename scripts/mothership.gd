@@ -3,6 +3,7 @@ extends Node2D
 var droneinsidedepot: bool = false #True if the drone is inside the depot hitbox.
 var drone: CharacterBody2D = null
 @onready var spacecount: int = 0
+@onready var failure: AnimationPlayer = $depot/CPUParticles2D/AnimationPlayer
 
 
 func _physics_process(delta: float) -> void:
@@ -13,6 +14,7 @@ func _physics_process(delta: float) -> void:
 			Gamemaster.leave_pre()
 	if not CurrencyManager.get_balance() >= Gamemaster.diffdict[Gamemaster.day]['required'] and Input.is_action_just_pressed("Leave"):
 		#TODO: play a failure sound here.
+		failure.play("notmet")
 		#TODO: have text say "required not met! or something."
 		pass
 	pass
