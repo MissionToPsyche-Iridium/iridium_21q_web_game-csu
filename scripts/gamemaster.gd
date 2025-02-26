@@ -2,7 +2,7 @@ extends Node
 
 @onready var timer = Timer.new() #Games timer.
 
-@onready var timetillloss: int = 120 #How much time in sec the player has till they lose.
+@onready var timetillloss: int = 0 #How much time in sec the player has till they lose.
 @onready var day = 1 #Day we are on, from 1-20.
 
 #HUGE dict of scaling.
@@ -16,28 +16,44 @@ extends Node
 		"sizex": 15,
 		"sizey": 15,
 		"time": 120,
+		"required": 5,
 		"oredict": {
 				0: 5,
 				2: 4,
 				3: 2,
 				5: 0,
+				6: 0,
 				7: 0
 		},
-		"required": 5
 	},
 	2: { #Less time, bigger mine, more ores, higher required.
 		"sizex": 17,
 		"sizey": 17,
 		"time": 110,
+		"required": 7,
 		"oredict": {
 				0: 6,
 				2: 4,
 				3: 2,
 				5: 0,
+				6: 0,
 				7: 0
+				}
 		},
-		"required": 7	
-	}
+	3: {
+		"sizex": 20,
+		"sizey": 20,
+		"time": 105,
+		"required": 10,
+		"oredict": {
+				0: 10,
+				2: 8,
+				3: 5,
+				5: 3,
+				6: 1,
+				7: 0
+				}
+		}
 }
 
 
@@ -54,17 +70,22 @@ func _on_game_clock_timeout(): #when the timer ends, the player loses.
 	Inventory.reset()
 	Dronestats.reset()
 	CurrencyManager.reset()
-	#BRING UP GAME OVER GUI HERE.
+	#TODO: BRING UP GAME OVER GUI HERE.
+	#TODO: Make sure EVERYTHING is reset.
+	#TODO: play loss music?
 	print("GAME END")
 	
 func get_time(): #Returns the time remaining on the global clock.
 	return timer.time_left
 
 func wind_timer():
-	timer.start(timetillloss)
+	timer.start(diffdict[day]["time"])
+	timetillloss = diffdict[day]["time"]
+	#A lot of things require this to be set, setting this here.
 
 func leave_pre(): #Called when the player leaves the main scene. AKA leaves when pressing space on mothership.
 	#NOTE: this function will only be allowed to be called by mothership if the player meets the required scrap.
+	#NOTE: this means the player must wait for the tube to move enough ore to 
 	#Move all items inside drone to ship.
 	for item in Inventory.inventorydrone:
 		Inventory.inventoryship.append(item)
