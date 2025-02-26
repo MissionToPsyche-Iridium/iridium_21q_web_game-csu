@@ -19,9 +19,9 @@ var grid = [] #Mine grid.
 #6 TODO Still needs block, pickup done = Gold
 #7 = Cinnabar
 @export var orereq = { #How many ores this mine we will spawn. 0 counts as an ore here.
-	0: 5,
-	2: 5,
-	3: 5,
+	0: 0,
+	2: 0,
+	3: 0,
 	5: 0,
 	7: 0
 }

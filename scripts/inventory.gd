@@ -5,6 +5,8 @@ extends Node
 @onready var inventoryship = []
 @onready var dronemaxsize: int = 5 # Max number of items we can store in the drone.
 @onready var inventorydronefull = false # Flag to see if inventory is full.
+@onready var itemvalues = {2: 1, 3: 2, 5: 5, 7: 10}  # Example: Adjust these IDs and values as per your game's design
+
 
 signal on_inventory_change_drone() # When the drones inventory changes
 signal on_inventory_drone_full() # When the drones inventory is full
@@ -27,11 +29,6 @@ func update_inventory_drone(pickup: Pickup):
 		inventorydronefull = true
 		emit_signal("on_inventory_drone_full")
 
-	# Imane's Tweaks: Define the monetary value of each valuable item by ID
-	var item_values = {2: 1, 3: 2, 5: 5, 7: 10}  # Example: Adjust these IDs and values as per your game's design
-	# Imane's Tweaks: Check if the picked item should add currency and apply the value
-	if pickup.id in item_values:
-		CurrencyManager.add_money(item_values[pickup.id])
 
 # Called when one item is moved from the drone to the mothership.
 func from_drone_to_mothership():
@@ -41,3 +38,13 @@ func from_drone_to_mothership():
 		inventoryship.append(id)
 		emit_signal("on_inventory_change_drone")
 		print("INV SHIP:", inventoryship)
+		# Imane's Tweaks: Define the monetary value of each valuable item by ID
+		# Imane's Tweaks: Check if the picked item should add currency and apply the value
+		if id in itemvalues:
+			CurrencyManager.add_money(itemvalues[id])
+#Reset inv
+func reset():
+	inventorydrone = []
+	inventoryship = []
+	inventorydronefull = false
+	dronemaxsize = 5

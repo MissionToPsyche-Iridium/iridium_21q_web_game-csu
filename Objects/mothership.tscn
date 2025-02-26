@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tqoi2b0xbimp"]
+[gd_scene load_steps=10 format=3 uid="uid://tqoi2b0xbimp"]
 
 [ext_resource type="Script" path="res://scripts/mothership.gd" id="1_a2gvp"]
 [ext_resource type="Script" path="res://scripts/tube.gd" id="2_6fhiy"]
@@ -16,6 +16,9 @@ size = Vector2(66.5, 12.5)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mod6i"]
 radius = 9.1
 height = 18.2
+
+[sub_resource type="Gradient" id="Gradient_7vlly"]
+colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 1, 1, 1, 1)
 
 [node name="mothership" type="Node2D"]
 scale = Vector2(10, 10)
@@ -48,7 +51,23 @@ shape = SubResource("RectangleShape2D_1bbr8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="depot"]
 position = Vector2(50.1, 20.2)
+scale = Vector2(0.8, 0.8)
 shape = SubResource("CapsuleShape2D_mod6i")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="depot"]
+position = Vector2(50.1, 19.9)
+amount = 128
+randomness = 0.47
+emission_shape = 1
+emission_sphere_radius = 7.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+angle_max = 90.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color = Color(0.402996, 0.762766, 0.197313, 1)
+color_ramp = SubResource("Gradient_7vlly")
 
 [node name="Tube" type="Line2D" parent="."]
 z_index = -2

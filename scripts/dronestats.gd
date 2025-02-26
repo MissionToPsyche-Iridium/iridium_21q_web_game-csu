@@ -31,3 +31,15 @@ func get_list_of_stats() -> Dictionary:
 	}
 	return dict
 	
+func reset():
+	grabbercooldown = 60
+	grabberspeed = 0.04
+	grabberrange = 128
+	drillspeed = 1
+	drillstr = 0
+	dronespeed = 200
+	droneluck = 0
+	tubespeed = 2
+	rerollcost = 5
+	rerollinc = 2
+	pass

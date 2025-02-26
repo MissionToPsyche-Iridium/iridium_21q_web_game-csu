@@ -13,8 +13,9 @@ func _ready() -> void:
 	var mothership = mothershippacked.instantiate()
 	#Add as child to this node.
 	#Figure out dif scale function. For now hard set height and width.
-	mine.height = Gamemaster.minesizey
-	mine.width = Gamemaster.minesizex
+	mine.height = Gamemaster.diffdict[Gamemaster.day]['sizey']
+	mine.width = Gamemaster.diffdict[Gamemaster.day]['sizex']
+	mine.orereq = Gamemaster.diffdict[Gamemaster.day]['oredict']
 	#DO NOT EDIT VARS OF OBJECTS AFTER THEY HAVE BEEN ADDED AS CHILDREN.
 	add_child(mine)
 	#Move drone and mothership to pos.
@@ -27,8 +28,3 @@ func _ready() -> void:
 	add_child(drone)
 	add_child(mothership)
 	Gamemaster.wind_timer()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
