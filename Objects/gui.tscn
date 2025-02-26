@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3r10iky618p3"]
+[gd_scene load_steps=9 format=3 uid="uid://b3r10iky618p3"]
 
+[ext_resource type="Theme" uid="uid://crb7i1fcxvc5x" path="res://Assets/maintheme.tres" id="1_h8xto"]
 [ext_resource type="Script" path="res://scripts/gui/itemcount.gd" id="1_hk3dw"]
 [ext_resource type="Script" path="res://scripts/timerlabel.gd" id="2_arnaf"]
 [ext_resource type="Script" path="res://scripts/oreview.gd" id="3_fn24b"]
@@ -46,22 +47,23 @@ _data = {
 [node name="Item Count" type="Label" parent="."]
 offset_right = 49.0
 offset_bottom = 29.0
+theme = ExtResource("1_h8xto")
+text = "0/0"
 script = ExtResource("1_hk3dw")
 metadata/_edit_use_anchors_ = true
 
 [node name="Timer Label" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 517.0
-offset_right = 557.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -87.0
 offset_bottom = 23.0
-grow_horizontal = 2
+grow_horizontal = 0
+theme = ExtResource("1_h8xto")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Time: "
 horizontal_alignment = 1
 script = ExtResource("2_arnaf")
-metadata/_edit_use_anchors_ = true
 
 [node name="blink" type="AnimationPlayer" parent="Timer Label"]
 root_node = NodePath("../../Required Label")
@@ -91,5 +93,6 @@ offset_left = -43.0
 offset_right = 43.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme = ExtResource("1_h8xto")
 text = "Quota: 0/0"
 script = ExtResource("4_euc6r")
