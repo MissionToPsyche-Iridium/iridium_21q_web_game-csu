@@ -11,7 +11,7 @@ extends Resource
 @export var maxstacks: int #if stackable = true, what are the max stacks of the item? -1 = no limit.
 @export var sprite: Texture2D #Image of the item.
 
-func _init(p_name: String, p_tooltip: String, p_rarity: int, p_price: int, p_stackable: bool, p_maxstacks: int, p_sprite: Texture2D) -> void:
+func _init(p_name: String, p_tooltip: String, p_rarity: int, p_price: int, p_maxstacks: int, p_sprite: Texture2D) -> void:
 	name = p_name
 	tooltip = p_tooltip
 	rarity = p_rarity
