@@ -40,17 +40,17 @@ extends Node
 				7: 0
 				}
 		},
-	3: {
+	3: {#Less time, bigger mine, more ores, higher required.
 		"sizex": 20,
 		"sizey": 20,
 		"time": 105,
 		"required": 10,
 		"oredict": {
 				0: 10,
-				2: 8,
-				3: 5,
-				5: 3,
-				6: 1,
+				2: 6,
+				3: 8,
+				5: 0,
+				6: 0,
 				7: 0
 				}
 		}
@@ -84,9 +84,9 @@ func wind_timer():
 	#A lot of things require this to be set, setting this here.
 
 func leave_pre(): #Called when the player leaves the main scene. AKA leaves when pressing space on mothership.
-	#NOTE: this function will only be allowed to be called by mothership if the player meets the required scrap.
-	#NOTE: this means the player must wait for the tube to move enough ore to 
-	#Move all items inside drone to ship.
+	#NOTE: this function will only be allowed to be called by mothership if the player meets the required scrap value.
+	#NOTE: this means the player must wait for the tube to move enough ore to the mothership, could be bad design, needs playtesting.
+	#Move all items inside drone to ship. This is just so the player doesn't NEED to wait till the very end as long as the required scrap is met.
 	for item in Inventory.inventorydrone:
 		Inventory.inventoryship.append(item)
 		Inventory.inventorydrone.erase(item)
@@ -99,8 +99,4 @@ func leave_shop(): #Called when we leave the shop.
 	pass
 	
 func leave_title(): #Called when we leave the title screen.
-	pass
-
-func inc_day(): #incs the day by one, updating any values.
-	
 	pass

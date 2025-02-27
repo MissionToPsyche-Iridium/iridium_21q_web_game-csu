@@ -8,14 +8,16 @@ extends Resource
 @export var tooltip: String #Tooltip shown on hover.
 @export var rarity: int # 0 = Common, 1 = Uncommon, 2 = Rare, 3 = Legendary.
 @export var price: int #Price of item
+@export var maxstacks: int #if stackable = true, what are the max stacks of the item? -1 = no limit.
 @export var sprite: Texture2D #Image of the item.
 
-func _init(p_name: String, p_tooltip: String, p_rarity: int, p_price: int, p_sprite: Texture2D) -> void:
+func _init(p_name: String, p_tooltip: String, p_rarity: int, p_price: int, p_stackable: bool, p_maxstacks: int, p_sprite: Texture2D) -> void:
 	name = p_name
 	tooltip = p_tooltip
 	rarity = p_rarity
 	price = p_price
 	sprite = p_sprite
+	maxstacks = p_maxstacks
 
 func on_get(): #On buying.
 	print("ERROR: item has base the _on_get() function!")

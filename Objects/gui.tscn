@@ -84,6 +84,7 @@ script = ExtResource("3_fn24b")
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_h8xto")
 
 [node name="Required Label" type="Label" parent="."]
 anchors_preset = 5

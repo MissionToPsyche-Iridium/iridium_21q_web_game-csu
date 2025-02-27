@@ -13,8 +13,20 @@ func _ready() -> void:
 func get_item_of_rarity_passive(rarity: int) -> Item:
 	var arr = []
 	for item: Item in passives:
-		if item.rarity == rarity:
-			arr.append(item)
+		if item.rarity == rarity: #If the item is of the requested rarity.
+			#Check to make sure we don't already have the max stacks of said item.
+			if item.maxstacks != -1: #If the item HAS a limit.
+				var count: int = 0
+				for obtained: Item in Dronestats.boughtitems: #For each obtained item in the bought items, see if the same is the same as the item we are rolling into.
+					if obtained.name == item.name: #If they have the same name.
+						count =+ 1
+				#After we go through all of the bought items.
+				if count >= item.maxstacks: #If we have already bought more then the stackable ammt, DONT append it to our arr.
+					pass
+				else:
+					arr.append(item)
+			else:#If we dont care about the stacks, b/c there is no limit.
+				arr.append(item)
 	if arr.size() == 0:
 		return passives[0] #Using lucky egg if it cant find any items of that rarity.
 	var roll: int = randi_range(0, arr.size()-1)

@@ -74,8 +74,8 @@ rotation = -1.5708
 
 [node name="ShipBox" type="Sprite2D" parent="Sprites"]
 z_index = 1
-position = Vector2(9.53674e-07, 0)
-scale = Vector2(2.35938, 1.85105)
+position = Vector2(1, 0.499999)
+scale = Vector2(1.375, 1.21875)
 texture = ExtResource("1_oor70")
 
 [node name="DrillDown" type="Sprite2D" parent="Sprites"]
