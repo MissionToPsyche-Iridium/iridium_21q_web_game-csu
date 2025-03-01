@@ -181,7 +181,6 @@ func _ready() -> void:
 	count_ores()
 	array_to_tile_map()
 	punch_enter_hole()
-		
 	
 
 	
