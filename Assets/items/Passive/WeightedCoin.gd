@@ -8,6 +8,7 @@ func _init() -> void:
 	effecttext = ["[wave amp=50 freq=5 connected=1][color=#2d00e5]x2[/color][/wave] current luck"]
 	rarity = 3
 	sprite = null
+	maxstacks = 1
 	price = 15
 
 

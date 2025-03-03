@@ -8,6 +8,7 @@ func _init() -> void:
 	effecttext = ["[color=green]+2%[/color] Luck"]
 	rarity = 0
 	sprite = preload("res://Assets/items/images/LuckyEgg.png")
+	maxstacks = -1
 	price = 3
 
 

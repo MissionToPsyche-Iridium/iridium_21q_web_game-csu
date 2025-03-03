@@ -8,6 +8,7 @@ func _init() -> void:
 	effecttext = ["[color=green]+5%[/color] Drill Speed"]
 	rarity = 0
 	sprite = null
+	maxstacks = -1
 	price = 3
 
 

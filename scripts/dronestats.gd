@@ -2,7 +2,6 @@ extends Node
 
 #Almost every game object pulls from here.
 #Editing these values changes there values.
-
 @onready var grabbercooldown: int = 60 #Frames inbetween grabs 30 per sec, 60 = 2 sec. (def = 2) TODO
 @onready var grabberspeed: float = 0.04 #how fast the grabber moves when grabbing something. (def 0.04)
 @onready var grabberrange: int = 128 #How big the radius for the grbaber is (def 128px)
@@ -16,6 +15,10 @@ extends Node
 
 @onready var rerollcost: int = 5 #Base reroll cost, inc by 2 every reroll.
 @onready var rerollinc: int = 2 #Inc reroll cost.
+
+@onready var boughtitems: Array = [] #Array of every item the player owns.
+#Mostly need this to make sure we respect stack limits, opens design space, etc...
+
 
 func get_list_of_stats() -> Dictionary:
 	#Returns a dict list of names and values of all drone stats.
@@ -31,3 +34,15 @@ func get_list_of_stats() -> Dictionary:
 	}
 	return dict
 	
+func reset():
+	grabbercooldown = 60
+	grabberspeed = 0.04
+	grabberrange = 128
+	drillspeed = 1
+	drillstr = 0
+	dronespeed = 200
+	droneluck = 0
+	tubespeed = 2
+	rerollcost = 5
+	rerollinc = 2
+	pass

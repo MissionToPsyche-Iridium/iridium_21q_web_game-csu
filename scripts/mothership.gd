@@ -3,14 +3,20 @@ extends Node2D
 var droneinsidedepot: bool = false #True if the drone is inside the depot hitbox.
 var drone: CharacterBody2D = null
 @onready var spacecount: int = 0
+@onready var failure: AnimationPlayer = $depot/CPUParticles2D/AnimationPlayer
 
 
 func _physics_process(delta: float) -> void:
 	#Used to check for leaving.
-	if droneinsidedepot and Input.is_action_just_pressed("Leave"):
+	if droneinsidedepot and Input.is_action_just_pressed("Leave") and CurrencyManager.get_balance() >= Gamemaster.diffdict[Gamemaster.day]['required']:
 		spacecount += 1
 		if spacecount >= 5:
 			Gamemaster.leave_pre()
+	if not CurrencyManager.get_balance() >= Gamemaster.diffdict[Gamemaster.day]['required'] and Input.is_action_just_pressed("Leave"):
+		#TODO: play a failure sound here.
+		failure.play("notmet")
+		#TODO: have text say "required not met! or something."
+		pass
 	pass
 
 func _on_depot_body_entered(body: Node2D) -> void:
@@ -23,5 +29,3 @@ func _on_depot_body_exited(body: Node2D) -> void:
 		droneinsidedepot = false
 		drone = null
 		spacecount = 0
-func _on_timer_timeout():
-	Inventory.from_drone_to_mothership()

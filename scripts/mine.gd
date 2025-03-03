@@ -19,10 +19,11 @@ var grid = [] #Mine grid.
 #6 TODO Still needs block, pickup done = Gold
 #7 = Cinnabar
 @export var orereq = { #How many ores this mine we will spawn. 0 counts as an ore here.
-	0: 5,
-	2: 5,
-	3: 5,
+	0: 0,
+	2: 0,
+	3: 0,
 	5: 0,
+	6: 0,
 	7: 0
 }
 
@@ -45,6 +46,7 @@ var idpos = {
 	3: Vector2(1,0),
 	4: [Vector2(3,0), Vector2(3,1), Vector2(3,2), Vector2(3,3)],
 	5: [Vector2(4, 0), Vector2(4, 1)],
+	6: Vector2(6,0),
 	7: Vector2(5,0)
 }
 var backgroundtiles = [Vector2(0,0), Vector2(0,1), Vector2(0,2)] #Background tiles arr.
@@ -56,6 +58,7 @@ var tiletoparticlecolor = {
 	2: Color(0.596, 0.6, 0.616),
 	3: Color(0.82, 0.467, 0.18),
 	5: Color(0.024, 0.302, 0.643),
+	6: Color(0.337, 0.314, 0.102),
 	7: Color(0.706, 0.125, 0.067)
 }
 
@@ -178,7 +181,6 @@ func _ready() -> void:
 	count_ores()
 	array_to_tile_map()
 	punch_enter_hole()
-		
 	
 
 	

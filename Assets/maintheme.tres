@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://crb7i1fcxvc5x"]
+
+[ext_resource type="FontFile" uid="uid://r5ddcocmdleq" path="res://Assets/HomeVideo-Regular.ttf" id="1_e8180"]
+
+[resource]
+default_font = ExtResource("1_e8180")

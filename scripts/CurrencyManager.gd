@@ -17,3 +17,6 @@ func spend_money(amount: int) -> bool:
 
 func get_balance() -> int:
 	return balance
+
+func reset():
+	balance = 0
