@@ -45,4 +45,5 @@ func reset():
 	tubespeed = 2
 	rerollcost = 5
 	rerollinc = 2
+	boughtitems = []
 	pass
