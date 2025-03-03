@@ -7,7 +7,7 @@ func _ready() -> void:
 	passives.append(LuckyEgg.new())
 	passives.append(SharpeningWheel.new())
 	passives.append(WeightedCoin.new())
-	pass
+	passives.append(Turbo.new())
 
 #Returns an item of said rarity.
 func get_item_of_rarity_passive(rarity: int) -> Item:
