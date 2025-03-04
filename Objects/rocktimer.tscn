@@ -5,10 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bp6d0cciromuj" path="res://Assets/audio/sfx/crack_2.ogg" id="3_p1snq"]
 [ext_resource type="AudioStream" uid="uid://cakotcr4jsfgg" path="res://Assets/audio/sfx/crack_3.ogg" id="4_oobja"]
 
-[node name="rocktimer" type="Timer"]
-process_callback = 0
-one_shot = true
-autostart = true
+[node name="Node" type="Node"]
 script = ExtResource("1_464ec")
 
 [node name="crack 1" type="AudioStreamPlayer" parent="."]

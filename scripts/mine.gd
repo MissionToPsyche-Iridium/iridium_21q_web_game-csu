@@ -6,7 +6,9 @@ var grid = [] #Mine grid.
 @export var layersbeforegen = 3 # How many layers down before ore can appear -1.
 @onready var rockonmineparts = preload("res://Objects/rockonmineparts.tscn") # Ref for particles after removing block.
 @onready var pickup = preload("res://Objects/pickup.tscn")
+@onready var rocktimer = preload("res://Objects/rocktimer.tscn")
 @onready var background = $Back #Background tilesheet.
+@onready var cracks = $Cracks
 
 
 #IDS
@@ -61,8 +63,31 @@ var tiletoparticlecolor = {
 	6: Color(0.337, 0.314, 0.102),
 	7: Color(0.706, 0.125, 0.067)
 }
+var damagedtiles: Array = [] #Array list of every tile we have damaged.
+#Uses the new 
 
-func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now also spawns drops for the player to pick up.
+func damage_tile(coords: Vector2):
+	#var data: TileData = get_cell_tile_data(coords) #Get our tile data.
+	for bundle in get_children(): #Check to see if we have already hit that tile.
+		if bundle is RockTimer:
+			if bundle.cords == coords:
+				bundle.hitpoints -= Dronestats.drillspeed #Update THAT bundle.
+				return
+	#Otherwise, its a new bundle
+	#Important to note that the bundles auto remove when there HP is less then or = to 0.
+	#Make a new bundle at those cords.
+	var timersinstance: RockTimer = rocktimer.instantiate()
+	timersinstance.cords = coords
+	timersinstance.hitpoints = 60 #NOTE: temp, change this later.
+	add_child(timersinstance)
+	timersinstance.connect("erase_crack_tile", _erase_cell_and_drop)
+	timersinstance.connect("update_cracked_tile", _update_cracked)
+	
+		
+func _update_cracked(stage: int, cords: Vector2):
+	cracks.set_cell(cords, 0, Vector2(stage, 0), 0)
+
+func _erase_cell_and_drop(coords: Vector2): #the base erase_cell call but now also spawns drops for the player to pick up.
 	var data: TileData = get_cell_tile_data(coords)
 	var id: int = data.get_custom_data("id")
 	
@@ -76,6 +101,7 @@ func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now al
 	
 	#Remove the cell
 	erase_cell(coords)
+	cracks.erase_cell(coords)
 	
 	#Then spawn pickup(s) IF NEEDED. Need luck stat for player in global, not finished yet so set to 1 per block.
 	if id != 1: #If we did NOT mine rock...
@@ -102,7 +128,13 @@ func erase_cell_and_drop(coords: Vector2i): #the base erase_cell call but now al
 			pickupinstance.position = pos
 			pickupinstance.id = id
 			add_child(pickupinstance)
-	
+			
+	#Lazy way to remove the timer at that cords.
+	#This is kinda bad but it works.
+	for bundle in get_children():
+		if bundle is RockTimer:
+			if bundle.cords == coords:
+				bundle.queue_free()
 
 func init_grid_array(h, w):
 	#Function to setup the grid, takes in h and w to get the height and width of the 2d array.

@@ -6,7 +6,7 @@ extends Node
 @onready var grabberspeed: float = 0.04 #how fast the grabber moves when grabbing something. (def 0.04)
 @onready var grabberrange: int = 128 #How big the radius for the grbaber is (def 128px)
 
-@onready var drillspeed: float = 1 #time (sec) it takes for a drill to fully break a block.
+@onready var drillspeed: float = 1 #Damage delt to block every 30 sec (Ex if set to 1, 30 damage every 1 sec).
 @onready var drillstr: int = 0 #TODO, not used anywhere right now. How effected a drill is by harder blocks. (def 0)
 
 @onready var dronespeed: int = 200 #How fast the drone moves. (def 200)
