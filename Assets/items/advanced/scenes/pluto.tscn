@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4kkcxkj1e7qf"]
+
+[ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_pluto_rot.gd" id="1_763ik"]
+[ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_pluto.gd" id="2_jtmhg"]
+[ext_resource type="Texture2D" uid="uid://8xg2m8jy8xy0" path="res://Assets/items/images/extra/pluto.png" id="3_neb01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jrjrf"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_763ik")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+position = Vector2(84, -1.81899e-12)
+rotation = -1.5708
+scale = Vector2(1.72, 1.84)
+shape = SubResource("CircleShape2D_jrjrf")
+target_position = Vector2(0, 0)
+script = ExtResource("2_jtmhg")
+
+[node name="Sprite2D" type="Sprite2D" parent="ShapeCast2D"]
+rotation = -1.5708
+scale = Vector2(0.543478, 0.581395)
+texture = ExtResource("3_neb01")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShapeCast2D/Sprite2D"]
+position = Vector2(1.36289e-17, -1.81899e-12)
+amount = 32
+emission_shape = 1
+emission_sphere_radius = 20.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+angle_min = -30.0
+angle_max = 90.0
+scale_amount_min = 0.75
+scale_amount_max = 2.0

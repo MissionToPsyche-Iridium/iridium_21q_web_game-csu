@@ -1,19 +1,14 @@
 extends ShapeCast2D
 
-
-@onready var rotationspeed: int = 1 #Speed at which the sweeper rotates.
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 func _physics_process(delta: float) -> void:
-	rotation += rotationspeed * delta #Rotate around the player.
 	if is_colliding():
 		var collisions: int = get_collision_count()
 		for i in range(collisions):
-			print(collisions)
 			var tile = get_collider(i)
 			if tile is Mineable: #custom class from mineable object.
 				#Weird to get tile we wish to remove
