@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 			if !canmine:
 				return
 			particles.emitting = true
-			tile.damage_tile(tilepos) #Damage tile at pos.
+			tile.damage_tile(tilepos, Dronestats.drillspeed) #Damage tile at pos.
 		pass
 	pass
 	if !is_colliding():

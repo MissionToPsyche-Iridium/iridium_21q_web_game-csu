@@ -8,3 +8,4 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	rotation += rotationspeed * delta #Rotate around the player.
+	

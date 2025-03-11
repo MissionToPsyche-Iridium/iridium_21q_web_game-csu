@@ -1,5 +1,7 @@
 extends ShapeCast2D
 
+@onready var spin: AnimationPlayer = $Sprite2D/AnimationPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -7,6 +9,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_colliding():
+		
 		var collisions: int = get_collision_count()
 		for i in range(collisions):
 			var tile = get_collider(i)
@@ -21,7 +24,8 @@ func _physics_process(delta: float) -> void:
 					canmine = tilemapdata.get_custom_data("can_mine")
 				if !canmine:
 					return
-				tile.damage_tile(tilepos) #Damage tile at pos.
+				tile.damage_tile(tilepos, Dronestats.drillspeed/2) #Damage tile at pos.
+				spin.play("spin")
 			pass
 	pass
 	if !is_colliding():

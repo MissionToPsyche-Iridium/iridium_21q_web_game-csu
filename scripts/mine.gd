@@ -66,12 +66,12 @@ var tiletoparticlecolor = {
 var damagedtiles: Array = [] #Array list of every tile we have damaged.
 #Uses the new 
 
-func damage_tile(coords: Vector2):
+func damage_tile(coords: Vector2, dmg: float):
 	#var data: TileData = get_cell_tile_data(coords) #Get our tile data.
 	for bundle in get_children(): #Check to see if we have already hit that tile.
 		if bundle is RockTimer:
 			if bundle.cords == coords:
-				bundle.hitpoints -= Dronestats.drillspeed #Update THAT bundle.
+				bundle.hitpoints -= dmg #Update THAT bundle.
 				return
 	#Otherwise, its a new bundle
 	#Important to note that the bundles auto remove when there HP is less then or = to 0.
