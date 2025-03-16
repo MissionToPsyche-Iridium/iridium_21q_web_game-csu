@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://mlpp8ome5w1u"]
+[gd_scene load_steps=13 format=3 uid="uid://mlpp8ome5w1u"]
 
 [ext_resource type="PackedScene" uid="uid://c3m1e1ln2thnf" path="res://Objects/shopoption.tscn" id="1_prv28"]
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_qw43m"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://bh8fnunu5quqg" path="res://Assets/glassbutton.png" id="2_jxmp7"]
 [ext_resource type="Texture2D" uid="uid://h3ti1xlu41qa" path="res://Assets/glassbuttonhover.png" id="3_4xjdw"]
 [ext_resource type="Texture2D" uid="uid://blb3o10wcnh4u" path="res://Assets/glassbuttonclick.png" id="3_v6kpu"]
+[ext_resource type="Script" path="res://Scenes/stats_container.gd" id="7_mll3o"]
+[ext_resource type="Texture2D" uid="uid://bt5vhicg0656b" path="res://Scenes/parallax-space-backgound.png" id="8_klcxv"]
+[ext_resource type="Texture2D" uid="uid://cbktu1jvq50se" path="res://Scenes/parallax-space-big-planet.png" id="9_716jn"]
+[ext_resource type="Texture2D" uid="uid://bomdejx3fuilt" path="res://Scenes/parallax-space-far-planets.png" id="10_olqip"]
+[ext_resource type="Texture2D" uid="uid://283y6cu3nw08" path="res://Scenes/parallax-space-ring-planet.png" id="11_tm5u6"]
+[ext_resource type="Texture2D" uid="uid://makw2g6uaqf8" path="res://Scenes/parallax-space-stars.png" id="12_3o4n0"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -25,10 +31,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -408.0
-offset_top = -296.0
-offset_right = 368.0
-offset_bottom = -40.0
+offset_left = -496.0
+offset_top = -284.0
+offset_right = 475.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -70,5 +76,71 @@ offset_bottom = 62.0
 text = "Reroll"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StatsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = 44.0
+offset_right = 312.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_mll3o")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(8, 24)
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(568, 312)
+scale = Vector2(4.26471, 4.2)
+texture = ExtResource("8_klcxv")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(32, -40)
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1120, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(96, 208)
+scale = Vector2(2.04545, 2.06322)
+texture = ExtResource("9_716jn")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(496, 416)
+scale = Vector2(2.04545, 2.06322)
+texture = ExtResource("9_716jn")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(912, 520)
+scale = Vector2(2.04545, 2.06322)
+texture = ExtResource("9_716jn")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(232, 552)
+scale = Vector2(1.5, 0.95)
+texture = ExtResource("10_olqip")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(736, 392)
+scale = Vector2(1.5, 0.95)
+texture = ExtResource("10_olqip")
+
+[node name="Sprite2D6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(703.25, 488)
+scale = Vector2(1.59804, 1)
+texture = ExtResource("11_tm5u6")
+
+[node name="Sprite2D7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(424, 364)
+scale = Vector2(3.29412, 4.05)
+texture = ExtResource("12_3o4n0")
 
 [connection signal="pressed" from="row/HBoxContainer/Reroll" to="." method="_on_reroll_pressed"]
