@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://72rff7rhbx1w"]
+
+[ext_resource type="Theme" path="res://Assets/maintheme.tres" id="1_f4y55"]
+[ext_resource type="Script" path="res://Objects/gameover.gd" id="1_xfmd3"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 2
+
+[node name="Gameover" type="Control" parent="."]
+process_mode = 2
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xfmd3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Gameover"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.61
+anchor_right = 0.5
+anchor_bottom = 0.61
+offset_left = -293.0
+offset_top = -171.28
+offset_right = 293.0
+offset_bottom = 170.72
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game over Label" type="Label" parent="Gameover/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_f4y55")
+theme_override_font_sizes/font_size = 55
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Gameover/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_f4y55")
+theme_override_font_sizes/font_size = 44
+text = "MENU"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Gameover"]
+
+[connection signal="pressed" from="Gameover/VBoxContainer/Button" to="Gameover" method="_on_button_pressed"]

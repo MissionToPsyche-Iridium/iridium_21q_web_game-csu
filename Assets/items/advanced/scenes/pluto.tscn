@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4kkcxkj1e7qf"]
+[gd_scene load_steps=9 format=3 uid="uid://c2pu3vkqglfbm"]
 
 [ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_pluto_rot.gd" id="1_763ik"]
 [ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_pluto.gd" id="2_jtmhg"]
