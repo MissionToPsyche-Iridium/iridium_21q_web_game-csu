@@ -16,7 +16,11 @@ extends Node
 @onready var rerollcost: int = 5 #Base reroll cost, inc by 2 every reroll.
 @onready var rerollinc: int = 2 #Inc reroll cost.
 
-@onready var boughtitems: Array = [Pluto.new()]
+#VARS FOR ITEMS THAT NEED IT
+@onready var greasemax: int = 0 #Number of blocks for bonus mining power each stage.
+@onready var greasecount: int = 0#Number of blocks mined this stage for grease count.
+
+@onready var boughtitems: Array = []
 #Edit this if you need to test new active items, for example...
 #@onready var boughtitems: Array = [Sweeper.new()]
 #Mostly need this to make sure we respect stack limits, opens design space, etc...

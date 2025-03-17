@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdaqi4h0r0t63"]
+
+[ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_bombshooter.gd" id="1_ly1v3"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wvd4k"]
+
+[node name="Bombshooter" type="Node2D"]
+script = ExtResource("1_ly1v3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(22.25, 0)
+scale = Vector2(45.5, 4)
+texture = SubResource("PlaceholderTexture2D_wvd4k")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(45.47, 0)
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
