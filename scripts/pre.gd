@@ -25,6 +25,11 @@ func _ready() -> void:
 	#Could be fixed by editing the actual objects but this works.
 	mothership.global_position.y -= 300
 	mothership.global_position.x -= 100
+	
+	#Add every AdvancedItem objects packed scene to the child drone.
 	add_child(drone)
+	for item in Dronestats.boughtitems:
+		if item is AdvancedItem:
+			drone.add_child(item.packed.instantiate())
 	add_child(mothership)
 	Gamemaster.wind_timer()

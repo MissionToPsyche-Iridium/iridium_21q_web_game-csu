@@ -2,12 +2,20 @@ extends Node
 
 #A giant dict of every item. Both Passive AND active.
 @onready var passives: Array = []
+@onready var advanced: Array = []
 
 func _ready() -> void:
 	passives.append(LuckyEgg.new())
 	passives.append(SharpeningWheel.new())
 	passives.append(WeightedCoin.new())
 	passives.append(Turbo.new())
+  pass
+ 
+func get_item(index: int) -> Item:
+	var item: Item = passives[0] #If something goes very wrong with the code, lucky egg is used to stop errors.
+	if index > -1 or index < passives.size():
+		item = passives[index]
+	return item
 
 #Returns an item of said rarity.
 func get_item_of_rarity_passive(rarity: int) -> Item:

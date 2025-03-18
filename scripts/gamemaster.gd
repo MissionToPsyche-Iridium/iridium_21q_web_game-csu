@@ -5,6 +5,8 @@ extends Node
 @onready var timetillloss: int = 0 #How much time in sec the player has till they lose.
 @onready var day = 1 #Day we are on, from 1-20.
 
+@onready var gameoverscreen = preload("res://Objects/gameover.tscn")
+
 #HUGE dict of scaling.
 #Sizex = size of mine x
 #sizey = size of mine y
@@ -62,6 +64,7 @@ func _ready() -> void:
 	add_child(timer)
 	timer.connect("timeout", _on_game_clock_timeout)
 	timer.one_shot = true
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	pass
 
 func _on_game_clock_timeout(): #when the timer ends, the player loses.
@@ -70,11 +73,15 @@ func _on_game_clock_timeout(): #when the timer ends, the player loses.
 	Inventory.reset()
 	Dronestats.reset()
 	CurrencyManager.reset()
-	#TODO: BRING UP GAME OVER GUI HERE.
-	#TODO: Make sure EVERYTHING is reset.
-	#TODO: play loss music?
-	print("GAME END")
-	
+	var gos = gameoverscreen.instantiate()
+	add_child(gos)
+	get_tree().paused = true
+
+func reset_after_loss(): #When the player hits the "main menu" button, go back to the main menu.
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Menus/Title/title.tscn")
+	pass
+
 func get_time(): #Returns the time remaining on the global clock.
 	return timer.time_left
 
@@ -99,4 +106,6 @@ func leave_shop(): #Called when we leave the shop.
 	pass
 	
 func leave_title(): #Called when we leave the title screen.
+	#TODO: basic controls scene?
+	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass

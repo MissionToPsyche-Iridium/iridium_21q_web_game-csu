@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5c4d80q5qjwo"]
+[gd_scene load_steps=14 format=3 uid="uid://c5c4d80q5qjwo"]
 
 [ext_resource type="Script" path="res://scripts/DroneMove.gd" id="1_4y1nq"]
 [ext_resource type="Texture2D" uid="uid://dkccrjow40fex" path="res://Assets/shiptemp.png" id="1_oor70"]
-[ext_resource type="Script" path="res://scripts/timerholder.gd" id="3_6ojof"]
 [ext_resource type="Script" path="res://scripts/drill.gd" id="3_t21jt"]
 [ext_resource type="PackedScene" uid="uid://btnu5cojv3awv" path="res://Objects/drillparts.tscn" id="4_civlp"]
 [ext_resource type="Texture2D" uid="uid://cny3ad0l52wrl" path="res://Assets/drillstemp.png" id="5_bcav7"]
@@ -33,7 +32,6 @@ scale = Vector2(1, 0.978106)
 shape = SubResource("RectangleShape2D_imawl")
 
 [node name="RayCasts" type="Node2D" parent="."]
-script = ExtResource("3_6ojof")
 
 [node name="RayCastRight" type="RayCast2D" parent="RayCasts"]
 target_position = Vector2(25, 0)
