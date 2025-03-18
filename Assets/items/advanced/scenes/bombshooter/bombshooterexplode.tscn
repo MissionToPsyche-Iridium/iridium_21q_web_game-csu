@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5vhjr0561568"]
+
+[ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_bombshooterexplode.gd" id="1_rjprp"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g0s7m"]
+
+[sub_resource type="Curve" id="Curve_jbpq3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_s2pl8"]
+offsets = PackedFloat32Array(0.253333, 0.8)
+colors = PackedColorArray(1, 0.07, 0.07, 1, 0.878431, 0.784314, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cssm"]
+size = Vector2(11, 10.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b837m"]
+
+[node name="Bombshooterexplode" type="Node2D"]
+script = ExtResource("1_rjprp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1.19209e-07)
+scale = Vector2(10, 8)
+texture = SubResource("PlaceholderTexture2D_g0s7m")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 75
+lifetime = 0.8
+speed_scale = 1.5
+explosiveness = 1.0
+lifetime_randomness = 0.1
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 75.0
+angular_velocity_min = 14.55
+angular_velocity_max = 150.0
+tangential_accel_max = 52.52
+angle_min = -261.8
+angle_max = 360.0
+scale_amount_min = 2.0
+scale_amount_max = 7.0
+scale_amount_curve = SubResource("Curve_jbpq3")
+color_ramp = SubResource("Gradient_s2pl8")
+
+[node name="BombHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BombHitbox"]
+shape = SubResource("RectangleShape2D_4cssm")
+
+[node name="ExplodeRadius" type="ShapeCast2D" parent="."]
+scale = Vector2(6.39, 6.39)
+shape = SubResource("CircleShape2D_b837m")
+target_position = Vector2(0, 0)

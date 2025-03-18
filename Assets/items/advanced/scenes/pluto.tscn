@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2pu3vkqglfbm"]
+
+[ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_pluto_rot.gd" id="1_763ik"]
+[ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_pluto.gd" id="2_jtmhg"]
+[ext_resource type="Texture2D" uid="uid://8xg2m8jy8xy0" path="res://Assets/items/images/extra/pluto.png" id="3_neb01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jrjrf"]
+
+[sub_resource type="Gradient" id="Gradient_gq1p5"]
+colors = PackedColorArray(0.212305, 0.212305, 0.212305, 1, 0.674815, 0.674815, 0.674815, 1)
+
+[sub_resource type="Animation" id="Animation_jfpqx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_lhcq3"]
+resource_name = "spin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 4.71239]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7mqv8"]
+_data = {
+"RESET": SubResource("Animation_jfpqx"),
+"spin": SubResource("Animation_lhcq3")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_763ik")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+position = Vector2(84, -1.81899e-12)
+rotation = -1.5708
+scale = Vector2(0.96, 1.027)
+shape = SubResource("CircleShape2D_jrjrf")
+target_position = Vector2(0, 0)
+script = ExtResource("2_jtmhg")
+
+[node name="Sprite2D" type="Sprite2D" parent="ShapeCast2D"]
+rotation = -1.5708
+scale = Vector2(0.543478, 0.581395)
+texture = ExtResource("3_neb01")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShapeCast2D/Sprite2D"]
+position = Vector2(1.36289e-17, -1.81899e-12)
+amount = 32
+emission_shape = 1
+emission_sphere_radius = 20.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+angle_min = -30.0
+angle_max = 90.0
+scale_amount_min = 0.75
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_gq1p5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShapeCast2D/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7mqv8")
+}

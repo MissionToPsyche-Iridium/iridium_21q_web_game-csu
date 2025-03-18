@@ -48,6 +48,7 @@ func _on_buy_button_pressed() -> void:
 	if CurrencyManager.spend_money(iteminside.price):
 		checkout.play()
 		iteminside.on_get()
+		Dronestats.boughtitems.append(iteminside) #Make sure we keep track of what items the player owns.
 		display_item(Itemdict.get_random_item_passive())  # Reroll item after purchase.
 	else:
 		print("Not enough currency to buy this item")

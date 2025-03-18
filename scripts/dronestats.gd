@@ -6,7 +6,7 @@ extends Node
 @onready var grabberspeed: float = 0.04 #how fast the grabber moves when grabbing something. (def 0.04)
 @onready var grabberrange: int = 128 #How big the radius for the grbaber is (def 128px)
 
-@onready var drillspeed: float = 1 #time (sec) it takes for a drill to fully break a block.
+@onready var drillspeed: float = 1 #Damage delt to block every 30 sec (Ex if set to 1, 30 damage every 1 sec).
 @onready var drillstr: int = 0 #TODO, not used anywhere right now. How effected a drill is by harder blocks. (def 0)
 
 @onready var dronespeed: int = 200 #How fast the drone moves. (def 200)
@@ -16,7 +16,13 @@ extends Node
 @onready var rerollcost: int = 5 #Base reroll cost, inc by 2 every reroll.
 @onready var rerollinc: int = 2 #Inc reroll cost.
 
-@onready var boughtitems: Array = [] #Array of every item the player owns.
+#VARS FOR ITEMS THAT NEED IT
+@onready var greasemax: int = 0 #Number of blocks for bonus mining power each stage.
+@onready var greasecount: int = 0#Number of blocks mined this stage for grease count.
+
+@onready var boughtitems: Array = []
+#Edit this if you need to test new active items, for example...
+#@onready var boughtitems: Array = [Sweeper.new()]
 #Mostly need this to make sure we respect stack limits, opens design space, etc...
 
 
@@ -45,4 +51,5 @@ func reset():
 	tubespeed = 2
 	rerollcost = 5
 	rerollinc = 2
+	boughtitems = []
 	pass
