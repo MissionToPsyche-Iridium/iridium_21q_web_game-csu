@@ -27,6 +27,7 @@ Gamemaster="*res://scripts/gamemaster.gd"
 Settings="*res://scripts/settings.gd"
 Itemdict="*res://Assets/items/base/itemdict.gd"
 CurrencyManager="*res://scripts/CurrencyManager.gd"
+Encydict="*res://Menus/Encyclopedia/encydict.gd"
 
 [display]
 

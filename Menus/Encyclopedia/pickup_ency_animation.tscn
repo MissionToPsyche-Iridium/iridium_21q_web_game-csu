@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=3 uid="uid://ubqck20skc6j"]
+
+[ext_resource type="Texture2D" uid="uid://bbdg0ug12oy6a" path="res://Assets/pickups/cinnabarsheet.png" id="1_usdlc"]
+[ext_resource type="Script" path="res://Menus/Encyclopedia/pickup_ani.gd" id="2_j70ts"]
+[ext_resource type="Texture2D" uid="uid://1rw7t03m31hk" path="res://Assets/pickups/cobaltsheet.png" id="3_n3ect"]
+[ext_resource type="Texture2D" uid="uid://cna53htda627n" path="res://Assets/pickups/coppersheet.png" id="4_qxpu8"]
+[ext_resource type="Texture2D" uid="uid://bd3bksfloa330" path="res://Assets/pickups/goldsheet.png" id="5_ra5wr"]
+[ext_resource type="Texture2D" uid="uid://cvxdhpc7fak3m" path="res://Assets/pickups/ironsheet.png" id="6_7wp31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f6w2"]
+atlas = ExtResource("1_usdlc")
+region = Rect2(0, 0, 38, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fxkf"]
+atlas = ExtResource("3_n3ect")
+region = Rect2(0, 5, 38, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf12g"]
+atlas = ExtResource("4_qxpu8")
+region = Rect2(0, 5, 38, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eal76"]
+atlas = ExtResource("5_ra5wr")
+region = Rect2(0, 0, 38, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtvgo"]
+atlas = ExtResource("6_7wp31")
+region = Rect2(0, 5, 38, 34)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cinnabar" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_3f6w2")
+script = ExtResource("2_j70ts")
+
+[node name="Timer" type="Timer" parent="Cinnabar"]
+
+[node name="Cobalt" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_7fxkf")
+script = ExtResource("2_j70ts")
+
+[node name="Timer" type="Timer" parent="Cobalt"]
+
+[node name="Copper" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_yf12g")
+script = ExtResource("2_j70ts")
+
+[node name="Timer" type="Timer" parent="Copper"]
+
+[node name="Gold" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_eal76")
+script = ExtResource("2_j70ts")
+
+[node name="Timer" type="Timer" parent="Gold"]
+
+[node name="Iron" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_mtvgo")
+script = ExtResource("2_j70ts")
+
+[node name="Timer" type="Timer" parent="Iron"]

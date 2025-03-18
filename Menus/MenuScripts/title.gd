@@ -1,4 +1,5 @@
 extends Control
+@onready var cam = $Camera2D
 
 #Starts main game
 #Game path subject to change

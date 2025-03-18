@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpi5a0um0pec2"]
+[gd_scene load_steps=2 format=3 uid="uid://bpi5a0um0pec2"]
 
 [ext_resource type="Script" path="res://Menus/MenuScripts/encyclopedia.gd" id="1_wqc73"]
-[ext_resource type="PackedScene" uid="uid://c3m1e1ln2thnf" path="res://Objects/shopoption.tscn" id="2_v0ene"]
 
 [node name="Encyclopedia" type="Control"]
 layout_mode = 3
@@ -10,63 +9,53 @@ script = ExtResource("1_wqc73")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="Copper" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Copper"
-
-[node name="Gold" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Gold"
-
-[node name="Cobalt" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Cobalt"
-
-[node name="Cinnabar" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Cinnabar"
-
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = -559.0
+offset_top = -303.0
+offset_right = -514.0
+offset_bottom = -272.0
 text = "Back"
 
-[node name="row" type="HBoxContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -408.0
-offset_top = -296.0
-offset_right = 368.0
-offset_bottom = -40.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_top = -325.0
+offset_right = 577.0
+offset_bottom = 323.0
 
-[node name="SubViewportContainer" parent="row" instance=ExtResource("2_v0ene")]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
 
-[node name="SubViewportContainer2" parent="row" instance=ExtResource("2_v0ene")]
+[node name="Ores" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ores"
+
+[node name="OresList" type="GridContainer" parent="ScrollContainer/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+columns = 2
+
+[node name="DroneStats" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stats"
+
+[node name="StatsList" type="GridContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SubViewportContainer3" parent="row" instance=ExtResource("2_v0ene")]
+[node name="Upgrades" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+text = "Upgrades
+"
 
-[node name="BADOP" parent="row" instance=ExtResource("2_v0ene")]
-visible = false
+[node name="UpgradesList" type="GridContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+columns = 2
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[node name="EntryInfo" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -576.0
+offset_top = -258.0
+offset_right = -1.0
+offset_bottom = 325.0
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

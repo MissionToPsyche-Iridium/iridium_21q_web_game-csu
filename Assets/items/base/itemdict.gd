@@ -8,6 +8,12 @@ func _ready() -> void:
 	passives.append(SharpeningWheel.new())
 	passives.append(WeightedCoin.new())
 	pass
+	
+func get_item(index: int) -> Item:
+	var item: Item = passives[0] #If something goes very wrong with the code, lucky egg is used to stop errors.
+	if index > -1 or index < passives.size():
+		item = passives[index]
+	return item
 
 #Returns an item of said rarity.
 func get_item_of_rarity_passive(rarity: int) -> Item:
