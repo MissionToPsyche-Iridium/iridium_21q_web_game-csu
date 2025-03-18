@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://yrrs6fi4jgpt"]
-
-[ext_resource type="AudioStream" uid="uid://dq3m7vf2aijdr" path="res://Scenes/655821__josefpres__8-bit-game-loop-007-simple-mix-2-short-120-bpm.wav" id="1_5dw6k"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_5dw6k")
-autoplay = true
