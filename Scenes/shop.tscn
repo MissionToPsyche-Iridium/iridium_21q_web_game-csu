@@ -100,9 +100,10 @@ position = Vector2(8, 24)
 motion_scale = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(568, 312)
+position = Vector2(560, 304)
 scale = Vector2(4.26471, 4.2)
 texture = ExtResource("8_klcxv")
+metadata/_edit_lock_ = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(32, -40)
@@ -110,12 +111,12 @@ motion_scale = Vector2(0.7, 0.7)
 motion_mirroring = Vector2(1120, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(96, 208)
+position = Vector2(104, 168)
 scale = Vector2(2.04545, 2.06322)
 texture = ExtResource("9_716jn")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(496, 416)
+position = Vector2(464, 344)
 scale = Vector2(2.04545, 2.06322)
 texture = ExtResource("9_716jn")
 
@@ -125,22 +126,22 @@ scale = Vector2(2.04545, 2.06322)
 texture = ExtResource("9_716jn")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(232, 552)
-scale = Vector2(1.5, 0.95)
+position = Vector2(202, 574)
+scale = Vector2(1.27941, 1.225)
 texture = ExtResource("10_olqip")
 
 [node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(736, 392)
-scale = Vector2(1.5, 0.95)
+position = Vector2(702, 440)
+scale = Vector2(0.779412, 0.95)
 texture = ExtResource("10_olqip")
 
 [node name="Sprite2D6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(703.25, 488)
+position = Vector2(568, 552)
 scale = Vector2(1.59804, 1)
 texture = ExtResource("11_tm5u6")
 
 [node name="Sprite2D7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(424, 364)
+position = Vector2(432, 336)
 scale = Vector2(3.29412, 4.05)
 texture = ExtResource("12_3o4n0")
 
@@ -148,7 +149,7 @@ texture = ExtResource("12_3o4n0")
 
 [node name="655821Josefpres8-bit-game-loop-007-simple-mix-2-short-120-bpm" type="AudioStreamPlayer" parent="background_sound"]
 stream = ExtResource("13_87ryj")
-volume_db = -16.0
+volume_db = -12.0
 autoplay = true
 
 [connection signal="pressed" from="row/HBoxContainer/Reroll" to="." method="_on_reroll_pressed"]
