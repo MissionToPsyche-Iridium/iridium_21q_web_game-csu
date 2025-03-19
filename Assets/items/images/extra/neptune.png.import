@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfyj3ossufn2n"
-path="res://.godot/imported/pluto.png-f7e7b29ecc9ab2c91830a68d713a9df5.ctex"
+uid="uid://qdp2fckibv67"
+path="res://.godot/imported/neptune.png-fc65fe8efcda1accf070e80b150c9913.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/images/extra/pluto.png"
-dest_files=["res://.godot/imported/pluto.png-f7e7b29ecc9ab2c91830a68d713a9df5.ctex"]
+source_file="res://Assets/items/images/extra/neptune.png"
+dest_files=["res://.godot/imported/neptune.png-fc65fe8efcda1accf070e80b150c9913.ctex"]
 
 [params]
 

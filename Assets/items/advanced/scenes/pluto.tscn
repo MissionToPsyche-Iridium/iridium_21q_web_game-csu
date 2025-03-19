@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_pluto_rot.gd" id="1_763ik"]
 [ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_pluto.gd" id="2_jtmhg"]
-[ext_resource type="Texture2D" uid="uid://8xg2m8jy8xy0" path="res://Assets/items/images/extra/pluto.png" id="3_neb01"]
+[ext_resource type="Texture2D" uid="uid://cfyj3ossufn2n" path="res://Assets/items/images/extra/pluto.png" id="3_t21v8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jrjrf"]
 
@@ -58,15 +58,16 @@ target_position = Vector2(0, 0)
 script = ExtResource("2_jtmhg")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShapeCast2D"]
+position = Vector2(-3.8147e-06, -9.53674e-07)
 rotation = -1.5708
-scale = Vector2(0.543478, 0.581395)
-texture = ExtResource("3_neb01")
+scale = Vector2(0.299678, 0.320586)
+texture = ExtResource("3_t21v8")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ShapeCast2D/Sprite2D"]
 position = Vector2(1.36289e-17, -1.81899e-12)
 amount = 32
 emission_shape = 1
-emission_sphere_radius = 20.0
+emission_sphere_radius = 31.64
 gravity = Vector2(0, 0)
 orbit_velocity_min = -0.5
 orbit_velocity_max = 0.5

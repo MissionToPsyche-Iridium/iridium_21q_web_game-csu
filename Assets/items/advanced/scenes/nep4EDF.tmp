@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ug14myts2q1l"]
 
 [ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_neptune.gd" id="1_o3pro"]
-[ext_resource type="Texture2D" uid="uid://qdp2fckibv67" path="res://Assets/items/images/extra/neptune.png" id="2_hvog1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nfdtm"]
 
 [sub_resource type="Animation" id="Animation_jfpqx"]
 length = 0.001
@@ -44,10 +45,10 @@ _data = {
 script = ExtResource("1_o3pro")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(33, 0)
+position = Vector2(84.5, 1)
 rotation = -1.5708
-scale = Vector2(0.277186, 0.277186)
-texture = ExtResource("2_hvog1")
+scale = Vector2(16.058, 15.0582)
+texture = SubResource("PlaceholderTexture2D_nfdtm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {

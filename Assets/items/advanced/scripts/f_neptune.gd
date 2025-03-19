@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var rotationspeed: int = 0.5 #Speed at which the sweeper rotates.
+@onready var rotationspeed: float = 0.4 #Speed at which the planet rotates.
+#@onready var 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,5 +9,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	rotation += rotationspeed * delta #Rotate around the player.
-	print(rotation)
 	
+	if rotation >= 2*PI: #In radians so 2pi (roughly)
+		rotation = rotation - 2*PI
+		CurrencyManager.add_money(1)

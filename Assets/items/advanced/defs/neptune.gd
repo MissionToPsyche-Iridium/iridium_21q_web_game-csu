@@ -5,10 +5,10 @@ extends AdvancedItem
 
 func _init() -> void:
 	name = "Neptune"
-	tooltip = ""
-	effecttext = ["[color=green]Adds a planet that orbits around the drone[/color] for every complete rotation Neptune makes, [color=green] gain +1 scrap [/color]"]
+	tooltip = "Deep and blue."
+	effecttext = ["[color=green]Adds a planet that orbits around the drone[/color] for every complete rotation Neptune makes, gain [color=green] +1[/color] scrap"]
 	rarity = 2
-	sprite = null
+	sprite = preload("res://Assets/items/images/extra/neptune.png")
 	maxstacks = 1
 	price = 15
 	packed = preload("res://Assets/items/advanced/scenes/neptune.tscn")
