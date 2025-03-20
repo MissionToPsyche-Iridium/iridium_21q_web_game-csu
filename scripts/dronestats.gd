@@ -20,6 +20,8 @@ extends Node
 @onready var greasemax: int = 0 #Number of blocks for bonus mining power each stage.
 @onready var greasecount: int = 0#Number of blocks mined this stage for grease count.
 
+@onready var orbitalrotmod: float = 0 #Bonus rate at which orbitals will spin. EX, pluto spins at 1, so adding .1 to this means the orbital spins 10% faster.
+
 @onready var boughtitems: Array = []
 #Edit this if you need to test new active items, for example...
 #@onready var boughtitems: Array = [Sweeper.new()]
