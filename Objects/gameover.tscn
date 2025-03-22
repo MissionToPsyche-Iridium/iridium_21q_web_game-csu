@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://72rff7rhbx1w"]
 
-[ext_resource type="Theme" path="res://Assets/maintheme.tres" id="1_f4y55"]
-[ext_resource type="Script" path="res://Objects/gameover.gd" id="1_xfmd3"]
+[ext_resource type="Theme" uid="uid://crb7i1fcxvc5x" path="res://Assets/maintheme.tres" id="1_f4y55"]
+[ext_resource type="Script" path="res://scripts/gameover.gd" id="1_xfmd3"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 2
