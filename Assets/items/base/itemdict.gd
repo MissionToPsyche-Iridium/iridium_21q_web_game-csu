@@ -10,6 +10,7 @@ func _ready() -> void:
 	passives.append(WeightedCoin.new())
 	passives.append(Turbo.new())
 	passives.append(Cog.new())
+	passives.append(DumbBells.new())
 	
 	advanced.append(Neptune.new())
 	advanced.append(Pluto.new())
