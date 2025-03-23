@@ -7,7 +7,7 @@ func _init() -> void:
 	tooltip = ""
 	effecttext = ["All Orbitals spin [color=green]+10%[/color] faster."]
 	rarity = 1
-	sprite = null
+	sprite = preload("res://Assets/items/images/cog.png")
 	maxstacks = -1
 	price = 6
 

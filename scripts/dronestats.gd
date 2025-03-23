@@ -53,5 +53,8 @@ func reset():
 	tubespeed = 2
 	rerollcost = 5
 	rerollinc = 2
+	greasemax = 0
+	greasecount = 0
+	orbitalrotmod = 0
 	boughtitems = []
 	pass

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var rotationspeed: float = 0.5 #Speed at which the sweeper rotates.
+@onready var rotationspeed: float = 1 #Speed at which the sweeper rotates.
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -7,7 +7,7 @@ func _init() -> void:
 	tooltip = "Can sharpen anything, even drills."
 	effecttext = ["[color=green]+5%[/color] Drill Speed"]
 	rarity = 0
-	sprite = null
+	sprite = preload("res://Assets/items/images/SharpWheel.png")
 	maxstacks = -1
 	price = 3
 
