@@ -55,6 +55,34 @@ extends Node
 				6: 0,
 				7: 0
 				}
+		},
+	4: {#Less time, bigger mine, more ores, higher required.
+		"sizex": 25,
+		"sizey": 25,
+		"time": 100,
+		"required": 15,
+		"oredict": {
+				0: 12,
+				2: 8,
+				3: 8,
+				5: 2,
+				6: 0,
+				7: 0
+				}
+		},
+	5: {#Less time, bigger mine, more ores, higher required.
+		"sizex": 35,
+		"sizey": 35,
+		"time": 100,
+		"required": 18,
+		"oredict": {
+				0: 12,
+				2: 8,
+				3: 10,
+				5: 4,
+				6: 0,
+				7: 0
+				}
 		}
 }
 
@@ -79,7 +107,7 @@ func _on_game_clock_timeout(): #when the timer ends, the player loses.
 
 func reset_after_loss(): #When the player hits the "main menu" button, go back to the main menu.
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Menus/Title/title.tscn")
+	get_tree().change_scene_to_file("res://Menus/menus.tscn")
 	pass
 
 func get_time(): #Returns the time remaining on the global clock.
@@ -107,5 +135,6 @@ func leave_shop(): #Called when we leave the shop.
 	
 func leave_title(): #Called when we leave the title screen.
 	#TODO: basic controls scene?
+	day = 4
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
