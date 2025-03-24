@@ -5,7 +5,7 @@ extends Item
 func _init() -> void:
 	name = "Lucky Egg"
 	tooltip = "You feel lucky..."
-	effecttext = ["[color=green]+2%[/color] Luck"]
+	effecttext = ["[color=green]+6%[/color] Luck"]
 	rarity = 0
 	sprite = preload("res://Assets/items/images/LuckyEgg.png")
 	maxstacks = -1
@@ -13,4 +13,4 @@ func _init() -> void:
 
 
 func on_get():
-	Dronestats.droneluck += 0.02
+	Dronestats.droneluck += 0.06

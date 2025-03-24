@@ -13,4 +13,4 @@ func _init() -> void:
 
 
 func on_get():
-	Dronestats.drillspeed -= 0.05
+	Dronestats.drillspeed += 0.05
