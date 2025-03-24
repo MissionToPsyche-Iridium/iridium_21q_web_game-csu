@@ -12,9 +12,9 @@ func _ready() -> void:
 	passives.append(Cog.new())
 	passives.append(DumbBells.new())
 	
-	advanced.append(Neptune.new())
-	advanced.append(Pluto.new())
-	advanced.append(Mercury.new())
+	passives.append(Neptune.new())
+	passives.append(Pluto.new())
+	passives.append(Mercury.new())
 	
 func get_item(index: int) -> Item:
 	var item: Item = passives[0] #If something goes very wrong with the code, lucky egg is used to stop errors.
