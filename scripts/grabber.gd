@@ -16,6 +16,7 @@ var isretracting = false #flag if we are pulling in an ore.
 var inventoryfull = false #flag if the inventory is full.
 var t: float = 0.0
 var pickuphook: Pickup #holds the pickup we just picked up.
+var localcooldowncount = Dronestats.grabbercooldown #local version of cooldown, counts down.
 
 func _ready() -> void:
 	detectboxshape.shape.radius = Dronestats.grabberrange
@@ -28,6 +29,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#Skip all of this if our inventory is full
 	if inventoryfull:
+		return
+	if localcooldowncount > 0: #Repect localcooldown.
+		localcooldowncount -= 1
 		return
 	#Update our pickups
 	if pickupsinradius.size() != 0: #If no pickups we cannot have a closest pickup.
@@ -106,6 +110,7 @@ func _on_collect_radius_body_entered(body: Pickup) -> void:
 		pickuphook.queue_free()
 		isretracting = false
 		isgrabbing = false
+		localcooldowncount = Dronestats.grabbercooldown
 	pass # Replace with function body.
 func _on_inventory_drone_full():
 	inventoryfull = true

@@ -16,12 +16,13 @@ extends Node
 @onready var b_greasecount: int = 0
 @onready var b_orbitalrotmod: float = 0
 
-@onready var grabbercooldown: int = b_grabbercooldown #Frames inbetween grabs 30 per sec, 60 = 2 sec. (def = 2) TODO
+@onready var grabbercooldown: int = b_grabbercooldown #Frames inbetween grabs 30 per sec, 60 = 2 sec. (def = 2)
 @onready var grabberspeed: float = b_grabberspeed #how fast the grabber moves when grabbing something. (def 0.04)
 @onready var grabberrange: int = b_grabberrange #How big the radius for the grbaber is (def 128px)
 
 @onready var drillspeed: float = b_drillspeed #Damage delt to block every 30 sec (Ex if set to 1, 30 damage every 1 sec).
 @onready var drillstr: int = b_drillstr #TODO, not used anywhere right now. How effected a drill is by harder blocks. (def 0)
+#Example of this, if block has a 0.5 str mod, that means damage done to block per frame = drillspeed - |(blockstr - drillstr)|.
 
 @onready var dronespeed: int = b_dronespeed #How fast the drone moves. (def 200)
 @onready var droneluck: float = b_droneluck #How lucky the drone is for events. (def 0)
