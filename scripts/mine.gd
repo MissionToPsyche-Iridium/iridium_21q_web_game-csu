@@ -9,6 +9,7 @@ var grid = [] #Mine grid.
 @onready var rocktimer = preload("res://Objects/rocktimer.tscn")
 @onready var background = $Back #Background tilesheet.
 @onready var cracks = $Cracks
+@onready var genmine = true #Toggle for mine gen. 
 
 
 #IDS
@@ -103,7 +104,7 @@ func _erase_cell_and_drop(coords: Vector2): #the base erase_cell call but now al
 	erase_cell(coords)
 	cracks.erase_cell(coords)
 	
-	#Then spawn pickup(s) IF NEEDED. Need luck stat for player in global, not finished yet so set to 1 per block.
+	#Then spawn pickup(s) IF NEEDED. Respects luck stat.
 	if id != 1: #If we did NOT mine rock...
 		#Take luck into account.
 		var intluck: int = Dronestats.droneluck #How many we MUST spawn for over 100% luck.
@@ -206,13 +207,18 @@ func get_hole_pos(): #Gets the pos of the punched hole.
 	var middle = round(width / 2)
 	return self.to_global(map_to_local(Vector2i(middle,0)))
 func _ready() -> void:
-	#SETUP GRID.
-	init_grid_array(height,width)
-	rand_grid_array_with_seed()
-	log_grid_array()
-	count_ores()
-	array_to_tile_map()
-	punch_enter_hole()
+	#Override for Tutorial scene.
+	if get_tree().get_current_scene().get_name() == "Tutorial":
+		genmine = false
+	#pre is not effected.
+	if genmine == true:
+		#SETUP GRID.
+		init_grid_array(height,width)
+		rand_grid_array_with_seed()
+		log_grid_array()
+		count_ores()
+		array_to_tile_map()
+		punch_enter_hole()
 	
 
 	

@@ -82,10 +82,37 @@ extends Node
 				5: 4,
 				6: 0,
 				7: 0
+				},
+	6: {#Less time, bigger mine, more ores, higher required.
+		"sizex": 38,
+		"sizey": 38,
+		"time": 90,
+		"required": 20,
+		"oredict": {
+				0: 12,
+				2: 11,
+				3: 14,
+				5: 5,
+				6: 1,
+				7: 0
+				}
+		},
+	7: {#Less time, bigger mine, more ores, higher required.
+		"sizex": 40,
+		"sizey": 40,
+		"time": 90,
+		"required": 25,
+		"oredict": {
+				0: 12,
+				2: 14,
+				3: 7,
+				5: 5,
+				6: 2,
+				7: 0
 				}
 		}
+	}
 }
-
 
 func _ready() -> void:
 	seed(randi_range(0,25565))
@@ -95,12 +122,15 @@ func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	pass
 
-func _on_game_clock_timeout(): #when the timer ends, the player loses.
-	#Reset every variable to there orginal values.
+func reset_game():
 	day = 1
 	Inventory.reset()
 	Dronestats.reset()
 	CurrencyManager.reset()
+
+func _on_game_clock_timeout(): #when the timer ends, the player loses.
+	#Reset every variable to there orginal values.
+	reset_game()
 	var gos = gameoverscreen.instantiate()
 	add_child(gos)
 	get_tree().paused = true
@@ -134,7 +164,14 @@ func leave_shop(): #Called when we leave the shop.
 	pass
 	
 func leave_title(): #Called when we leave the title screen.
-	#TODO: basic controls scene?
-	day = 4
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
+
+func enter_tutorial(): #Called when the user wants to enter the tutorial.
+	get_tree().change_scene_to_file("res://Scenes/tutorial.tscn")
+	
+func leave_tutorial(): #Make sure the tutorial doesn't effect the rest of the game.
+	reset_game()
+	get_tree().change_scene_to_file("res://Menus/menus.tscn")
+	
+	
