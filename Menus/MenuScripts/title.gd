@@ -4,7 +4,7 @@ extends Control
 #Starts main game
 #Game path subject to change
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
+	Gamemaster.leave_title()
 
 
 #WILL BE CHANGED AT A LATER DATE#
