@@ -2,6 +2,11 @@ extends Node
 
 #Almost every game object pulls from here.
 #BASE DEFS, AKA what the drone starts as.
+
+#New stat...
+#1 add base var with b_VARNAME
+#2 add it to the stats enum
+#3 add it to the "edit stat" function.
 @onready var b_grabbercooldown: int = 60
 @onready var b_grabberspeed: float = 0.04
 @onready var b_grabberrange: int = 128
@@ -42,7 +47,8 @@ extends Node
 #@onready var boughtitems: Array = [Sweeper.new()]
 #Mostly need this to make sure we respect stack limits, opens design space, etc...
 
-
+enum Stats {GRABBER_COOLDOWN, GRABBER_SPEED, GRABBER_RANGE, DIRLL_SPEED, DRONE_LUCK, TUBE_SPEED, REROLL_COST, REROLL_INC, GREASE_MAX, ORBITAL_ROT_MOD}
+enum Op {BUFF, NERF}
 func get_list_of_stats() -> Dictionary:
 	#Returns a dict list of names and values of all drone stats.
 	var dict: Dictionary = {

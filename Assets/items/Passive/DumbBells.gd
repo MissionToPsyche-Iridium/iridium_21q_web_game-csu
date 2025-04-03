@@ -4,7 +4,7 @@ extends Item
 
 func _init() -> void:
 	name = "Dumbbells"
-	tooltip = "10LB"
+	tooltip = "10 Pounds, or 4.53592 Kilograms."
 	effecttext = [" [color=red]-8%[/color] Drone speed", "[color=green]+15%[/color] Drill Speed"]
 	rarity = 1
 	sprite = preload("res://Assets/items/images/DumbBells.png")

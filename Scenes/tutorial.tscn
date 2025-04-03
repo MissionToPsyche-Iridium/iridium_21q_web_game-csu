@@ -13,3 +13,56 @@ tile_map_data = PackedByteArray("AAD//wIAAAADAAAAAAAAAAIAAAADAAAAAAABAAIAAAADAAA
 
 [node name="mothership" parent="." instance=ExtResource("3_lh1jm")]
 position = Vector2(2031.62, -550)
+
+[node name="Text" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Text 1" type="Label" parent="Text"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = -98.0
+offset_right = 347.0
+offset_bottom = -23.0
+text = "Welcome to _______
+
+Use W,A,S,D or the arrow keys to move."
+
+[node name="Text 2" type="Label" parent="Text"]
+layout_mode = 0
+offset_left = 593.695
+offset_top = -49.115
+offset_right = 931.695
+offset_bottom = 51.885
+text = "To mine blocks, simply run into them.
+
+
+Your drills will automatically mine the block."
+
+[node name="Text 3" type="Label" parent="Text"]
+layout_mode = 0
+offset_left = 1156.0
+offset_top = -240.0
+offset_right = 1937.0
+offset_bottom = -139.0
+text = "
+Throughout the game, you will encounter several ores and minerals.
+
+If you mine these, an ore pickup will appear, and your grabber will grab the closest ore automatically.
+"
+
+[node name="Label" type="Label" parent="Text"]
+layout_mode = 0
+offset_left = 2028.0
+offset_top = -215.0
+offset_right = 2636.0
+offset_bottom = -140.0
+text = "You must deposit your pickups inside the mothership.
+
+You can only hold a limited ammount of pickups, so make sure to return often!
+
+Once you have met the quota, you can press the space bar five times to go to the shop.
+
+Here it will just end the tutorial."

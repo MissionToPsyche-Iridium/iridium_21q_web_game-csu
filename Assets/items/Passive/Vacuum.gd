@@ -7,7 +7,7 @@ func _init() -> void:
 	tooltip = "It sucks!"
 	effecttext = ["[color=green]+15%[/color] Tube Speed"]
 	rarity = 1
-	sprite = null
+	sprite = preload("res://Assets/items/images/Vacuum.png")
 	maxstacks = -1
 	price = 7
 

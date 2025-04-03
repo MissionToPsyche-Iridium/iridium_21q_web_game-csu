@@ -11,6 +11,7 @@ func _ready() -> void:
 	passives.append(Turbo.new())
 	passives.append(Cog.new())
 	passives.append(DumbBells.new())
+	passives.append(Vacuum.new())
 	
 	passives.append(Neptune.new())
 	passives.append(Pluto.new())

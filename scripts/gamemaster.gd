@@ -26,7 +26,7 @@ extends Node
 				5: 0,
 				6: 0,
 				7: 0
-		},
+				}
 	},
 	2: { #Less time, bigger mine, more ores, higher required.
 		"sizex": 17,
@@ -82,7 +82,8 @@ extends Node
 				5: 4,
 				6: 0,
 				7: 0
-				},
+				}
+		},
 	6: {#Less time, bigger mine, more ores, higher required.
 		"sizex": 38,
 		"sizey": 38,
@@ -110,10 +111,23 @@ extends Node
 				6: 2,
 				7: 0
 				}
-		}
-	}
+	},
+	8: {#Less time, bigger mine, more ores, higher required.
+		"sizex": 45,
+		"sizey": 45,
+		"time": 85,
+		"required": 30,
+		"oredict": {
+				0: 12,
+				2: 7,
+				3: 5,
+				5: 7,
+				6: 7,
+				7: 0
+				}
+	},
+	
 }
-
 func _ready() -> void:
 	seed(randi_range(0,25565))
 	add_child(timer)
@@ -157,7 +171,11 @@ func leave_pre(): #Called when the player leaves the main scene. AKA leaves when
 		Inventory.inventorydrone.erase(item)
 	timer.stop()
 	day += 1
-	get_tree().change_scene_to_file("res://Scenes/shop.tscn")
+	if day <= 20:
+		get_tree().change_scene_to_file("res://Scenes/shop.tscn")
+	else:
+		pass
+		#Switch to win scene.
 	
 func leave_shop(): #Called when we leave the shop.
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
