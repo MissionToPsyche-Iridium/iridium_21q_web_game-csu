@@ -21,6 +21,7 @@ extends Node
 @onready var b_greasecount: int = 0
 @onready var b_orbitalrotmod: float = 0
 
+
 @onready var grabbercooldown: int = b_grabbercooldown #Frames inbetween grabs 30 per sec, 60 = 2 sec. (def = 2)
 @onready var grabberspeed: float = b_grabberspeed #how fast the grabber moves when grabbing something. (def 0.04)
 @onready var grabberrange: int = b_grabberrange #How big the radius for the grbaber is (def 128px)
@@ -32,6 +33,7 @@ extends Node
 @onready var dronespeed: int = b_dronespeed #How fast the drone moves. (def 200)
 @onready var droneluck: float = b_droneluck #How lucky the drone is for events. (def 0)
 @onready var tubespeed: float = b_tubespeed #Time (sec) between objects leaving the drone and entering the mothership.
+
 
 @onready var rerollcost: int = b_rerollcost #Base reroll cost, inc by 2 every reroll.
 @onready var rerollinc: int = b_rerollinc #Inc reroll cost.

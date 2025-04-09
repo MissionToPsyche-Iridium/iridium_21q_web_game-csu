@@ -126,6 +126,34 @@ extends Node
 				7: 0
 				}
 	},
+	9: {#Less time, bigger mine, more ores, higher required.
+		"sizex": 50,
+		"sizey": 50,
+		"time": 75,
+		"required": 35,
+		"oredict": {
+				0: 12,
+				2: 15,
+				3: 10,
+				5: 9,
+				6: 9,
+				7: 2
+				}
+	},
+	10: {#Less time, bigger mine, more ores, higher required.
+		"sizex": 50,
+		"sizey": 50,
+		"time": 60,
+		"required": 40,
+		"oredict": {
+				0: 12,
+				2: 20,
+				3: 10,
+				5: 10,
+				6: 10,
+				7: 3
+				}
+	},
 	
 }
 func _ready() -> void:
