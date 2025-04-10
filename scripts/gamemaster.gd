@@ -42,7 +42,7 @@ extends Node
 				7: 0
 				}
 		},
-	3: {#Less time, bigger mine, more ores, higher required.
+	3: {
 		"sizex": 20,
 		"sizey": 20,
 		"time": 105,
@@ -56,7 +56,7 @@ extends Node
 				7: 0
 				}
 		},
-	4: {#Less time, bigger mine, more ores, higher required.
+	4: {
 		"sizex": 25,
 		"sizey": 25,
 		"time": 100,
@@ -70,7 +70,7 @@ extends Node
 				7: 0
 				}
 		},
-	5: {#Less time, bigger mine, more ores, higher required.
+	5: {
 		"sizex": 35,
 		"sizey": 35,
 		"time": 100,
@@ -84,7 +84,7 @@ extends Node
 				7: 0
 				}
 		},
-	6: {#Less time, bigger mine, more ores, higher required.
+	6: {
 		"sizex": 38,
 		"sizey": 38,
 		"time": 90,
@@ -98,7 +98,7 @@ extends Node
 				7: 0
 				}
 		},
-	7: {#Less time, bigger mine, more ores, higher required.
+	7: {
 		"sizex": 40,
 		"sizey": 40,
 		"time": 90,
@@ -112,7 +112,7 @@ extends Node
 				7: 0
 				}
 	},
-	8: {#Less time, bigger mine, more ores, higher required.
+	8: {
 		"sizex": 45,
 		"sizey": 45,
 		"time": 85,
@@ -126,7 +126,7 @@ extends Node
 				7: 0
 				}
 	},
-	9: {#Less time, bigger mine, more ores, higher required.
+	9: {
 		"sizex": 50,
 		"sizey": 50,
 		"time": 75,
@@ -140,7 +140,7 @@ extends Node
 				7: 2
 				}
 	},
-	10: {#Less time, bigger mine, more ores, higher required.
+	10: {
 		"sizex": 50,
 		"sizey": 50,
 		"time": 60,
@@ -152,6 +152,20 @@ extends Node
 				5: 10,
 				6: 10,
 				7: 3
+				}
+	},
+	11: {
+	"sizex": 55,
+	"sizey": 55,
+	"time": 60,
+	"required": 50,
+	"oredict": {
+			0: 6,
+			2: 20,
+			3: 13,
+			5: 12,
+			6: 15,
+			7: 5
 				}
 	},
 	
