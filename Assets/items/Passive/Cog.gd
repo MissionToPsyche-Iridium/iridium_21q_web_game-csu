@@ -5,7 +5,7 @@ extends Item
 func _init() -> void:
 	name = "Cog"
 	tooltip = "A bit rusty."
-	effecttext = ["All Orbitals spin [color=green]+10%[/color] faster."]
+	effecttext = ["All Orbitals spin [color=green]+10%[/color] faster"]
 	rarity = 1
 	sprite = preload("res://Assets/items/images/cog.png")
 	maxstacks = -1

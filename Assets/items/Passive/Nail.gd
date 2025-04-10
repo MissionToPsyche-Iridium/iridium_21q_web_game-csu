@@ -5,7 +5,7 @@ extends Item
 func _init() -> void:
 	name = "Nail"
 	tooltip = "Sharp!"
-	effecttext = ["[color=green]+15%[/color] Drill Speed"]
+	effecttext = ["[color=green]+20%[/color] Drill Speed"]
 	rarity = 1
 	sprite = preload("res://Assets/items/images/nail.png")
 	maxstacks = -1
@@ -13,4 +13,4 @@ func _init() -> void:
 
 
 func on_get():
-	Dronestats.drillspeed += 0.15
+	Dronestats.drillspeed += 0.20

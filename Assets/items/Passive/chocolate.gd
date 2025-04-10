@@ -9,7 +9,7 @@ func _init() -> void:
 	rarity = 2
 	sprite = preload("res://Assets/items/images/coco.png")
 	maxstacks = -1
-	price = 14
+	price = 9
 
 
 func on_get():

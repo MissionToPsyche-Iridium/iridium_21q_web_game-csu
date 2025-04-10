@@ -9,7 +9,7 @@ func _init() -> void:
 	rarity = 0
 	sprite = preload("res://Assets/items/images/Turbo.png")
 	maxstacks = -1
-	price = 4
+	price = 2
 	
 
 

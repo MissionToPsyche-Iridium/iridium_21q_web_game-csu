@@ -13,6 +13,8 @@ func _ready() -> void:
 	passives.append(DumbBells.new())
 	passives.append(Vacuum.new())
 	passives.append(Clipboard.new())
+	passives.append(Bowl.new())
+	passives.append(Diamond.new())
 	
 	passives.append(Neptune.new())
 	passives.append(Pluto.new())

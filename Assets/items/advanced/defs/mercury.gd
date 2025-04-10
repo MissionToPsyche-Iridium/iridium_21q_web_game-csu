@@ -6,7 +6,8 @@ extends AdvancedItem
 func _init() -> void:
 	name = "Mercury"
 	tooltip = "The smallest planet in our solar system."
-	effecttext = ["[color=green]Adds a planet that orbits around the drone[/color] that damages blocks that touch it. Scales with [50%] of your drill speed."]
+	#effecttext = ["[color=green]Adds a planet that orbits around the drone[/color] that damages blocks that touch it. Scales with [50%] of your drill speed."]
+	effecttext = ["[color=green] +1 Planet[/color] Mines blocks it touches"] #Temp short of text
 	rarity = 2
 	sprite = preload("res://Assets/items/images/extra/mercury.png")
 	maxstacks = 1

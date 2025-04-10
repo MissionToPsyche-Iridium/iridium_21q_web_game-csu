@@ -5,7 +5,7 @@ extends Item
 func _init() -> void:
 	name = "Sharpening Wheel"
 	tooltip = "Can sharpen anything, even drills."
-	effecttext = ["[color=green]+5%[/color] Drill Speed"]
+	effecttext = ["[color=green]+7%[/color] Drill Speed"]
 	rarity = 0
 	sprite = preload("res://Assets/items/images/SharpWheel.png")
 	maxstacks = -1
@@ -13,4 +13,4 @@ func _init() -> void:
 
 
 func on_get():
-	Dronestats.drillspeed += 0.05
+	Dronestats.drillspeed += 0.07

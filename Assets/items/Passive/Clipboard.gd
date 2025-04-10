@@ -5,7 +5,7 @@ extends Item
 func _init() -> void:
 	name = "Clipboard"
 	tooltip = ""
-	effecttext = [" [color=green]+1[/color] Pickup slot."]
+	effecttext = [" [color=green]+1[/color] Pickup slot"]
 	rarity = 0
 	sprite = preload("res://Assets/items/images/clipboard.png")
 	maxstacks = -1
