@@ -1,11 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://mlpp8ome5w1u"]
+[gd_scene load_steps=12 format=3 uid="uid://mlpp8ome5w1u"]
 
 [ext_resource type="PackedScene" uid="uid://c3m1e1ln2thnf" path="res://Objects/shopoption.tscn" id="1_prv28"]
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_qw43m"]
 [ext_resource type="Script" path="res://scripts/currencyLabel.gd" id="2_irkxs"]
-[ext_resource type="Texture2D" uid="uid://bh8fnunu5quqg" path="res://Assets/glassbutton.png" id="2_jxmp7"]
-[ext_resource type="Texture2D" uid="uid://h3ti1xlu41qa" path="res://Assets/glassbuttonhover.png" id="3_4xjdw"]
-[ext_resource type="Texture2D" uid="uid://blb3o10wcnh4u" path="res://Assets/glassbuttonclick.png" id="3_v6kpu"]
 [ext_resource type="Script" path="res://Scenes/stats_container.gd" id="7_mll3o"]
 [ext_resource type="Texture2D" uid="uid://djni7ri3m5gvl" path="res://Assets/Space background/parallax-space-backgound.png" id="8_klcxv"]
 [ext_resource type="Texture2D" uid="uid://bgvf4n5hwjgk6" path="res://Assets/Space background/parallax-space-big-planet.png" id="9_716jn"]
@@ -13,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cmbjdey7q7n4y" path="res://Assets/Space background/parallax-space-ring-planet.png" id="11_tm5u6"]
 [ext_resource type="Texture2D" uid="uid://b5661gfvdmmqn" path="res://Assets/Space background/parallax-space-stars.png" id="12_3o4n0"]
 [ext_resource type="AudioStream" uid="uid://dq3m7vf2aijdr" path="res://Scenes/655821__josefpres__8-bit-game-loop-007-simple-mix-2-short-120-bpm.wav" id="13_87ryj"]
+[ext_resource type="Theme" uid="uid://dlnrcj7wr67ku" path="res://Scenes/Default21.tres" id="14_f4ntt"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -32,21 +30,23 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -496.0
-offset_top = -284.0
-offset_right = 475.0
-offset_bottom = -28.0
+offset_left = -488.0
+offset_top = -276.0
+offset_right = 483.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="CurrencyLabel" type="Label" parent="row"]
 layout_mode = 2
+theme = ExtResource("14_f4ntt")
 text = "Currency : 00
 "
 script = ExtResource("2_irkxs")
 
 [node name="SubViewportContainer" parent="row" instance=ExtResource("1_prv28")]
 layout_mode = 2
+theme = ExtResource("14_f4ntt")
 
 [node name="SubViewportContainer2" parent="row" instance=ExtResource("1_prv28")]
 layout_mode = 2
@@ -57,26 +57,6 @@ layout_mode = 2
 [node name="BADOP" parent="row" instance=ExtResource("1_prv28")]
 visible = false
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="row"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-alignment = 1
-
-[node name="Reroll" type="TextureButton" parent="row/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("2_jxmp7")
-texture_pressed = ExtResource("3_v6kpu")
-texture_hover = ExtResource("3_4xjdw")
-
-[node name="Label" type="Label" parent="row/HBoxContainer/Reroll"]
-layout_mode = 0
-offset_right = 86.0
-offset_bottom = 62.0
-text = "Reroll"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="StatsContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -91,6 +71,7 @@ offset_right = 312.0
 offset_bottom = 122.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("14_f4ntt")
 script = ExtResource("7_mll3o")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -152,4 +133,25 @@ stream = ExtResource("13_87ryj")
 volume_db = -12.0
 autoplay = true
 
-[connection signal="pressed" from="row/HBoxContainer/Reroll" to="." method="_on_reroll_pressed"]
+[node name="ReturnButton" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+offset_left = -544.0
+offset_top = -316.0
+offset_right = -408.0
+offset_bottom = -268.0
+theme = ExtResource("14_f4ntt")
+text = "<  Back"
+vertical_icon_alignment = 0
+
+[node name="RerollButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 397.0
+offset_top = -180.0
+offset_right = 528.0
+offset_bottom = -137.0
+theme = ExtResource("14_f4ntt")
+text = "Roll again "
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="RerollButton" to="." method="_on_reroll_button_pressed"]

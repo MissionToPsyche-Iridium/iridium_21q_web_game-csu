@@ -5,8 +5,12 @@ extends Control
 @onready var parallax_layer = $ParallaxBackground/ParallaxLayer  
 @onready var parallax_background = $ParallaxBackground  
 @onready var background_sound = $background_sound
+@onready var RerollButton =$RerollButton
+
+var reroll_cost: int = 5  # Initial reroll cost
 
 func _ready() -> void:
+	reroll_cost = Dronestats.rerollcost
 	background_sound.play()  
 	for display in row.get_children():
 		if display.name != "BADOP" and display is SubViewportContainer:  
@@ -17,11 +21,18 @@ func _ready() -> void:
 func _process(delta):
 	parallax_background.scroll_offset.x -= 50 * delta
 
+func _on_reroll_button_pressed() -> void:
+	print("Reroll button pressed!")  # For debugging
 
-func _on_reroll_pressed() -> void:
-	#Ask all displays to reroll there item.
-	#TODO add active system and make it reroll.
-	#TODO make reroll respect credits.
+	if !CurrencyManager.spend_money(reroll_cost):
+		print("Not enough currency to reroll.")
+		return
+
 	for display in displays:
 		display.display.display_item(Itemdict.get_random_item_passive())
 		display.on_reroll()
+
+	reroll_cost += Dronestats.rerollinc
+	
+func _on_return_button_pressed() -> void:
+	Gamemaster.leave_shop()
