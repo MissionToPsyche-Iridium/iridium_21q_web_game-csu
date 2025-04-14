@@ -34,14 +34,14 @@ offset_right = 357.0
 offset_bottom = -13.0
 text = "New"
 
-[node name="Load" type="Button" parent="MarginContainer/Control"]
+[node name="Quit" type="Button" parent="MarginContainer/Control"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-offset_left = -190.0
+offset_left = -191.0
 offset_top = -57.0
-offset_right = 86.0
-offset_bottom = -14.0
-text = "Load"
+offset_right = 60.0
+offset_bottom = -17.0
+text = "Quit"
 
 [node name="Encyclopedia" type="Button" parent="MarginContainer/Control"]
 self_modulate = Color(1, 1, 1, 0)
@@ -61,24 +61,15 @@ offset_right = -200.0
 offset_bottom = -14.0
 text = "Settings"
 
-[node name="Quit" type="Button" parent="MarginContainer/Control"]
-layout_mode = 2
-offset_left = -558.0
-offset_top = -309.0
-offset_right = -516.0
-offset_bottom = -278.0
-text = "Quit"
-
 [connection signal="mouse_entered" from="MarginContainer/Control/New" to="." method="_on_new_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/Control/New" to="." method="_on_new_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/Control/New" to="." method="_on_start_pressed"]
-[connection signal="mouse_entered" from="MarginContainer/Control/Load" to="." method="_on_load_mouse_entered"]
-[connection signal="mouse_exited" from="MarginContainer/Control/Load" to="." method="_on_load_mouse_exited"]
-[connection signal="pressed" from="MarginContainer/Control/Load" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/Control/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/Control/Quit" to="." method="_on_quit_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/Control/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="MarginContainer/Control/Encyclopedia" to="." method="_on_encyclopedia_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/Control/Encyclopedia" to="." method="_on_encyclopedia_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/Control/Encyclopedia" to="." method="_on_encyclopedia_pressed"]
 [connection signal="mouse_entered" from="MarginContainer/Control/Settings" to="." method="_on_settings_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/Control/Settings" to="." method="_on_settings_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/Control/Settings" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/Control/Quit" to="." method="_on_quit_pressed"]

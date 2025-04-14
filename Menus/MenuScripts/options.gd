@@ -5,6 +5,7 @@ extends Control
 #	Volume
 #	Controls
 
+
 #Returns to title screen
 func _on_back_pressed() -> void:
 	get_node("../ParallaxBackground").visible = true

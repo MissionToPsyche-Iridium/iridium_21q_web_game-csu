@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx3025r57bjvo"]
+[gd_scene load_steps=5 format=3 uid="uid://dx3025r57bjvo"]
 
 [ext_resource type="Script" path="res://Menus/MenuScripts/options.gd" id="1_51yjo"]
+[ext_resource type="Script" path="res://Menus/Options/volume_slider.gd" id="2_n1jod"]
+[ext_resource type="AudioStream" uid="uid://cxj1julrrce0d" path="res://Assets/audio/music/Three Red Hearts - Pixel War 1.ogg" id="3_u1iw5"]
+[ext_resource type="AudioStream" uid="uid://bablvcr3puhw4" path="res://Assets/audio/sfx/ping.ogg" id="4_k6lhy"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -9,31 +12,73 @@ script = ExtResource("1_51yjo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Options" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -573.0
+offset_top = -327.0
+offset_right = 578.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Content" type="VBoxContainer" parent="Options"]
 layout_mode = 2
 
-[node name="Language" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Volume" type="Label" parent="Options/Content"]
 layout_mode = 2
-text = "Language"
+text = "Volume
+"
+horizontal_alignment = 1
 
-[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Volume_Settings" type="VBoxContainer" parent="Options/Content"]
 layout_mode = 2
-text = "Controls"
 
-[node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Master_Label" type="Label" parent="Options/Content/Volume_Settings"]
 layout_mode = 2
-text = "Volume"
+text = "Master"
 
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Master" type="HSlider" parent="Options/Content/Volume_Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_n1jod")
+
+[node name="Music_Label" type="Label" parent="Options/Content/Volume_Settings"]
+layout_mode = 2
+text = "Music"
+
+[node name="Music" type="HSlider" parent="Options/Content/Volume_Settings"]
+visible = false
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_n1jod")
+
+[node name="SFX_Label" type="Label" parent="Options/Content/Volume_Settings"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SFX" type="HSlider" parent="Options/Content"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_n1jod")
+
+[node name="Back" type="Button" parent="Options/Content"]
 layout_mode = 2
 text = "Back"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[node name="Master" type="AudioStreamPlayer" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u1iw5")
+bus = &"Music"
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_k6lhy")
+bus = &"SFX"
+
+[connection signal="pressed" from="Options/Content/Back" to="." method="_on_back_pressed"]

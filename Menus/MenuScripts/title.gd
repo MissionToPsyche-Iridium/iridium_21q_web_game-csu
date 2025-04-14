@@ -6,11 +6,6 @@ extends Control
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 
-
-#WILL BE CHANGED AT A LATER DATE#
-func _on_continue_pressed() -> void:
-	pass # Replace with function body.
-
 #Opens encyclopedia screen
 func _on_encyclopedia_pressed() -> void:
 	get_node("../Encyclopedia").visible = true
@@ -38,10 +33,10 @@ func _on_new_mouse_exited() -> void:
 	#$"Shuttle/Ship/Hover New".z_index = -1
 	
 #Hovering over LOAD
-func _on_load_mouse_entered() -> void:
+func _on_quit_mouse_entered() -> void:
 	get_node("../ParallaxBackground/Shuttle/Ship/Hover Load").z_index = 1
 	#$"ParallaxBackground/Shuttle/Ship/Hover Load".z_index = 1
-func _on_load_mouse_exited() -> void:
+func _on_quit_mouse_exited() -> void:
 	get_node("../ParallaxBackground/Shuttle/Ship/Hover Load").z_index = -1
 	#$"ParallaxBackground/Shuttle/Ship/Hover Load".z_index = -1
 
