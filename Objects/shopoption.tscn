@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3m1e1ln2thnf"]
+[gd_scene load_steps=16 format=3 uid="uid://c3m1e1ln2thnf"]
 
 [ext_resource type="Texture2D" uid="uid://ndoa5fcvxsxh" path="res://Assets/items/images/noimage.png" id="1_81f1r"]
 [ext_resource type="Script" path="res://scripts/shopoption.gd" id="1_bfjsg"]
 [ext_resource type="Shader" path="res://Assets/shaders/fake3d.gdshader" id="1_pxg8v"]
 [ext_resource type="Script" path="res://scripts/float.gd" id="2_mnk5j"]
+[ext_resource type="Theme" path="res://Assets/maintheme.tres" id="4_xyawy"]
 [ext_resource type="Texture2D" uid="uid://bdtd80w4dv4s1" path="res://Assets/glass2.png" id="5_ulgxc"]
 [ext_resource type="AudioStream" uid="uid://bablvcr3puhw4" path="res://Assets/audio/sfx/ping.ogg" id="6_gxjwy"]
+[ext_resource type="Theme" uid="uid://dlnrcj7wr67ku" path="res://Scenes/Default21.tres" id="6_mvsrg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3w4mi"]
 shader = ExtResource("1_pxg8v")
@@ -228,10 +230,12 @@ layout_mode = 2
 texture_filter = 1
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+theme = ExtResource("4_xyawy")
 
 [node name="Name" type="Label" parent="SubViewport/Shop Option/CenterContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
+theme = ExtResource("4_xyawy")
 text = "[ERROR]"
 horizontal_alignment = 1
 
@@ -248,6 +252,7 @@ layout_mode = 2
 [node name="Buy Button" type="Button" parent="SubViewport/Shop Option/CenterContainer/VBoxContainer"]
 z_index = 5
 layout_mode = 2
+theme = ExtResource("6_mvsrg")
 text = "Buy"
 
 [node name="Price" type="Label" parent="SubViewport/Shop Option/CenterContainer/VBoxContainer"]
