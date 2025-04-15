@@ -1,15 +1,18 @@
 extends Control
 #Encyclopedia Menu#
-#Hope to include information on all of the potential metals and minerals that can be found in the asteroid
-#Can aslo include more info on the PSYCHE mission itself as well as the spacecraft
+
+@onready var parallax_layer = $ParallaxBackground/ParallaxLayer  
+@onready var parallax_background = $ParallaxBackground  
 
 #Entry Lists#
 @onready var upgradeslist = $ScrollContainer/VBoxContainer/UpgradesList
 @onready var oresList = $ScrollContainer/VBoxContainer/OresList
+@onready var statsList = $ScrollContainer/VBoxContainer/StatsList
 
 #Required Scenes#
 @onready var oreSprite = preload("res://Menus/Encyclopedia/pickup_ency_animation.tscn")
 @onready var shopOption = preload("res://Objects/shopoption.tscn")
+@onready var effectText = preload("res://Objects/effectentry.tscn")
 @onready var instancedScene
 @onready var instancedOre
 
@@ -20,6 +23,7 @@ extends Control
 @onready var entryInfo = $EntryInfo
 
 func _ready():
+	parallax_layer.motion_mirroring = Vector2(816, 0)  # Image width now 816px
 	#Fills oreList#
 	for id in pickArr:
 		#Instantiates requires scenes
@@ -88,33 +92,58 @@ func _ready():
 			_:
 				pass
 	#Fills StatsList#
-	#for stat in ... 
+	for key in Encydict.statInfo:
+		#Instantiates required scene
+		instancedScene = shopOption.instantiate()
+		
+		#Adds scene to UpgradesList
+		statsList.add_child(instancedScene)
+		
+		#Removes unnecessary nodes from shopOption
+		instancedScene.find_child("Buy Button").free()
+		instancedScene.find_child("Price").free()
+		instancedScene.find_child("Effect Text List").free()
+		instancedScene.find_child("Sprite").free()
+		
+		instancedScene.find_child("Name").text = key
+		instancedScene.find_child("Name").name = "Stat"
+		
+		#Connects signals
+		instancedScene.mouse_entered.connect(addInfo.bind(instancedScene.find_child("Stat").name,instancedScene.find_child("Stat").text))
+		instancedScene.mouse_exited.connect(removeInfo)
 	
 	#Fills UpgradesList#
 	for item in Itemdict.passives:
 		#Instantiates required scene
-		var instancedScene = shopOption.instantiate()
+		instancedScene = shopOption.instantiate()
 		
 		#Adds scene to UpgradesList
 		upgradeslist.add_child(instancedScene)
 		
 		#Removes unneccessary nodes
 		instancedScene.find_child("Shop Option").display_item(item)
-		instancedScene.find_child("Buy Button").queue_free()
-		instancedScene.find_child("Price").queue_free()
+		instancedScene.find_child("Buy Button").free()
+		instancedScene.find_child("Price").free()
+		instancedScene.find_child("Effect Text List").free()
 		
 		#Labels scene as upgrade
 		instancedScene.find_child("Name").name = "Upgrade"
 		
+		#Connects signals
 		instancedScene.mouse_entered.connect(addInfo.bind(instancedScene.find_child("Upgrade").name,instancedScene.find_child("Upgrade").text))
 		instancedScene.mouse_exited.connect(removeInfo)
 		
-
+		#Adds item to encydict
+		Encydict.itemInfo[item.name] = str("Name:\n", item.name, "\n\nTooltip:\n", item.tooltip, "\n\nRarity:\n", item.rarity, "\n\nEffect:\n")
+		Encydict.itemEffects[item.name] = item.effecttext
+		
 #Handles popup windows#
 #Creates window on cursor entered
 func addInfo(type,text) -> void:
 	print("Entry Entered")
 	var info = Label.new()
+	info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var richInfo = effectText.instantiate()
 	print(type)
 	#Determines entry type
 	match type:
@@ -123,14 +152,17 @@ func addInfo(type,text) -> void:
 			info.text = Encydict.oreInfo.get(text)
 			entryInfo.add_child(info)
 		"Stat":
+			print(text)
 			info.text = Encydict.statInfo.get(text)
 			entryInfo.add_child(info)
 		"Upgrade":
 			print(text)
-			#info.text = Itemdict.passives.find()
-			#entryInfo.add_child(info)
+			info.text = Encydict.itemInfo.get(text)
+			for letter in Encydict.itemEffects.get(text):
+				richInfo.text = letter
+			entryInfo.add_child(info)
+			entryInfo.add_child(richInfo)
 			pass
-		
 		_:
 			pass
 			
@@ -138,10 +170,14 @@ func addInfo(type,text) -> void:
 func removeInfo() -> void:
 	for child in entryInfo.get_child_count():
 		entryInfo.get_child(child).queue_free()		
-	print("Entry Exited")		
+	print("Entry Exited")
 		
 #Returns to title screen#
 func _on_back_pressed() -> void:
 	get_node("../ParallaxBackground").visible = true
 	get_node("../Title").visible = true
 	get_node("../Encyclopedia").visible = false
+	
+func _process(delta):
+	parallax_background.scroll_offset.x -= 50 * delta
+	

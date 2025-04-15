@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://0k4cgcux4vif"]
+[gd_scene load_steps=19 format=3 uid="uid://0k4cgcux4vif"]
 
 [ext_resource type="Texture2D" uid="uid://dkkc1j0kook64" path="res://Assets/Space/Space Layer 0.png" id="1_srafl"]
 [ext_resource type="Script" path="res://Menus/MenuScripts/SpaceLayer0.gd" id="2_yj7aa"]
@@ -12,8 +12,9 @@
 [ext_resource type="Script" path="res://Menus/MenuScripts/shuttleLayer.gd" id="10_buge5"]
 [ext_resource type="Texture2D" uid="uid://dbfo1t47nkoeu" path="res://Menus/Title/NEW.png" id="11_7oelj"]
 [ext_resource type="Texture2D" uid="uid://cdu7onylwedtw" path="res://Menus/Title/Hover NEW.png" id="12_dpb3f"]
-[ext_resource type="Texture2D" uid="uid://uau8wposh4fa" path="res://Menus/Title/LOAD.png" id="13_ganep"]
+[ext_resource type="Texture2D" uid="uid://dwriwxyjyfpi" path="res://Menus/Title/QUIT.png" id="13_muxbu"]
 [ext_resource type="Texture2D" uid="uid://cy1j2m2fpbhxa" path="res://Menus/Title/Hover LOAD.png" id="14_abhqp"]
+[ext_resource type="Texture2D" uid="uid://b74qijghb1wsl" path="res://Menus/Title/GEAR.png" id="15_7ytho"]
 [ext_resource type="Texture2D" uid="uid://2r6au0boorm1" path="res://Menus/Title/Hover SETTINGS.png" id="15_m6145"]
 [ext_resource type="Texture2D" uid="uid://bt07j4vajelww" path="res://Menus/Title/ENCYCLOPEDIA.png" id="16_jwfsi"]
 [ext_resource type="Texture2D" uid="uid://ci30d6qdymujo" path="res://Menus/Title/Hover ENCYCLOPEDIA.png" id="17_pquob"]
@@ -70,11 +71,11 @@ z_index = -1
 z_as_relative = false
 texture = ExtResource("12_dpb3f")
 
-[node name="LOAD" type="Sprite2D" parent="Shuttle/Ship"]
+[node name="QUIT" type="Sprite2D" parent="Shuttle/Ship"]
 z_index = 2
-position = Vector2(-59.8835, -140.394)
-scale = Vector2(0.714825, 0.684182)
-texture = ExtResource("13_ganep")
+position = Vector2(-70.8892, -140.394)
+scale = Vector2(0.668969, 0.684183)
+texture = ExtResource("13_muxbu")
 
 [node name="Hover Load" type="Sprite2D" parent="Shuttle/Ship"]
 z_index = -1
@@ -83,6 +84,9 @@ texture = ExtResource("14_abhqp")
 
 [node name="SETTINGS" type="Sprite2D" parent="Shuttle/Ship"]
 z_index = 2
+position = Vector2(-299.207, -138.614)
+scale = Vector2(-0.525934, -0.627075)
+texture = ExtResource("15_7ytho")
 
 [node name="Hover Settings" type="Sprite2D" parent="Shuttle/Ship"]
 z_index = -1

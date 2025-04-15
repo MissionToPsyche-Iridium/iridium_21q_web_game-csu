@@ -1,0 +1,71 @@
+# LANGUAGE translation for New Game Project for the following files:
+# res://Menus/Options/options.tscn
+# res://Menus/Encyclopedia/encyclopedia.tscn
+# res://Menus/Encyclopedia/encydict.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: New Game Project\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: Menus/Options/options.tscn
+msgid "Volume\n"
+msgstr ""
+
+#: Menus/Options/options.tscn
+msgid "Master"
+msgstr ""
+
+#: Menus/Options/options.tscn
+msgid "Music"
+msgstr ""
+
+#: Menus/Options/options.tscn
+msgid "SFX"
+msgstr ""
+
+#: Menus/Options/options.tscn
+msgid "Controls"
+msgstr ""
+
+#: Menus/Options/options.tscn
+msgid "Language"
+msgstr ""
+
+#: Menus/Options/options.tscn
+msgid "English"
+msgstr ""
+
+#: Menus/Options/options.tscn
+msgid "Español"
+msgstr ""
+
+#: Menus/Options/options.tscn
+msgid "Français"
+msgstr ""
+
+#: Menus/Options/options.tscn
+msgid "中文"
+msgstr ""
+
+#: Menus/Options/options.tscn
+#: Menus/Encyclopedia/encyclopedia.tscn
+msgid "Back"
+msgstr ""
+
+#: Menus/Encyclopedia/encyclopedia.tscn
+msgid "Ores"
+msgstr ""
+
+#: Menus/Encyclopedia/encyclopedia.tscn
+msgid "Stats"
+msgstr ""
+
+#: Menus/Encyclopedia/encyclopedia.tscn
+msgid "Upgrades\n"
+msgstr ""
