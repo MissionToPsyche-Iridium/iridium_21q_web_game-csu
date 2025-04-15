@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://mlpp8ome5w1u"]
+[gd_scene load_steps=13 format=3 uid="uid://mlpp8ome5w1u"]
 
 [ext_resource type="PackedScene" uid="uid://c3m1e1ln2thnf" path="res://Objects/shopoption.tscn" id="1_prv28"]
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_qw43m"]
 [ext_resource type="Script" path="res://scripts/currencyLabel.gd" id="2_irkxs"]
+[ext_resource type="Theme" path="res://Assets/maintheme.tres" id="2_s7v6t"]
 [ext_resource type="Script" path="res://Scenes/stats_container.gd" id="7_mll3o"]
 [ext_resource type="Texture2D" uid="uid://djni7ri3m5gvl" path="res://Assets/Space background/parallax-space-backgound.png" id="8_klcxv"]
 [ext_resource type="Texture2D" uid="uid://bgvf4n5hwjgk6" path="res://Assets/Space background/parallax-space-big-planet.png" id="9_716jn"]
 [ext_resource type="Texture2D" uid="uid://vcy1xcr78k8t" path="res://Assets/Space background/parallax-space-far-planets.png" id="10_olqip"]
 [ext_resource type="Texture2D" uid="uid://cmbjdey7q7n4y" path="res://Assets/Space background/parallax-space-ring-planet.png" id="11_tm5u6"]
 [ext_resource type="Texture2D" uid="uid://b5661gfvdmmqn" path="res://Assets/Space background/parallax-space-stars.png" id="12_3o4n0"]
-[ext_resource type="AudioStream" uid="uid://dq3m7vf2aijdr" path="res://Scenes/655821__josefpres__8-bit-game-loop-007-simple-mix-2-short-120-bpm.wav" id="13_87ryj"]
-[ext_resource type="Theme" uid="uid://dlnrcj7wr67ku" path="res://Scenes/Default21.tres" id="14_f4ntt"]
+[ext_resource type="AudioStream" uid="uid://dq3m7vf2aijdr" path="res://Assets/audio/music/655821__josefpres__8-bit-game-loop-007-simple-mix-2-short-120-bpm.wav" id="13_87ryj"]
+[ext_resource type="Theme" uid="uid://dlnrcj7wr67ku" path="res://Assets/Space background/Default21.tres" id="14_f4ntt"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -39,8 +40,8 @@ grow_vertical = 0
 
 [node name="CurrencyLabel" type="Label" parent="row"]
 layout_mode = 2
-theme = ExtResource("14_f4ntt")
-text = "Currency : 00
+theme = ExtResource("2_s7v6t")
+text = "Scrap : 00
 "
 script = ExtResource("2_irkxs")
 
@@ -59,6 +60,7 @@ visible = false
 layout_mode = 2
 
 [node name="StatsContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -141,7 +143,7 @@ offset_top = -316.0
 offset_right = -408.0
 offset_bottom = -268.0
 theme = ExtResource("14_f4ntt")
-text = "<  Back"
+text = "< Next Day"
 vertical_icon_alignment = 0
 
 [node name="RerollButton" type="Button" parent="."]

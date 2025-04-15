@@ -10,10 +10,7 @@ func _ready() -> void:
 	animationidle.seek(randf_range(0,4))
 	pass # Replace with function body.
 
-
-
-func _on_buy_button_pressed() -> void:
-	animationjuice.play("juice")
+#Removed the on_buy_button_pressed() func from here and put it ALL into shop option.
 
 
 func on_reroll() -> void:

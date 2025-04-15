@@ -10,29 +10,33 @@ extends Control
 var reroll_cost: int = 5  # Initial reroll cost
 
 func _ready() -> void:
+	
 	reroll_cost = Dronestats.rerollcost
+	RerollButton.text = "Roll Again: " + str(reroll_cost)
+	
 	background_sound.play()  
 	for display in row.get_children():
 		if display.name != "BADOP" and display is SubViewportContainer:  
 			displays.append(display)
 
-	parallax_layer.motion_mirroring = Vector2(816, 0)  # Image width now 816px
+	parallax_layer.motion_mirroring = Vector2(816, 0)
 
 func _process(delta):
 	parallax_background.scroll_offset.x -= 50 * delta
 
 func _on_reroll_button_pressed() -> void:
-	print("Reroll button pressed!")  # For debugging
-
 	if !CurrencyManager.spend_money(reroll_cost):
 		print("Not enough currency to reroll.")
 		return
 
 	for display in displays:
+		RerollButton.text = "Roll Again: " + str(reroll_cost)
 		display.display.display_item(Itemdict.get_random_item_passive())
 		display.on_reroll()
-
+		
 	reroll_cost += Dronestats.rerollinc
 	
 func _on_return_button_pressed() -> void:
 	Gamemaster.leave_shop()
+	
+	
