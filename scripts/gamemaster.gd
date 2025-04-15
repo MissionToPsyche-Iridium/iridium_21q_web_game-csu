@@ -26,7 +26,7 @@ extends Node
 				5: 0,
 				6: 0,
 				7: 0
-		},
+				}
 	},
 	2: { #Less time, bigger mine, more ores, higher required.
 		"sizex": 17,
@@ -42,7 +42,7 @@ extends Node
 				7: 0
 				}
 		},
-	3: {#Less time, bigger mine, more ores, higher required.
+	3: {
 		"sizex": 20,
 		"sizey": 20,
 		"time": 105,
@@ -55,10 +55,121 @@ extends Node
 				6: 0,
 				7: 0
 				}
-		}
+		},
+	4: {
+		"sizex": 25,
+		"sizey": 25,
+		"time": 100,
+		"required": 15,
+		"oredict": {
+				0: 12,
+				2: 8,
+				3: 8,
+				5: 2,
+				6: 0,
+				7: 0
+				}
+		},
+	5: {
+		"sizex": 35,
+		"sizey": 35,
+		"time": 100,
+		"required": 18,
+		"oredict": {
+				0: 12,
+				2: 8,
+				3: 10,
+				5: 4,
+				6: 0,
+				7: 0
+				}
+		},
+	6: {
+		"sizex": 38,
+		"sizey": 38,
+		"time": 90,
+		"required": 20,
+		"oredict": {
+				0: 12,
+				2: 11,
+				3: 14,
+				5: 5,
+				6: 1,
+				7: 0
+				}
+		},
+	7: {
+		"sizex": 40,
+		"sizey": 40,
+		"time": 90,
+		"required": 25,
+		"oredict": {
+				0: 12,
+				2: 14,
+				3: 10,
+				5: 6,
+				6: 2,
+				7: 0
+				}
+	},
+	8: {
+		"sizex": 45,
+		"sizey": 45,
+		"time": 85,
+		"required": 30,
+		"oredict": {
+				0: 12,
+				2: 7,
+				3: 5,
+				5: 7,
+				6: 7,
+				7: 0
+				}
+	},
+	9: {
+		"sizex": 50,
+		"sizey": 50,
+		"time": 75,
+		"required": 35,
+		"oredict": {
+				0: 12,
+				2: 15,
+				3: 10,
+				5: 9,
+				6: 9,
+				7: 2
+				}
+	},
+	10: {
+		"sizex": 50,
+		"sizey": 50,
+		"time": 60,
+		"required": 40,
+		"oredict": {
+				0: 12,
+				2: 20,
+				3: 10,
+				5: 10,
+				6: 10,
+				7: 3
+				}
+	},
+	11: {
+	"sizex": 55,
+	"sizey": 55,
+	"time": 60,
+	"required": 50,
+	"oredict": {
+			0: 6,
+			2: 20,
+			3: 13,
+			5: 12,
+			6: 15,
+			7: 5
+				}
+	},
+	
 }
-
-
 func _ready() -> void:
 	seed(randi_range(0,25565))
 	add_child(timer)
@@ -67,19 +178,22 @@ func _ready() -> void:
 	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	pass
 
-func _on_game_clock_timeout(): #when the timer ends, the player loses.
-	#Reset every variable to there orginal values.
+func reset_game():
 	day = 1
 	Inventory.reset()
 	Dronestats.reset()
 	CurrencyManager.reset()
+
+func _on_game_clock_timeout(): #when the timer ends, the player loses.
+	#Reset every variable to there orginal values.
+	reset_game()
 	var gos = gameoverscreen.instantiate()
 	add_child(gos)
 	get_tree().paused = true
 
 func reset_after_loss(): #When the player hits the "main menu" button, go back to the main menu.
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Menus/Title/title.tscn")
+	get_tree().change_scene_to_file("res://Menus/menus.tscn")
 	pass
 
 func get_time(): #Returns the time remaining on the global clock.
@@ -99,13 +213,25 @@ func leave_pre(): #Called when the player leaves the main scene. AKA leaves when
 		Inventory.inventorydrone.erase(item)
 	timer.stop()
 	day += 1
-	get_tree().change_scene_to_file("res://Scenes/shop.tscn")
+	if day <= 20:
+		get_tree().change_scene_to_file("res://Scenes/shop.tscn")
+	else:
+		pass
+		#Switch to win scene.
 	
 func leave_shop(): #Called when we leave the shop.
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
 	
 func leave_title(): #Called when we leave the title screen.
-	#TODO: basic controls scene?
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
+
+func enter_tutorial(): #Called when the user wants to enter the tutorial.
+	get_tree().change_scene_to_file("res://Scenes/tutorial.tscn")
+	
+func leave_tutorial(): #Make sure the tutorial doesn't effect the rest of the game.
+	reset_game()
+	get_tree().change_scene_to_file("res://Menus/menus.tscn")
+	
+	

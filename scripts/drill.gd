@@ -2,10 +2,12 @@ extends RayCast2D
 #Handles Drill code.
 @onready var particles = $drillparts
 @onready var tilepos = null
+@onready var drill: AnimatedSprite2D = $Drill
 
 
 func _physics_process(delta: float) -> void:
 	if is_colliding():
+		drill.play("Drill")
 		var tile = get_collider()
 		if tile is Mineable: #custom class from mineable object.
 			particles.emitting = false
@@ -25,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	pass
 	if !is_colliding():
 		particles.emitting = false
+		drill.stop()
 		pass
 func _ready() -> void:
 	pass

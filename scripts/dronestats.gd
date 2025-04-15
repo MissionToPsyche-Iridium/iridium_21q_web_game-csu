@@ -1,55 +1,83 @@
 extends Node
 
 #Almost every game object pulls from here.
-#Editing these values changes there values.
-@onready var grabbercooldown: int = 60 #Frames inbetween grabs 30 per sec, 60 = 2 sec. (def = 2) TODO
-@onready var grabberspeed: float = 0.04 #how fast the grabber moves when grabbing something. (def 0.04)
-@onready var grabberrange: int = 128 #How big the radius for the grbaber is (def 128px)
+#BASE DEFS, AKA what the drone starts as.
 
-@onready var drillspeed: float = 1 #Damage delt to block every 30 sec (Ex if set to 1, 30 damage every 1 sec).
-@onready var drillstr: int = 0 #TODO, not used anywhere right now. How effected a drill is by harder blocks. (def 0)
+#New stat...
+#1 add base var with b_VARNAME
+#2 add it to the stats enum
+#3 add it to the "edit stat" function.
+@onready var b_grabbercooldown: int = 60
+@onready var b_grabberspeed: float = 0.04
+@onready var b_grabberrange: int = 128
+@onready var b_drillspeed: float = 1
+@onready var b_drillstr: int = 0
+@onready var b_dronespeed: int = 200
+@onready var b_droneluck: float = 0
+@onready var b_tubespeed: float = 2
+@onready var b_rerollcost: int = 5
+@onready var b_rerollinc: int = 2
+@onready var b_greasemax: int = 0
+@onready var b_greasecount: int = 0
+@onready var b_orbitalrotmod: float = 0
 
-@onready var dronespeed: int = 200 #How fast the drone moves. (def 200)
-@onready var droneluck: float = 0 #How lucky the drone is for events. (def 0)
-@onready var tubespeed: float = 2 #Time (sec) between objects leaving the drone and entering the mothership.
 
-@onready var rerollcost: int = 5 #Base reroll cost, inc by 2 every reroll.
-@onready var rerollinc: int = 2 #Inc reroll cost.
+@onready var grabbercooldown: int = b_grabbercooldown #Frames inbetween grabs 30 per sec, 60 = 2 sec. (def = 2)
+@onready var grabberspeed: float = b_grabberspeed #how fast the grabber moves when grabbing something. (def 0.04)
+@onready var grabberrange: int = b_grabberrange #How big the radius for the grbaber is (def 128px)
 
-#VARS FOR ITEMS THAT NEED IT
-@onready var greasemax: int = 0 #Number of blocks for bonus mining power each stage.
-@onready var greasecount: int = 0#Number of blocks mined this stage for grease count.
+@onready var drillspeed: float = b_drillspeed #Damage delt to block every 30 sec (Ex if set to 1, 30 damage every 1 sec).
+@onready var drillstr: int = b_drillstr #TODO, not used anywhere right now. How effected a drill is by harder blocks. (def 0)
+#Example of this, if block has a 0.5 str mod, that means damage done to block per physics process = drillspeed - |(blockstr - drillstr)|.
+
+@onready var dronespeed: int = b_dronespeed #How fast the drone moves. (def 200)
+@onready var droneluck: float = b_droneluck #How lucky the drone is for events. (def 0)
+@onready var tubespeed: float = b_tubespeed #Time (sec) between objects leaving the drone and entering the mothership.
+
+
+@onready var rerollcost: int = b_rerollcost #Base reroll cost, inc by 2 every reroll.
+@onready var rerollinc: int = b_rerollinc #Inc reroll cost.
+
+#Vars for items that need it.
+@onready var greasemax: int = b_greasemax #Number of blocks for bonus mining power each stage.
+@onready var greasecount: int = b_greasecount #Number of blocks mined this stage for grease count.
+
+@onready var orbitalrotmod: float = b_orbitalrotmod #Bonus rate at which orbitals will spin. EX, pluto spins at 1, so adding .1 to this means the orbital spins 10% faster.
 
 @onready var boughtitems: Array = []
 #Edit this if you need to test new active items, for example...
 #@onready var boughtitems: Array = [Sweeper.new()]
 #Mostly need this to make sure we respect stack limits, opens design space, etc...
 
-
+enum Stats {GRABBER_COOLDOWN, GRABBER_SPEED, GRABBER_RANGE, DIRLL_SPEED, DRONE_LUCK, TUBE_SPEED, REROLL_COST, REROLL_INC, GREASE_MAX, ORBITAL_ROT_MOD}
+enum Op {BUFF, NERF}
 func get_list_of_stats() -> Dictionary:
 	#Returns a dict list of names and values of all drone stats.
 	var dict: Dictionary = {
-		"Grabber Cooldown" = grabbercooldown,
-		"Grabber Speed" = grabberspeed,
-		"Grabber Range" = grabberrange,
-		"Drill Speed" = drillspeed,
-		"Dill Power" = drillstr,
-		"Drone Speed" = dronespeed,
-		"Luck" = droneluck,
-		"Tube Speed" = tubespeed,
+	"Grabber Cooldown" = str((grabbercooldown - b_grabbercooldown) / b_grabbercooldown) + "%",
+	"Grabber Speed" = str((grabberspeed - b_grabberspeed) / b_grabberspeed) + "%",
+	"Grabber Range" = str((grabberrange - b_grabberrange) / b_grabberrange) + "%",
+	"Drill Speed" = str((drillspeed - b_drillspeed) / b_drillspeed) + "%",
+	"Dill Power" = str((drillstr - b_drillstr)) + "%",
+	"Drone Speed" = str((dronespeed - b_dronespeed) / b_dronespeed) + "%",
+	"Luck" = str((droneluck - b_droneluck)) + "%",
+	"Tube Speed" = str((tubespeed - b_tubespeed) / b_tubespeed) + "%",
 	}
 	return dict
 	
 func reset():
-	grabbercooldown = 60
-	grabberspeed = 0.04
-	grabberrange = 128
-	drillspeed = 1
-	drillstr = 0
-	dronespeed = 200
-	droneluck = 0
-	tubespeed = 2
-	rerollcost = 5
-	rerollinc = 2
+	grabbercooldown = b_grabbercooldown
+	grabberspeed = b_grabberspeed
+	grabberrange = b_grabberrange
+	drillspeed = b_drillspeed
+	drillstr = b_drillstr
+	dronespeed = b_dronespeed
+	droneluck = b_droneluck
+	tubespeed = b_tubespeed
+	rerollcost = b_rerollcost
+	rerollinc = b_rerollinc
+	greasemax = b_greasemax
+	greasecount = b_greasecount
+	orbitalrotmod = b_orbitalrotmod
 	boughtitems = []
 	pass

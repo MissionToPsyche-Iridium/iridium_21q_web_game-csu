@@ -9,6 +9,16 @@ func _ready() -> void:
 	passives.append(SharpeningWheel.new())
 	passives.append(WeightedCoin.new())
 	passives.append(Turbo.new())
+	passives.append(Cog.new())
+	passives.append(DumbBells.new())
+	passives.append(Vacuum.new())
+	passives.append(Clipboard.new())
+	passives.append(Bowl.new())
+	passives.append(Diamond.new())
+	
+	passives.append(Neptune.new())
+	passives.append(Pluto.new())
+	passives.append(Mercury.new())
 	
 func get_item(index: int) -> Item:
 	var item: Item = passives[0] #If something goes very wrong with the code, lucky egg is used to stop errors.

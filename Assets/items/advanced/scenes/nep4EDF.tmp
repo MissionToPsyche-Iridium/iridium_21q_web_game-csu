@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://ug14myts2q1l"]
+
+[ext_resource type="Script" path="res://Assets/items/advanced/scripts/f_neptune.gd" id="1_o3pro"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nfdtm"]
+
+[sub_resource type="Animation" id="Animation_jfpqx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_lhcq3"]
+resource_name = "spin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 4.71239]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7mqv8"]
+_data = {
+"RESET": SubResource("Animation_jfpqx"),
+"spin": SubResource("Animation_lhcq3")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_o3pro")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(84.5, 1)
+rotation = -1.5708
+scale = Vector2(16.058, 15.0582)
+texture = SubResource("PlaceholderTexture2D_nfdtm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_7mqv8")
+}
