@@ -5,7 +5,7 @@ extends Item
 func _init() -> void:
 	name = "Bowl"
 	tooltip = ""
-	effecttext = [" [color=green]+3[/color] Pickup slots."]
+	effecttext = ["[color=green]+3[/color] Pickup slots."]
 	rarity = 1
 	sprite = preload("res://Assets/items/images/bowl.png")
 	maxstacks = -1
