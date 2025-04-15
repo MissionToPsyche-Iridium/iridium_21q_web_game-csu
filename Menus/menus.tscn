@@ -22,3 +22,4 @@ script = ExtResource("1_obkvu")
 [node name="Options" parent="." instance=ExtResource("4_s0mnq")]
 
 [node name="Encyclopedia" parent="." instance=ExtResource("5_i0x71")]
+show_behind_parent = true

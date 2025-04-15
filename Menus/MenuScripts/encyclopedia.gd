@@ -1,6 +1,9 @@
 extends Control
 #Encyclopedia Menu#
 
+@onready var parallax_layer = $ParallaxBackground/ParallaxLayer  
+@onready var parallax_background = $ParallaxBackground  
+
 #Entry Lists#
 @onready var upgradeslist = $ScrollContainer/VBoxContainer/UpgradesList
 @onready var oresList = $ScrollContainer/VBoxContainer/OresList
@@ -20,6 +23,7 @@ extends Control
 @onready var entryInfo = $EntryInfo
 
 func _ready():
+	parallax_layer.motion_mirroring = Vector2(816, 0)  # Image width now 816px
 	#Fills oreList#
 	for id in pickArr:
 		#Instantiates requires scenes
@@ -166,10 +170,14 @@ func addInfo(type,text) -> void:
 func removeInfo() -> void:
 	for child in entryInfo.get_child_count():
 		entryInfo.get_child(child).queue_free()		
-	print("Entry Exited")		
+	print("Entry Exited")
 		
 #Returns to title screen#
 func _on_back_pressed() -> void:
 	get_node("../ParallaxBackground").visible = true
 	get_node("../Title").visible = true
 	get_node("../Encyclopedia").visible = false
+	
+func _process(delta):
+	parallax_background.scroll_offset.x -= 50 * delta
+	
