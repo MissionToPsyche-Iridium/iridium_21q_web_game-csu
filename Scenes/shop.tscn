@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c3m1e1ln2thnf" path="res://Objects/shopoption.tscn" id="1_prv28"]
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_qw43m"]
 [ext_resource type="Script" path="res://scripts/currencyLabel.gd" id="2_irkxs"]
-[ext_resource type="Theme" path="res://Assets/maintheme.tres" id="2_s7v6t"]
+[ext_resource type="Theme" uid="uid://crb7i1fcxvc5x" path="res://Assets/maintheme.tres" id="2_s7v6t"]
 [ext_resource type="Script" path="res://Scenes/stats_container.gd" id="7_mll3o"]
 [ext_resource type="Texture2D" uid="uid://djni7ri3m5gvl" path="res://Assets/Space background/parallax-space-backgound.png" id="8_klcxv"]
 [ext_resource type="Texture2D" uid="uid://bgvf4n5hwjgk6" path="res://Assets/Space background/parallax-space-big-planet.png" id="9_716jn"]

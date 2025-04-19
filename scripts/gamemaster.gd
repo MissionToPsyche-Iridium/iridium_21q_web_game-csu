@@ -168,7 +168,62 @@ extends Node
 			7: 5
 				}
 	},
-	
+	12: {
+	"sizex": 60,
+	"sizey": 60,
+	"time": 55,
+	"required": 55,
+	"oredict": {
+			0: 6,
+			2: 25,
+			3: 15,
+			5: 11,
+			6: 15,
+			7: 6
+				}
+	},
+	13: {
+	"sizex": 60,
+	"sizey": 60,
+	"time": 55,
+	"required": 55,
+	"oredict": {
+			0: 6,
+			2: 25,
+			3: 15,
+			5: 11,
+			6: 15,
+			7: 6
+				}
+	},
+	14: {
+	"sizex": 60,
+	"sizey": 60,
+	"time": 50,
+	"required": 57,
+	"oredict": {
+			0: 6,
+			2: 25,
+			3: 15,
+			5: 11,
+			6: 15,
+			7: 8
+				}
+	},
+	15: {
+	"sizex": 70,
+	"sizey": 70,
+	"time": 50,
+	"required": 60,
+	"oredict": {
+			0: 6,
+			2: 25,
+			3: 15,
+			5: 15,
+			6: 15,
+			7: 8
+				}
+	},
 }
 func _ready() -> void:
 	seed(randi_range(0,25565))
@@ -213,12 +268,12 @@ func leave_pre(): #Called when the player leaves the main scene. AKA leaves when
 		Inventory.inventorydrone.erase(item)
 	timer.stop()
 	day += 1
-	if day <= 20:
-		get_tree().change_scene_to_file("res://Scenes/shop.tscn")
-	else:
+	if day == 15:
 		pass
 		#Switch to win scene.
-	
+	else:
+		get_tree().change_scene_to_file("res://Scenes/shop.tscn")
+		
 func leave_shop(): #Called when we leave the shop.
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
