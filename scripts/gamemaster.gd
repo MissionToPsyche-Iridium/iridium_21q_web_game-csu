@@ -6,6 +6,7 @@ extends Node
 @onready var day = 1 #Day we are on, from 1-20.
 
 @onready var gameoverscreen = preload("res://Objects/gameover.tscn")
+@onready var winscreen = preload("res://Objects/win.tscn")
 
 #HUGE dict of scaling.
 #Sizex = size of mine x
@@ -226,7 +227,6 @@ extends Node
 	},
 }
 func _ready() -> void:
-	seed(randi_range(0,25565))
 	add_child(timer)
 	timer.connect("timeout", _on_game_clock_timeout)
 	timer.one_shot = true
@@ -246,7 +246,7 @@ func _on_game_clock_timeout(): #when the timer ends, the player loses.
 	add_child(gos)
 	get_tree().paused = true
 
-func reset_after_loss(): #When the player hits the "main menu" button, go back to the main menu.
+func reset_after_loss(): #When the player hits the "main menu" button, go back to the main menu. Also counts "winning" as a "loss."
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Menus/menus.tscn")
 	pass
@@ -269,6 +269,10 @@ func leave_pre(): #Called when the player leaves the main scene. AKA leaves when
 	timer.stop()
 	day += 1
 	if day == 15:
+		reset_game()
+		var win = winscreen.instantiate()
+		add_child(win)
+		get_tree().paused = true
 		pass
 		#Switch to win scene.
 	else:
@@ -279,6 +283,7 @@ func leave_shop(): #Called when we leave the shop.
 	pass
 	
 func leave_title(): #Called when we leave the title screen.
+	seed(randi_range(0,25565)) #Do random jogic
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
 

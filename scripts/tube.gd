@@ -14,7 +14,11 @@ func _physics_process(delta: float) -> void:
 	if droneinsidedepot and drone != null:
 		points[1] = points[1].lerp(to_local(drone.global_position), 0.10)
 		if timer.is_stopped():
-			timer.start(Dronestats.tubespeed)
+			#Sanity check for tubespeed.
+			if Dronestats.tubespeed <= 0:
+				timer.start(0.01)
+			else:
+				timer.start(Dronestats.tubespeed)
 		pass
 	elif !droneinsidedepot:
 		points[1] = points[1].lerp(Vector2(50,16), 0.2)
