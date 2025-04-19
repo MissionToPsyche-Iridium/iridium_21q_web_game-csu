@@ -5,7 +5,6 @@ extends MarginContainer
 @onready var itemsprite = $CenterContainer/VBoxContainer/Sprite
 @onready var itemeffectlist = $CenterContainer/VBoxContainer/"Effect Text List"
 @onready var itembuy = $CenterContainer/VBoxContainer/"Buy Button"
-@onready var currency_label = $CurrencyLabel
 @onready var itemprice = $CenterContainer/VBoxContainer/Price
 @onready var glass = $Glass
 @onready var fallbacksprite: Texture2D = preload("res://Assets/items/images/noimage.png")

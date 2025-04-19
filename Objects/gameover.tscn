@@ -7,7 +7,6 @@
 process_mode = 2
 
 [node name="Gameover" type="Control" parent="."]
-process_mode = 2
 z_index = 5
 layout_mode = 3
 anchors_preset = 15

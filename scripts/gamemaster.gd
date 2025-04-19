@@ -3,7 +3,7 @@ extends Node
 @onready var timer = Timer.new() #Games timer.
 
 @onready var timetillloss: int = 0 #How much time in sec the player has till they lose.
-@onready var day = 1 #Day we are on, from 1-20.
+@onready var day = 1 #Day we are on, from 1-15.
 
 @onready var gameoverscreen = preload("res://Objects/gameover.tscn")
 @onready var winscreen = preload("res://Objects/win.tscn")
@@ -27,7 +27,7 @@ extends Node
 				5: 0,
 				6: 0,
 				7: 0
-				}
+			}
 	},
 	2: { #Less time, bigger mine, more ores, higher required.
 		"sizex": 17,
@@ -238,10 +238,7 @@ func reset_game():
 	Inventory.reset()
 	Dronestats.reset()
 	CurrencyManager.reset()
-
 func _on_game_clock_timeout(): #when the timer ends, the player loses.
-	#Reset every variable to there orginal values.
-	reset_game()
 	var gos = gameoverscreen.instantiate()
 	add_child(gos)
 	get_tree().paused = true
@@ -249,6 +246,7 @@ func _on_game_clock_timeout(): #when the timer ends, the player loses.
 func reset_after_loss(): #When the player hits the "main menu" button, go back to the main menu. Also counts "winning" as a "loss."
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Menus/menus.tscn")
+	reset_game()
 	pass
 
 func get_time(): #Returns the time remaining on the global clock.
@@ -265,6 +263,8 @@ func leave_pre(): #Called when the player leaves the main scene. AKA leaves when
 	#Move all items inside drone to ship. This is just so the player doesn't NEED to wait till the very end as long as the required scrap is met.
 	for item in Inventory.inventorydrone:
 		Inventory.from_drone_to_mothership()
+	#Move all backup_scrap into balance
+	CurrencyManager.balance += CurrencyManager.backup_balance
 	timer.stop()
 	day += 1
 	if day == 15:
@@ -278,11 +278,13 @@ func leave_pre(): #Called when the player leaves the main scene. AKA leaves when
 		get_tree().change_scene_to_file("res://Scenes/shop.tscn")
 		
 func leave_shop(): #Called when we leave the shop.
+	CurrencyManager.backup_balance += CurrencyManager.balance
+	CurrencyManager.balance = 0
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
 	
 func leave_title(): #Called when we leave the title screen.
-	seed(randi_range(0,25565)) #Do random jogic
+	seed(randi_range(0,25565)) #Do random seed
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
 

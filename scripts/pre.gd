@@ -15,7 +15,7 @@ func _ready() -> void:
 	#Figure out dif scale function. For now hard set height and width.
 	mine.height = Gamemaster.diffdict[Gamemaster.day]['sizey']
 	mine.width = Gamemaster.diffdict[Gamemaster.day]['sizex']
-	mine.orereq = Gamemaster.diffdict[Gamemaster.day]['oredict']
+	mine.orereq = Gamemaster.diffdict[Gamemaster.day]['oredict'].duplicate() # Bug fix, get local copy
 	#DO NOT EDIT VARS OF OBJECTS AFTER THEY HAVE BEEN ADDED AS CHILDREN.
 	add_child(mine)
 	#Move drone and mothership to pos.
