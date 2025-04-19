@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://do70mcleiiq0c"]
+[gd_scene load_steps=4 format=3 uid="uid://do70mcleiiq0c"]
 
 [ext_resource type="Script" path="res://scripts/gameover.gd" id="1_50jgi"]
 [ext_resource type="Theme" uid="uid://crb7i1fcxvc5x" path="res://Assets/maintheme.tres" id="2_0sn6b"]
+[ext_resource type="AudioStream" uid="uid://dvh4xl6sxitd0" path="res://Assets/audio/music/Three Red Hearts - Sanctuary.ogg" id="3_du4yj"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 2
@@ -45,5 +46,9 @@ theme_override_font_sizes/font_size = 44
 text = "Return to menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Gameover"]
+stream = ExtResource("3_du4yj")
+volume_db = -14.358
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Gameover/VBoxContainer/Button" to="Gameover" method="_on_button_pressed"]

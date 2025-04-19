@@ -264,8 +264,7 @@ func leave_pre(): #Called when the player leaves the main scene. AKA leaves when
 	#NOTE: this means the player must wait for the tube to move enough ore to the mothership, could be bad design, needs playtesting.
 	#Move all items inside drone to ship. This is just so the player doesn't NEED to wait till the very end as long as the required scrap is met.
 	for item in Inventory.inventorydrone:
-		Inventory.inventoryship.append(item)
-		Inventory.inventorydrone.erase(item)
+		Inventory.from_drone_to_mothership()
 	timer.stop()
 	day += 1
 	if day == 15:

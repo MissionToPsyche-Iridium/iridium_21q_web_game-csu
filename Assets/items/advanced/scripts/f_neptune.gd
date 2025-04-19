@@ -13,4 +13,4 @@ func _physics_process(delta: float) -> void:
 	
 	if rotation >= 2*PI: #In radians so 2pi (roughly)
 		rotation = rotation - 2*PI
-		CurrencyManager.add_money(Gamemaster.day)
+		CurrencyManager.add_money(1)
