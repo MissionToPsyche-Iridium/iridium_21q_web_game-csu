@@ -61,9 +61,10 @@ offset_right = 2636.0
 offset_bottom = -140.0
 text = "You must deposit your pickups inside the mothership.
 
-You can only hold a limited ammount of pickups, so make sure to return often!
+You can only hold a limited amount of pickups, so make sure to return often!
 
-Once you have met the quota, press the space bar to end the day. 
-This will take you to the shop.
+Once you have met the quota, press the space bar to end the day.
+You must do this while you are inside the green circle!
+Doing this will take you to the shop.
 
 Here it will just end the tutorial."
