@@ -28,7 +28,7 @@ func _on_reroll_button_pressed() -> void:
 	if !CurrencyManager.spend_money(reroll_cost):
 		print("Not enough currency to reroll.")
 		return
-	RerollButton.text = "Roll Again: " + str(reroll_cost)
+	RerollButton.text = "Roll Again: " + str(reroll_cost) + " Scrap"
 	for display in displays:
 		display.display.display_item(Itemdict.get_random_item_passive())
 		display.on_reroll()

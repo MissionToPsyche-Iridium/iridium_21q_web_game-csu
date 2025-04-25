@@ -15,6 +15,8 @@ func _ready() -> void:
 	passives.append(Clipboard.new())
 	passives.append(Bowl.new())
 	passives.append(Diamond.new())
+	passives.append(Chocolate.new())
+	passives.append(Nail.new())
 	
 	passives.append(Neptune.new())
 	passives.append(Pluto.new())
