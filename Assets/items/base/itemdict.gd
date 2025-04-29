@@ -17,6 +17,8 @@ func _ready() -> void:
 	passives.append(Diamond.new())
 	passives.append(Chocolate.new())
 	passives.append(Nail.new())
+	passives.append(BuzzCore.new())
+	passives.append(Magnet.new())
 	
 	passives.append(Neptune.new())
 	passives.append(Pluto.new())
