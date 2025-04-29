@@ -15,10 +15,13 @@ func _ready() -> void:
 	passives.append(Clipboard.new())
 	passives.append(Bowl.new())
 	passives.append(Diamond.new())
-	
 	passives.append(Neptune.new())
 	passives.append(Pluto.new())
 	passives.append(Mercury.new())
+	passives.append(FourLeafClover.new())
+	passives.append(UltraHand.new())
+	passives.append(ExtraArm.new())
+	passives.append(CarbonFiberTubing.new())
 	
 func get_item(index: int) -> Item:
 	var item: Item = passives[0] #If something goes very wrong with the code, lucky egg is used to stop errors.

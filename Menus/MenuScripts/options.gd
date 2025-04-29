@@ -8,6 +8,6 @@ extends Control
 
 #Returns to title screen
 func _on_back_pressed() -> void:
-	get_node("../ParallaxBackground").visible = true
-	get_node("../Title").visible = true
-	get_node("../Options").visible = false
+	$"../ParallaxBackground".get_node("Shuttle").visible = true
+	$"../Title".visible = true
+	$".".visible = false

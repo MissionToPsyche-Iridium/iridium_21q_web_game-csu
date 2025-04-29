@@ -6,7 +6,10 @@ var bus_index: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#bus_name = self.
 	bus_index = AudioServer.get_bus_index(bus_name)
+	value = .75
+	#AudioServer.set_bus_volume_db(bus_index,linear_to_db(.5))
 	value_changed.connect(_on_value_changed)
 	pass # Replace with function body.
 	

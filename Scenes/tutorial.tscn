@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://jfjpk3tyudf8"]
+[gd_scene load_steps=4 format=4 uid="uid://dnee7m26ur571"]
 
 [ext_resource type="PackedScene" uid="uid://c5c4d80q5qjwo" path="res://Objects/drone.tscn" id="1_f524w"]
 [ext_resource type="PackedScene" uid="uid://ok71srmvbp25" path="res://Objects/mine.tscn" id="2_3reka"]

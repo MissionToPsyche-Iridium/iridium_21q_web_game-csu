@@ -5,4 +5,5 @@ func _ready() -> void:
 	$Title.visible = true
 	$Options.visible = false
 	$Encyclopedia.visible = false
+	$TextEdit.visible = false
 	pass
