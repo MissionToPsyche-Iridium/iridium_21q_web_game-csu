@@ -14,18 +14,21 @@ script = ExtResource("1_51yjo")
 
 [node name="Options" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -573.0
-offset_top = -327.0
-offset_right = 578.0
-offset_bottom = 324.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.5
+offset_top = -325.5
+offset_right = 575.5
+offset_bottom = 325.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Content" type="VBoxContainer" parent="Options"]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="Volume" type="Label" parent="Options/Content"]
 layout_mode = 2
@@ -45,27 +48,29 @@ layout_mode = 2
 max_value = 1.0
 step = 0.001
 script = ExtResource("2_n1jod")
+bus_name = "Master"
 
 [node name="Music_Label" type="Label" parent="Options/Content/Volume_Settings"]
 layout_mode = 2
 text = "Music"
 
 [node name="Music" type="HSlider" parent="Options/Content/Volume_Settings"]
-visible = false
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 script = ExtResource("2_n1jod")
+bus_name = "Music"
 
 [node name="SFX_Label" type="Label" parent="Options/Content/Volume_Settings"]
 layout_mode = 2
 text = "SFX"
 
-[node name="SFX" type="HSlider" parent="Options/Content"]
+[node name="SFX" type="HSlider" parent="Options/Content/Volume_Settings"]
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 script = ExtResource("2_n1jod")
+bus_name = "SFX"
 
 [node name="Back" type="Button" parent="Options/Content"]
 layout_mode = 2

@@ -139,7 +139,6 @@ func addInfo(type,text) -> void:
 	print("Entry Entered")
 	var info = Label.new()
 	info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	var richInfo = effectText.instantiate()
 	print(type)
 	#Determines entry type
 	match type:
@@ -152,12 +151,17 @@ func addInfo(type,text) -> void:
 			info.text = Encydict.statInfo.get(text)
 			entryInfo.add_child(info)
 		"Upgrade":
+			
 			print(text)
 			info.text = Encydict.itemInfo.get(text)
-			for letter in Encydict.itemEffects.get(text):
-				richInfo.text = letter
 			entryInfo.add_child(info)
-			entryInfo.add_child(richInfo)
+			for letter in Encydict.itemEffects.get(text):
+				var richInfo = effectText.instantiate()
+				richInfo.text = letter
+				entryInfo.add_child(richInfo)
+			#print(richInfo.text)
+			
+			
 			pass
 		_:
 			pass
@@ -165,12 +169,12 @@ func addInfo(type,text) -> void:
 #Removes window on cursor exited
 func removeInfo() -> void:
 	for child in entryInfo.get_child_count():
-		entryInfo.get_child(child).queue_free()		
+		entryInfo.get_child(child).queue_free()
 	print("Entry Exited")
 		
 #Returns to title screen#
 func _on_back_pressed() -> void:
-	get_node("../ParallaxBackground").visible = true
-	get_node("../Title").visible = true
-	get_node("../Encyclopedia").visible = false
+	$"../ParallaxBackground".get_node("Shuttle").visible = true
+	$"../Title".visible = true
+	$".".visible = false
 	
