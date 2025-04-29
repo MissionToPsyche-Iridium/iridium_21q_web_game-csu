@@ -3,9 +3,9 @@ extends Item
 
 func _init() -> void:
 	name = "Extra Arm"
-	tooltip = "Armed and dangerous."
+	tooltip = ""
 	effecttext = ["[wave amp=50 freq=5 connected=1][color=#2d00e5]1/2[/color][/wave] grabber cooldown"]
-	rarity = 1
+	rarity = 2
 	sprite = preload("res://Assets/items/images/ExtraArm.png")
 	maxstacks = -1
 	price = 5
