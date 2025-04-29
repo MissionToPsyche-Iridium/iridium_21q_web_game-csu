@@ -26,9 +26,7 @@ offset_left = 43.0
 offset_top = -98.0
 offset_right = 347.0
 offset_bottom = -23.0
-text = "Welcome to _______
-
-Use W,A,S,D or the arrow keys to move."
+text = "Use W,A,S,D or the arrow keys to move."
 
 [node name="Text 2" type="Label" parent="Text"]
 layout_mode = 0
