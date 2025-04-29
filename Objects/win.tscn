@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2hb11f8j3s1g"]
+[gd_scene load_steps=4 format=3 uid="uid://do70mcleiiq0c"]
 
-[ext_resource type="Theme" path="res://Assets/maintheme.tres" id="1_f4y55"]
-[ext_resource type="Script" path="res://scripts/gameover.gd" id="1_xfmd3"]
+[ext_resource type="Script" path="res://scripts/gameover.gd" id="1_50jgi"]
+[ext_resource type="Theme" uid="uid://crb7i1fcxvc5x" path="res://Assets/maintheme.tres" id="2_0sn6b"]
+[ext_resource type="AudioStream" uid="uid://dvh4xl6sxitd0" path="res://Assets/audio/music/Three Red Hearts - Sanctuary.ogg" id="3_du4yj"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 2
 
 [node name="Gameover" type="Control" parent="."]
+process_mode = 2
 z_index = 5
 layout_mode = 3
 anchors_preset = 15
@@ -14,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xfmd3")
+script = ExtResource("1_50jgi")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Gameover"]
 layout_mode = 1
@@ -32,17 +34,21 @@ grow_vertical = 2
 
 [node name="Game over Label" type="Label" parent="Gameover/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_f4y55")
+theme = ExtResource("2_0sn6b")
 theme_override_font_sizes/font_size = 55
-text = "GAME OVER"
+text = "YOU WIN!"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="Gameover/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_f4y55")
+theme = ExtResource("2_0sn6b")
 theme_override_font_sizes/font_size = 44
-text = "MENU"
+text = "Return to menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Gameover"]
+stream = ExtResource("3_du4yj")
+volume_db = -14.358
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Gameover/VBoxContainer/Button" to="Gameover" method="_on_button_pressed"]

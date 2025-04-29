@@ -9,8 +9,9 @@ var drone: CharacterBody2D = null
 func _physics_process(delta: float) -> void:
 	#Used to check for leaving.
 	if droneinsidedepot and Input.is_action_just_pressed("Leave") and CurrencyManager.get_balance() >= Gamemaster.diffdict[Gamemaster.day]['required']:
-		spacecount += 1
-		if spacecount >= 5:
+		if get_tree().get_current_scene().get_name() == "Tutorial":
+			Gamemaster.leave_tutorial()
+		else:
 			Gamemaster.leave_pre()
 	if not CurrencyManager.get_balance() >= Gamemaster.diffdict[Gamemaster.day]['required'] and Input.is_action_just_pressed("Leave"):
 		#TODO: play a failure sound here.

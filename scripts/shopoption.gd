@@ -5,14 +5,13 @@ extends MarginContainer
 @onready var itemsprite = $CenterContainer/VBoxContainer/Sprite
 @onready var itemeffectlist = $CenterContainer/VBoxContainer/"Effect Text List"
 @onready var itembuy = $CenterContainer/VBoxContainer/"Buy Button"
-@onready var currency_label = $CurrencyLabel
 @onready var itemprice = $CenterContainer/VBoxContainer/Price
 @onready var glass = $Glass
 @onready var fallbacksprite: Texture2D = preload("res://Assets/items/images/noimage.png")
 @onready var iteminside: Item = null
 @onready var effectentry = preload("res://Objects/effectentry.tscn")
 @onready var checkout: AudioStreamPlayer = $checkout
-
+@onready var animationjuice: AnimationPlayer = $"../../juice"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	display_item(Itemdict.get_random_item_passive())
@@ -25,7 +24,7 @@ func display_item(item: Item) -> void:
 	clear_previous_effects()
 	# Imane's Addition: Display each effect text for the current item.
 	display_item_effects(item.effecttext)
-	itemprice.text = str(item.price)
+	itemprice.text = str(item.price) + " Scrap"
 	iteminside = item  # Grab reference of item so we can run its .on_get() effect later.
 	itembuy.tooltip_text = item.tooltip
 
@@ -46,6 +45,7 @@ func display_item_effects(effect_texts: Array) -> void:
 func _on_buy_button_pressed() -> void:
 	# Imane's Tweaks: Check if player can afford the item before purchase.
 	if CurrencyManager.spend_money(iteminside.price):
+		animationjuice.play("juice")
 		checkout.play()
 		iteminside.on_get()
 		Dronestats.boughtitems.append(iteminside) #Make sure we keep track of what items the player owns.

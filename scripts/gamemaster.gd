@@ -3,9 +3,10 @@ extends Node
 @onready var timer = Timer.new() #Games timer.
 
 @onready var timetillloss: int = 0 #How much time in sec the player has till they lose.
-@onready var day = 1 #Day we are on, from 1-20.
+@onready var day = 1 #Day we are on, from 1-15.
 
 @onready var gameoverscreen = preload("res://Objects/gameover.tscn")
+@onready var winscreen = preload("res://Objects/win.tscn")
 
 #HUGE dict of scaling.
 #Sizex = size of mine x
@@ -26,7 +27,7 @@ extends Node
 				5: 0,
 				6: 0,
 				7: 0
-				}
+			}
 	},
 	2: { #Less time, bigger mine, more ores, higher required.
 		"sizex": 17,
@@ -168,10 +169,64 @@ extends Node
 			7: 5
 				}
 	},
-	
+	12: {
+	"sizex": 60,
+	"sizey": 60,
+	"time": 55,
+	"required": 55,
+	"oredict": {
+			0: 6,
+			2: 25,
+			3: 15,
+			5: 11,
+			6: 15,
+			7: 6
+				}
+	},
+	13: {
+	"sizex": 60,
+	"sizey": 60,
+	"time": 55,
+	"required": 55,
+	"oredict": {
+			0: 6,
+			2: 25,
+			3: 15,
+			5: 11,
+			6: 15,
+			7: 6
+				}
+	},
+	14: {
+	"sizex": 60,
+	"sizey": 60,
+	"time": 50,
+	"required": 57,
+	"oredict": {
+			0: 6,
+			2: 25,
+			3: 15,
+			5: 11,
+			6: 15,
+			7: 8
+				}
+	},
+	15: {
+	"sizex": 70,
+	"sizey": 70,
+	"time": 50,
+	"required": 60,
+	"oredict": {
+			0: 6,
+			2: 25,
+			3: 15,
+			5: 15,
+			6: 15,
+			7: 8
+				}
+	},
 }
 func _ready() -> void:
-	seed(randi_range(0,25565))
 	add_child(timer)
 	timer.connect("timeout", _on_game_clock_timeout)
 	timer.one_shot = true
@@ -183,17 +238,15 @@ func reset_game():
 	Inventory.reset()
 	Dronestats.reset()
 	CurrencyManager.reset()
-
 func _on_game_clock_timeout(): #when the timer ends, the player loses.
-	#Reset every variable to there orginal values.
-	reset_game()
 	var gos = gameoverscreen.instantiate()
 	add_child(gos)
 	get_tree().paused = true
 
-func reset_after_loss(): #When the player hits the "main menu" button, go back to the main menu.
+func reset_after_loss(): #When the player hits the "main menu" button, go back to the main menu. Also counts "winning" as a "loss."
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Menus/menus.tscn")
+	reset_game()
 	pass
 
 func get_time(): #Returns the time remaining on the global clock.
@@ -209,21 +262,29 @@ func leave_pre(): #Called when the player leaves the main scene. AKA leaves when
 	#NOTE: this means the player must wait for the tube to move enough ore to the mothership, could be bad design, needs playtesting.
 	#Move all items inside drone to ship. This is just so the player doesn't NEED to wait till the very end as long as the required scrap is met.
 	for item in Inventory.inventorydrone:
-		Inventory.inventoryship.append(item)
-		Inventory.inventorydrone.erase(item)
+		Inventory.from_drone_to_mothership()
+	#Move all backup_scrap into balance
+	CurrencyManager.balance += CurrencyManager.backup_balance
 	timer.stop()
 	day += 1
-	if day <= 20:
-		get_tree().change_scene_to_file("res://Scenes/shop.tscn")
-	else:
+	if day == 15:
+		reset_game()
+		var win = winscreen.instantiate()
+		add_child(win)
+		get_tree().paused = true
 		pass
 		#Switch to win scene.
-	
+	else:
+		get_tree().change_scene_to_file("res://Scenes/shop.tscn")
+		
 func leave_shop(): #Called when we leave the shop.
+	CurrencyManager.backup_balance += CurrencyManager.balance
+	CurrencyManager.balance = 0
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
 	
 func leave_title(): #Called when we leave the title screen.
+	seed(randi_range(0,25565)) #Do random seed
 	get_tree().change_scene_to_file("res://Scenes/pre.tscn")
 	pass
 
